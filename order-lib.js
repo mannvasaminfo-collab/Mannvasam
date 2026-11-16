@@ -15,7 +15,7 @@ export const load = (k, d) => { try { return JSON.parse(localStorage.getItem(k))
 export const save = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} };
 export function shell(step, inner) {
   const st = ["PRODUCT", "DELIVERY", "PAYMENT"].map((s, i) => (i + 1 === step ? `<b>${i + 1} ${s}</b>` : `${i + 1} ${s}`)).join(" · ");
-  document.getElementById("app").innerHTML = `<header class="top"><a class="brand" href="/">MANNVASAM</a><nav><a href="/">Home</a><a href="/#mv-shop">Shop</a><a href="/recipes.html">Recipes</a><a href="/story.html">Story</a></nav></header><div class="steps">${st}</div>${inner}<footer>Rooted in tradition. Made for today.<br><span>Customer care: <a href="mailto:mannvasam.info@gmail.com" style="color:#f5efe3;text-decoration:underline">mannvasam.info@gmail.com</a></span></footer>`;
+  document.getElementById("app").innerHTML = `<header class="top"><a class="brand" href="/">MANNVASAM</a><nav><a href="/">Home</a><a href="/#mv-shop">Shop</a><a href="/recipes.html">Recipes</a><a href="/story.html">Story</a><a href="/tracking.html">Track Order</a></nav></header><div class="steps">${st}</div>${inner}<footer>Rooted in tradition. Made for today.<br><span>Customer care: <a href="mailto:mannvasam.info@gmail.com" style="color:#f5efe3;text-decoration:underline">mannvasam.info@gmail.com</a></span></footer>`;
 }
 export function order() {
   const o = load("mv-order", null);
