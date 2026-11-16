@@ -69,6 +69,15 @@ const statuses = [
   'Delivered', 'Cancelled'
 ];
 
+const adminEventClients = new Set();
+function publishAdminEvent(type, orderId) {
+  const payload = JSON.stringify({ type, orderId, at: new Date().toISOString() });
+  for (const client of adminEventClients) {
+    try { client.write(`event: orders\ndata: ${payload}\n\n`); }
+    catch { adminEventClients.delete(client); }
+  }
+}
+
 app.get('/api/health', (req, res) => {
   res.json({ ok: true, service: 'mannvasam-cod-orders' });
 });
@@ -154,9 +163,7 @@ app.post('/api/orders', (req, res) => {
       date.toISOString()
     );
 
-    res.status(201).json({
-      ok: true,
-      order: {
+    publishAdminEvent('created', orderCode);\n\n    res.status(201).json({\n      ok: true,\n      order: {
         orderId: orderCode,
         status: 'Pending',
         paymentMethod: 'Cash on Delivery',
@@ -213,6 +220,25 @@ app.post('/api/track-order', (req, res) => {
 
 app.use('/api/admin', adminGuard);
 
+// Authenticated Server-Sent Events keep the admin dashboard in sync without refresh.
+app.get('/api/admin/events', (req, res) => {
+  res.status(200);
+  res.setHeader('Content-Type', 'text/event-stream; charset=utf-8');
+  res.setHeader('Cache-Control', 'no-cache, no-transform');
+  res.setHeader('Connection', 'keep-alive');
+  res.setHeader('X-Accel-Buffering', 'no');
+  res.flushHeaders?.();
+  adminEventClients.add(res);
+  res.write('event: connected\ndata: {}\n\n');
+  const heartbeat = setInterval(() => {
+    try { res.write(': keepalive\n\n'); } catch {}
+  }, 25000);
+  req.on('close', () => {
+    clearInterval(heartbeat);
+    adminEventClients.delete(res);
+  });
+});
+
 app.get('/api/admin/orders', (req, res) => {
   const rows = db.prepare(
     'SELECT * FROM orders ORDER BY id DESC LIMIT 200'
@@ -245,7 +271,7 @@ app.patch('/api/admin/orders/:orderId/status', (req, res) => {
     return res.status(404).json({ error: 'Order not found.' });
   }
 
-  res.json({ ok: true, status });
+  publishAdminEvent('status', clean(req.params.orderId, 50));\n  res.json({ ok: true, status });
 });
 
 app.use(express.static(path.resolve('dist')));
