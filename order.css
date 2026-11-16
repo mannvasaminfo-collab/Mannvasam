@@ -321,3 +321,10 @@ body:has(.delivery-page) { background:#f4efe5; }
  .delivery-field.field-full { grid-column:auto; }
  .delivery-promise { border-radius:12px; }
 }
+
+/* Courier fee and customer-care details */
+.delivery-charge-line { display:flex; justify-content:space-between; gap:12px; margin-top:18px; padding-top:15px; border-top:1px solid #e7dece; color:#77796f; font-size:13px; }
+.delivery-charge-line b { color:#424b40; }
+.review-price-line b { color:#193d28; }
+.customer-care { margin-top:18px; color:#73766c; font-size:13px; }
+.customer-care a { color:#193d28; font-weight:700; }
