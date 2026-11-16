@@ -37,7 +37,7 @@ const adminEventClients = new Set();
 function publishAdminEvent(type, orderId) {
   const payload = JSON.stringify({ type, orderId, at: new Date().toISOString() });
   for (const client of adminEventClients) {
-    try { client.write(`event: orders\\ndata: ${payload}\\n\\n`); }
+    try { client.write(`event: orders\ndata: ${payload}\n\n`); }
     catch { adminEventClients.delete(client); }
   }
 }
@@ -146,9 +146,9 @@ app.get('/api/admin/events', (req, res) => {
   res.setHeader('X-Accel-Buffering', 'no');
   res.flushHeaders?.();
   adminEventClients.add(res);
-  res.write('event: connected\\ndata: {}\\n\\n');
+  res.write('event: connected\ndata: {}\n\n');
   const heartbeat = setInterval(() => {
-    try { res.write(': keepalive\\n\\n'); } catch {}
+    try { res.write(': keepalive\n\n'); } catch {}
   }, 25000);
   req.on('close', () => {
     clearInterval(heartbeat);
