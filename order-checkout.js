@@ -1,4 +1,4 @@
-import { PRODUCT, inr, $, load, save, shell, order } from "./order-lib.js";
+import { PRODUCT, inr, courierCharge, $, load, save, shell, order } from "./order-lib.js";
 
 const o = order();
 if (!o) location.replace("/product.html");
@@ -54,7 +54,8 @@ else {
           <div class="delivery-product-image"><img src="${PRODUCT.image}" alt="${PRODUCT.name}"></div>
           <div><b>${PRODUCT.name}</b><span>${o.pack} pack</span><small>Quantity: ${o.qty}</small></div>
         </div>
-        <div class="delivery-total"><span>Order total</span><b>${inr(o.price * o.qty)}</b></div>
+        <div class="delivery-charge-line"><span>Courier charge</span><b id="courier-charge">Enter city &amp; state</b></div>
+        <div class="delivery-total"><span>Estimated total</span><b id="delivery-grand-total">${inr(o.price * o.qty)}</b></div>
         <div class="delivery-summary-note"><span>✓</span><p>Traditional goodness, carefully packed for your home.</p></div>
         <a class="btn ghost delivery-change" href="/product.html">CHANGE PRODUCT</a>
       </aside>
@@ -64,6 +65,20 @@ else {
   const saved = load("mv-customer", {});
   F.forEach((k) => { if (saved[k]) $("#" + k).value = saved[k]; });
   if (!$("#state").value) $("#state").value = "Tamil Nadu";
+  const updateDeliveryEstimate = () => {
+    const city = $("#city").value.trim();
+    const state = $("#state").value.trim();
+    if (!city || !state) {
+      $("#courier-charge").textContent = "Enter city & state";
+      $("#delivery-grand-total").textContent = inr(o.price * o.qty);
+      return;
+    }
+    const fee = courierCharge({ city, state });
+    $("#courier-charge").textContent = inr(fee);
+    $("#delivery-grand-total").textContent = inr(o.price * o.qty + fee);
+  };
+  ["city", "state"].forEach(id => $("#" + id).addEventListener("input", updateDeliveryEstimate));
+  updateDeliveryEstimate();
 
   $("#f").addEventListener("submit", (e) => {
     e.preventDefault();
