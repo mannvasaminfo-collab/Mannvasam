@@ -52,7 +52,7 @@ else {
         </div>
         <div class="review-price-line"><span>Price per pack</span><b>${inr(o.price)}</b></div>
         <div class="review-price-line"><span>Quantity</span><b>× ${o.qty}</b></div>
-        <div class="review-price-line"><span>Courier charge</span><b>${"${inr(delivery)}"}</b></div>
+        <div class="review-price-line"><span>Courier charge</span><b>${inr(delivery)}</b></div>
         <div class="review-total"><span>Order total</span><b>${inr(total)}</b></div>
         <div class="review-summary-foot"><span>✦</span> Rooted in tradition. Made with care.</div>
       </aside>
