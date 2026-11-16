@@ -70,19 +70,19 @@ else {
     const c = {};
     F.forEach((k) => { c[k] = $("#" + k).value.trim(); });
     const bad = !c.name ? "Please enter your name."
-      : !/^[6-9]\\d{9}$/.test(c.phone) ? "Enter a valid 10-digit mobile number."
-      : c.email && !/^\\S+@\\S+\\.\\S+$/.test(c.email) ? "Enter a valid email or leave it empty."
+      : !/^[6-9]\d{9}$/.test(c.phone) ? "Enter a valid 10-digit mobile number."
+      : c.email && !/^\S+@\S+\.\S+$/.test(c.email) ? "Enter a valid email or leave it empty."
       : c.address.length < 8 ? "Please enter your full delivery address."
       : !c.city ? "Please enter your city."
       : !c.state ? "Please enter your state."
-      : !/^\\d{6}$/.test(c.pincode) ? "Enter a valid 6-digit PIN code."
+      : !/^\d{6}$/.test(c.pincode) ? "Enter a valid 6-digit PIN code."
       : "";
     $("#er").textContent = bad;
     if (bad) {
-      const firstInvalid = !c.name ? "#name" : !/^[6-9]\\d{9}$/.test(c.phone) ? "#phone"
-        : c.email && !/^\\S+@\\S+\\.\\S+$/.test(c.email) ? "#email"
+      const firstInvalid = !c.name ? "#name" : !/^[6-9]\d{9}$/.test(c.phone) ? "#phone"
+        : c.email && !/^\S+@\S+\.\S+$/.test(c.email) ? "#email"
         : c.address.length < 8 ? "#address" : !c.city ? "#city" : !c.state ? "#state"
-        : !/^\\d{6}$/.test(c.pincode) ? "#pincode" : "#name";
+        : !/^\d{6}$/.test(c.pincode) ? "#pincode" : "#name";
       $(firstInvalid).focus();
       return;
     }
