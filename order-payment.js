@@ -8,33 +8,63 @@ else if (!c || !c.name) location.replace("/checkout.html");
 else {
   const total = o.price * o.qty;
 
-  shell(3, `<main class="wrap" id="mn">
-    <section class="card">
-      <span class="k">REVIEW YOUR ORDER</span>
-      <h1>Almost there.</h1>
-      <p>Please check your delivery details and order carefully before confirming.</p>
-      <span class="k" style="margin-top:20px">DELIVER TO</span>
-      <p id="ad" style="white-space:pre-line;line-height:1.7"></p>
-      <a class="btn ghost" href="/checkout.html">EDIT DELIVERY DETAILS</a>
-      <span class="k" style="margin-top:24px">PAYMENT METHOD</span>
-      <div class="opt on"><input type="radio" checked disabled><div><b>Cash on Delivery</b><br>Pay when your order arrives.</div></div>
-      <div class="opt off"><input type="radio" disabled><div><b>UPI / Card</b><br>Coming soon</div></div>
-      <p class="err" id="er" role="alert"></p>
-      <button class="btn" id="review" type="button">REVIEW & CONFIRM ORDER · ${inr(total)}</button>
-    </section>
-    <aside class="card">
-      <span class="k">YOUR ORDER</span>
-      <div class="sum"><img src="${PRODUCT.image}" alt=""><div><b>${PRODUCT.name}</b><br>${o.qty} × ${o.pack}</div></div>
-      <p class="line"><span>Total · Cash on Delivery</span><b>${inr(total)}</b></p>
-    </aside>
+  shell(3, `<main class="wrap checkout-review" id="mn">
+    <div class="review-heading">
+      <div>
+        <span class="k">MANNVASAM · CHECKOUT</span>
+        <h1>Review your order</h1>
+        <p>One last look before we prepare your traditional favourites.</p>
+      </div>
+      <div class="review-trust"><span class="review-trust-mark">✓</span><span>Safe &amp; simple<br><b>Cash on Delivery</b></span></div>
+    </div>
+
+    <div class="review-grid">
+      <section class="card review-card">
+        <div class="review-section-title">
+          <span class="review-number">01</span>
+          <div><h2>Delivery details</h2><p>Where should we bring your order?</p></div>
+        </div>
+        <div class="review-address"><p id="ad"></p></div>
+        <a class="review-edit" href="/checkout.html">EDIT DELIVERY ADDRESS <span>↗</span></a>
+
+        <div class="review-divider"></div>
+
+        <div class="review-section-title">
+          <span class="review-number">02</span>
+          <div><h2>Payment method</h2><p>Pay only when your order arrives.</p></div>
+        </div>
+        <div class="opt on review-payment-option"><span class="review-cod-icon">₹</span><div><b>Cash on Delivery</b><small>Pay in cash at the time of delivery.</small></div><span class="review-selected">SELECTED ✓</span></div>
+        <div class="opt off review-payment-option"><span class="review-cod-icon muted">⌁</span><div><b>UPI / Card</b><small>Online payment will be available soon.</small></div><span class="review-coming">COMING SOON</span></div>
+
+        <p class="err" id="er" role="alert"></p>
+        <button class="btn review-submit" id="review" type="button">CONTINUE TO CONFIRMATION <span>→</span></button>
+        <p class="review-note">Your order is not placed until you confirm it in the next step.</p>
+      </section>
+
+      <aside class="card order-summary">
+        <span class="k">YOUR ORDER</span>
+        <h2>Order summary</h2>
+        <div class="sum review-product">
+          <div class="review-product-image"><img src="${PRODUCT.image}" alt=""></div>
+          <div><b>${PRODUCT.name}</b><span>${o.pack} pack</span><small>Quantity: ${o.qty}</small></div>
+        </div>
+        <div class="review-price-line"><span>Price per pack</span><b>${inr(o.price)}</b></div>
+        <div class="review-price-line"><span>Quantity</span><b>× ${o.qty}</b></div>
+        <div class="review-price-line"><span>Delivery</span><b class="review-free">To be confirmed</b></div>
+        <div class="review-total"><span>Order total</span><b>${inr(total)}</b></div>
+        <div class="review-summary-foot"><span>✦</span> Rooted in tradition. Made with care.</div>
+      </aside>
+    </div>
   </main>
-  <div id="confirm-layer" hidden style="position:fixed;inset:0;z-index:1000;background:#142319b8;display:none;align-items:center;justify-content:center;padding:20px">
-    <section role="dialog" aria-modal="true" aria-labelledby="confirm-title" class="card" style="width:min(440px,100%);box-sizing:border-box">
+  <div id="confirm-layer" class="review-modal-backdrop" hidden>
+    <section role="dialog" aria-modal="true" aria-labelledby="confirm-title" class="card review-modal">
+      <div class="review-modal-mark">?</div>
       <span class="k">FINAL CONFIRMATION</span>
-      <h2 id="confirm-title">Are you sure you want to place this order?</h2>
-      <p>Your order will be saved with MANNVASAM only if you choose YES.</p>
+      <h2 id="confirm-title">Ready to place your order?</h2>
+      <p>Please confirm that your delivery details and order summary are correct.</p>
+      <div class="review-modal-total"><span>Amount to pay on delivery</span><b>${inr(total)}</b></div>
       <button class="btn" id="yes" type="button">YES, PLACE MY ORDER</button>
-      <button class="btn ghost" id="no" type="button">NO, GO BACK</button>
+      <button class="btn ghost" id="no" type="button">NO, LET ME REVIEW</button>
     </section>
   </div>`);
 
@@ -56,19 +86,20 @@ else {
 
   reviewButton.addEventListener("click", () => {
     layer.hidden = false;
-    layer.style.display = "flex";
     yesButton.focus();
   });
 
   const closeConfirmation = () => {
     layer.hidden = true;
-    layer.style.display = "none";
     reviewButton.focus();
   };
 
   noButton.addEventListener("click", closeConfirmation);
   layer.addEventListener("click", (event) => {
     if (event.target === layer) closeConfirmation();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !layer.hidden) closeConfirmation();
   });
 
   yesButton.addEventListener("click", async () => {
