@@ -33,10 +33,18 @@ form.addEventListener("submit", async (event) => {
   event.preventDefault();
   error.textContent = "";
   result.hidden = true;
-  const orderId = form.orderId.value.trim().toUpperCase();
-  const phone = form.phone.value.replace(/\D/g, "");
-  if (!/^MV-\d{8}-[A-F0-9]{6}$/.test(orderId) || !/^[6-9]\d{9}$/.test(phone)) {
-    error.textContent = "Please enter a valid order number and 10-digit mobile number.";
+  const orderField = form.elements.namedItem("orderId");
+  const phoneField = form.elements.namedItem("phone");
+  const orderId = String(orderField?.value || "").trim().replace(/\s+/g, "").toUpperCase();
+  const phone = String(phoneField?.value || "").replace(/\D/g, "");
+  if (!/^MV-\d{8}-[A-F0-9]{6}$/.test(orderId)) {
+    error.textContent = "Check your order number. It should look like MV-20261116-A1B2C3.";
+    orderField?.focus();
+    return;
+  }
+  if (!/^[6-9]\d{9}$/.test(phone)) {
+    error.textContent = "Enter the same 10-digit mobile number used at checkout.";
+    phoneField?.focus();
     return;
   }
   button.disabled = true;
