@@ -184,6 +184,41 @@ async function move(id, status) {
 }
 async function load() { try { orders = await api('/admin/orders'); render(); } catch (e) { toast(e.message); } }
 
+let liveConnecting = false;
+async function connectLiveUpdates() {
+  if (liveConnecting || document.hidden) return;
+  liveConnecting = true;
+  try {
+    const k = await key();
+    const response = await fetch(API + '/admin/events', {
+      headers: { 'x-admin-key': k, 'Accept': 'text/event-stream' },
+      cache: 'no-store'
+    });
+    if (!response.ok || !response.body) throw new Error('Live updates unavailable');
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+    while (!document.hidden) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const frames = buffer.split('\n\n');
+      buffer = frames.pop() || '';
+      for (const frame of frames) {
+        if (frame.startsWith('event: orders')) load();
+      }
+    }
+  } catch {
+    // Existing 30-second refresh remains as a fallback.
+  } finally {
+    liveConnecting = false;
+    if (!document.hidden) setTimeout(connectLiveUpdates, 4000);
+  }
+}
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) connectLiveUpdates();
+});
+
 const B = $('#board');
 B.addEventListener('dragstart', (e) => { const c = e.target.closest('.o'); if (!c) return; dragId = c.dataset.id; c.classList.add('drag'); e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', dragId); });
 B.addEventListener('dragend', () => { dragId = null; document.querySelectorAll('.drag,.over').forEach((x) => x.classList.remove('drag', 'over')); });
@@ -196,6 +231,7 @@ $('#q').addEventListener('input', (e) => { q = e.target.value.trim().toLowerCase
 $('#ref').addEventListener('click', load);
 $('#lock').addEventListener('click', () => { sessionStorage.removeItem('mv-admin-key'); load(); });
 load();
+connectLiveUpdates();
 setInterval(() => { if (!document.hidden && !dragId && !document.querySelector('dialog[open]')) load(); }, 30000);
 </script>
 </body>
