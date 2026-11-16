@@ -134,7 +134,7 @@ const cols = () => [...STATUSES, ...new Set(orders.map((o) => o.status).filter((
 
 function stats() {
   const now = new Date(), wk = Date.now() - 7 * 864e5;
-  const sum = (a) => a.reduce((s, o) => s + Number(o.subtotal || 0), 0);
+  const sum = (a) => a.reduce((s, o) => s + Number(o.total ?? o.subtotal ?? 0), 0);
   const today = orders.filter((o) => live(o) && same(dt(o), now));
   $('#s1').textContent = today.length;
   $('#s2').textContent = inr(sum(today));
@@ -143,7 +143,7 @@ function stats() {
 }
 function chart() {
   const days = [...Array(7)].map((_, i) => { const d = new Date(); d.setHours(0, 0, 0, 0); d.setDate(d.getDate() - 6 + i); return d; });
-  const vals = days.map((d) => orders.filter((o) => live(o) && same(dt(o), d)).reduce((s, o) => s + Number(o.subtotal || 0), 0));
+  const vals = days.map((d) => orders.filter((o) => live(o) && same(dt(o), d)).reduce((s, o) => s + Number(o.total ?? o.subtotal ?? 0), 0));
   const max = Math.max(...vals, 1), W = 700, H = 130;
   const pts = vals.map((v, i) => [Math.round(i * W / 6), Math.round(H - 10 - (v / max) * (H - 28))]);
   const line = pts.map((p) => p.join(',')).join(' ');
@@ -151,14 +151,14 @@ function chart() {
     pts.map((p, i) => `<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="#f3e3b0"><title>${esc(days[i].toDateString())}: ${inr(vals[i])}</title></circle>`).join('');
   $('#lbl').innerHTML = days.map((d) => `<span>${d.toLocaleDateString('en-IN', { weekday: 'short' })}</span>`).join('');
 }
-const card = (o) => `<article class="o" draggable="true" data-id="${esc(o.orderId)}"><div class="t"><span>${esc(o.orderId)}</span><span>${ago(o)}</span></div><div class="n">${esc(name(o))}</div><ul>${items(o).slice(0, 3).map((i) => `<li>${esc(itemTxt(i))}</li>`).join('')}${items(o).length > 3 ? `<li>+${items(o).length - 3} more</li>` : ''}</ul><div class="f"><b>${inr(o.subtotal)}</b><span class="tag">${esc(o.paymentMethod || 'COD')}</span></div></article>`;
+const card = (o) => `<article class="o" draggable="true" data-id="${esc(o.orderId)}"><div class="t"><span>${esc(o.orderId)}</span><span>${ago(o)}</span></div><div class="n">${esc(name(o))}</div><ul>${items(o).slice(0, 3).map((i) => `<li>${esc(itemTxt(i))}</li>`).join('')}${items(o).length > 3 ? `<li>+${items(o).length - 3} more</li>` : ''}</ul><div class="f"><b>${inr(o.total ?? o.subtotal)}</b><span class="tag">${esc(o.paymentMethod || 'COD')}</span></div></article>`;
 function board() {
   const list = orders.filter(match);
   $('#board').innerHTML = cols().map((s) => { const os = list.filter((o) => o.status === s); return `<section class="col" data-s="${esc(s)}"><div class="ch">${esc(s)}<span>${os.length}</span></div>${os.map(card).join('') || '<div class="empty">Drop an order here</div>'}</section>`; }).join('');
 }
 function table() {
   const opts = (cur) => cols().map((s) => `<option${s === cur ? ' selected' : ''}>${esc(s)}</option>`).join('');
-  $('#list').innerHTML = `<table><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Payment</th><th>Status</th></tr>${orders.filter(match).map((o) => `<tr data-id="${esc(o.orderId)}"><td>${esc(o.orderId)}</td><td>${esc(name(o))}</td><td>${items(o).length}</td><td>${inr(o.subtotal)}</td><td>${esc(o.paymentMethod || '')}</td><td><select data-st="${esc(o.orderId)}">${opts(o.status)}</select></td></tr>`).join('') || '<tr><td colspan="6" class="empty">No orders yet</td></tr>'}</table>`;
+  $('#list').innerHTML = `<table><tr><th>Order</th><th>Customer</th><th>Items</th><th>Subtotal</th><th>Delivery</th><th>Total</th><th>Payment</th><th>Status</th></tr>${orders.filter(match).map((o) => `<tr data-id="${esc(o.orderId)}"><td>${esc(o.orderId)}</td><td>${esc(name(o))}</td><td>${items(o).length}</td><td>${inr(o.subtotal)}</td><td>${inr(o.courierCharge || 0)}</td><td><b>${inr(o.total ?? o.subtotal)}</b></td><td>${esc(o.paymentMethod || '')}</td><td><select data-st="${esc(o.orderId)}">${opts(o.status)}</select></td></tr>`).join('') || '<tr><td colspan="8" class="empty">No orders yet</td></tr>'}</table>`;
 }
 function render() {
   $('#cnt').textContent = orders.length;
@@ -173,7 +173,7 @@ function detail(id) {
   $('#od').innerHTML = `<form method="dialog"><h2>${esc(o.orderId)}</h2><p class="sub">${esc(o.status)} · ${esc(o.paymentMethod || '')} · ${esc(dt(o).toLocaleString('en-IN'))}</p><hr>` +
     Object.entries(c).map(([k, v]) => `<div class="r"><span class="k">${esc(k)}</span><span>${esc(v)}</span></div>`).join('') + '<hr>' +
     items(o).map((i) => `<div class="r"><span>${esc(itemTxt(i))}</span><span>${Number(i.price) ? inr(i.price * qty(i)) : ''}</span></div>`).join('') +
-    `<div class="r"><b>Total</b><b>${inr(o.subtotal)}</b></div><div class="tools" style="margin-top:14px">${full ? `<a class="btn" href="tel:+${full}">Call</a><a class="btn" target="_blank" rel="noopener" href="https://wa.me/${full}">WhatsApp</a>` : ''}<button class="btn pri">Close</button></div></form>`;
+    `<div class="r"><span>Items subtotal</span><span>${inr(o.subtotal)}</span></div><div class="r"><span>Delivery charge</span><span>${inr(o.courierCharge || 0)}</span></div><div class="r"><b>Final total</b><b>${inr(o.total ?? o.subtotal)}</b></div><div class="tools" style="margin-top:14px">${full ? `<a class="btn" href="tel:+${full}">Call</a><a class="btn" target="_blank" rel="noopener" href="https://wa.me/${full}">WhatsApp</a>` : ''}<button class="btn pri">Close</button></div></form>`;
   $('#od').showModal();
 }
 async function move(id, status) {
