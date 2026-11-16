@@ -1,4 +1,4 @@
-import { PRODUCT, API, inr, $, load, save, shell, order } from "./order-lib.js";
+import { PRODUCT, API, inr, courierCharge, $, load, save, shell, order } from "./order-lib.js";
 
 const o = order();
 const c = load("mv-customer", null);
@@ -6,7 +6,9 @@ const c = load("mv-customer", null);
 if (!o) location.replace("/product.html");
 else if (!c || !c.name) location.replace("/checkout.html");
 else {
-  const total = o.price * o.qty;
+  const subtotal = o.price * o.qty;
+  const delivery = courierCharge(c);
+  const total = subtotal + delivery;
 
   shell(3, `<main class="wrap checkout-review" id="mn">
     <div class="review-heading">
@@ -50,7 +52,7 @@ else {
         </div>
         <div class="review-price-line"><span>Price per pack</span><b>${inr(o.price)}</b></div>
         <div class="review-price-line"><span>Quantity</span><b>× ${o.qty}</b></div>
-        <div class="review-price-line"><span>Delivery</span><b class="review-free">To be confirmed</b></div>
+        <div class="review-price-line"><span>Courier charge</span><b>${"${inr(delivery)}"}</b></div>
         <div class="review-total"><span>Order total</span><b>${inr(total)}</b></div>
         <div class="review-summary-foot"><span>✦</span> Rooted in tradition. Made with care.</div>
       </aside>
@@ -141,7 +143,9 @@ else {
         orderId,
         status: savedOrder.status || "Pending",
         paymentMethod: savedOrder.paymentMethod || "Cash on Delivery",
-        total: Number(savedOrder.subtotal ?? total),
+        total: Number(savedOrder.total ?? total),
+        subtotal: Number(savedOrder.subtotal ?? subtotal),
+        courierCharge: Number(savedOrder.courierCharge ?? delivery),
         customer: c,
         items: savedOrder.items || [{
           id: PRODUCT.id, name: PRODUCT.name, pack: o.pack, price: o.price, qty: o.qty
