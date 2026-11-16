@@ -191,3 +191,77 @@ footer {
     padding: 18px;
   }
 }
+
+
+/* Premium MANNVASAM order review */
+body:has(.checkout-review) { background: #f4efe5; }
+.checkout-review { max-width: 1160px; margin: 0 auto; padding: 38px 24px 72px; }
+.review-heading { display:flex; justify-content:space-between; align-items:center; gap:24px; margin: 8px 0 28px; }
+.review-heading h1 { margin:9px 0 7px; color:#193d28; font:600 clamp(30px,4vw,43px)/1.12 Georgia,serif; letter-spacing:-.7px; }
+.review-heading p { margin:0; color:#73766c; font-size:14px; }
+.review-trust { display:flex; align-items:center; gap:11px; color:#6c7568; font-size:12px; line-height:1.6; padding:12px 18px; border:1px solid #dfd7c8; border-radius:50px; background:#fbf8f1; }
+.review-trust b { color:#193d28; font-size:13px; }
+.review-trust-mark { display:grid; place-items:center; width:31px; height:31px; border-radius:50%; background:#e6eddf; color:#315d3b; font-weight:800; }
+.review-grid { display:grid; grid-template-columns:minmax(0,1.55fr) minmax(280px,.85fr); gap:22px; align-items:start; }
+.review-card { padding:30px; border-radius:18px; }
+.review-section-title { display:flex; align-items:center; gap:15px; }
+.review-number { display:grid; place-items:center; flex:0 0 38px; height:38px; border-radius:50%; color:#99733d; background:#f3ead9; font:600 14px Georgia,serif; }
+.review-section-title h2 { margin:0 0 4px; color:#193d28; font:600 22px Georgia,serif; }
+.review-section-title p { margin:0; color:#818176; font-size:13px; }
+.review-address { margin:20px 0 10px 53px; padding:16px 19px; border-left:2px solid #c4a36b; background:#faf7f0; border-radius:0 10px 10px 0; }
+.review-address p { margin:0; white-space:pre-line; color:#454b40; font-size:14px; line-height:1.85; }
+.review-edit { display:inline-flex; gap:9px; margin-left:53px; color:#8b6937; font-size:11px; font-weight:800; letter-spacing:1px; text-decoration:none; }
+.review-edit:hover { color:#193d28; }
+.review-divider { height:1px; margin:27px 0; background:#ece4d7; }
+.review-payment-option { position:relative; margin:17px 0 0 53px; padding:15px; border-radius:12px; }
+.review-payment-option > div { display:flex; flex-direction:column; gap:4px; }
+.review-payment-option b { font-size:14px; }
+.review-payment-option small { color:#77796f; font-size:12px; }
+.review-cod-icon { display:grid; place-items:center; flex:0 0 38px; height:38px; border-radius:10px; background:#e9efe4; color:#315b39; font-weight:800; font-size:17px; }
+.review-cod-icon.muted { background:#f0eee9; color:#9b9a91; }
+.review-selected,.review-coming { margin-left:auto; color:#456b45; font-size:9px; font-weight:800; letter-spacing:.8px; white-space:nowrap; }
+.review-coming { color:#99958b; }
+.review-submit { margin:26px 0 0 53px; width:calc(100% - 53px); min-height:54px; border-radius:9px; letter-spacing:.7px; box-shadow:0 8px 18px #193d2820; }
+.review-submit span { float:right; font-size:18px; }
+.review-note { margin:12px 0 0 53px; color:#858478; font-size:11px; text-align:center; }
+.order-summary { position:sticky; top:105px; padding:27px; border-radius:18px; }
+.order-summary h2 { margin:8px 0 21px; color:#193d28; font:600 25px Georgia,serif; }
+.review-product { align-items:center; gap:14px; padding-bottom:20px; border-bottom:1px solid #ece4d7; }
+.review-product-image { display:grid; place-items:center; width:86px; height:104px; flex:0 0 86px; border-radius:10px; background:#f2ecdf; overflow:hidden; }
+.review-product-image img { width:100%; height:100%; object-fit:contain; }
+.review-product > div:last-child { display:flex; flex-direction:column; gap:7px; }
+.review-product b { color:#26392a; font-size:14px; }
+.review-product span,.review-product small { color:#7d7b70; font-size:12px; }
+.review-price-line { display:flex; justify-content:space-between; gap:12px; padding:10px 0; color:#79796f; font-size:13px; }
+.review-price-line b { color:#424b40; font-size:13px; }
+.review-free { color:#947342 !important; font-size:11px !important; }
+.review-total { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:8px; padding-top:19px; border-top:1px solid #e7dece; color:#193d28; font-weight:700; }
+.review-total b { font:600 28px Georgia,serif; }
+.review-summary-foot { display:flex; align-items:center; gap:9px; margin-top:22px; padding:13px; border-radius:9px; background:#f5f0e5; color:#777566; font:italic 12px Georgia,serif; }
+.review-summary-foot span { color:#b88a45; }
+.review-modal-backdrop { position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center; padding:20px; background:#101d15b8; backdrop-filter:blur(5px); }
+.review-modal-backdrop[hidden] { display:none !important; }
+.review-modal { width:min(460px,100%); box-sizing:border-box; padding:35px; border:1px solid #e8ddca; border-radius:20px; text-align:center; box-shadow:0 24px 80px #0003; }
+.review-modal-mark { display:grid; place-items:center; width:48px; height:48px; margin:0 auto 18px; border-radius:50%; background:#f1e8d8; color:#94713b; font:600 25px Georgia,serif; }
+.review-modal h2 { margin:10px 0; color:#193d28; font:600 27px/1.2 Georgia,serif; }
+.review-modal > p { color:#77796f; font-size:13px; line-height:1.7; }
+.review-modal-total { display:flex; justify-content:space-between; gap:10px; margin:22px 0 6px; padding:15px; border-radius:10px; background:#f6f1e7; color:#77796f; font-size:12px; }
+.review-modal-total b { color:#193d28; font:600 21px Georgia,serif; }
+@media(max-width:760px) {
+ .checkout-review { padding:27px 15px 50px; }
+ .review-heading { align-items:flex-start; flex-direction:column; }
+ .review-trust { align-self:flex-start; }
+ .review-grid { grid-template-columns:1fr; }
+ .order-summary { position:static; grid-row:1; }
+ .review-card { padding:22px 18px; }
+ .review-address,.review-edit,.review-payment-option { margin-left:0; }
+ .review-submit { margin-left:0; width:100%; }
+ .review-note { margin-left:0; }
+ .review-selected,.review-coming { font-size:8px; }
+}
+@media(max-width:420px) {
+ .review-payment-option { gap:9px; padding:12px; }
+ .review-payment-option small { max-width:175px; }
+ .review-selected,.review-coming { white-space:normal; text-align:right; }
+ .review-modal { padding:27px 20px; }
+}
