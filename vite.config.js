@@ -25,6 +25,7 @@ export default defineConfig({
         checkout: resolve(process.cwd(), 'checkout.html'),
         payment: resolve(process.cwd(), 'payment.html'),
         success: resolve(process.cwd(), 'success.html'),
+        tracking: resolve(process.cwd(), 'tracking.html'),
         pro: resolve(process.cwd(), 'pro.html')
       }
     }

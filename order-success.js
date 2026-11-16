@@ -20,6 +20,7 @@ if (!saved || !saved.orderId) {
       <p>We will contact you to confirm your order. Please pay cash when it is delivered.</p>
       <p class="customer-care">Need help? Email <a href="mailto:mannvasam.info@gmail.com">mannvasam.info@gmail.com</a></p>
       <a class="btn" id="wa" target="_blank" rel="noopener">MESSAGE US ON WHATSAPP</a>
+      <a class="btn ghost" href="/tracking.html">TRACK YOUR ORDER</a>
       <a class="btn ghost" href="/">CONTINUE SHOPPING</a>
     </section>
   </main>`);

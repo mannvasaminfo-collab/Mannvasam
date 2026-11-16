@@ -172,6 +172,45 @@ app.post('/api/orders', (req, res) => {
   }
 });
 
+// Customer order tracking: require both the order number and delivery mobile number.
+const trackingAttempts = new Map();
+app.post('/api/track-order', (req, res) => {
+  const ip = req.ip || req.socket.remoteAddress || 'unknown';
+  const now = Date.now();
+  const recent = (trackingAttempts.get(ip) || []).filter((time) => now - time < 10 * 60 * 1000);
+  if (recent.length >= 12) return res.status(429).json({ error: 'Too many attempts. Please try again in 10 minutes.' });
+  recent.push(now);
+  trackingAttempts.set(ip, recent);
+
+  const orderId = clean(req.body?.orderId, 40).toUpperCase();
+  const phone = clean(req.body?.phone, 10);
+  if (!/^MV-\d{8}-[A-F0-9]{6}$/.test(orderId) || !/^[6-9]\d{9}$/.test(phone)) {
+    return res.status(400).json({ error: 'Enter a valid order number and 10-digit mobile number.' });
+  }
+
+  const row = db.prepare('SELECT * FROM orders WHERE order_code = ?').get(orderId);
+  if (!row) return res.status(404).json({ error: 'We could not find an order with those details.' });
+  let customer;
+  try { customer = JSON.parse(row.customer_json); } catch { customer = {}; }
+  if (customer.phone !== phone) {
+    return res.status(404).json({ error: 'We could not find an order with those details.' });
+  }
+
+  res.json({
+    ok: true,
+    order: {
+      orderId: row.order_code,
+      status: row.status,
+      paymentMethod: row.payment_method,
+      subtotal: row.subtotal,
+      courierCharge: row.courier_charge || 0,
+      total: row.total || row.subtotal,
+      items: JSON.parse(row.items_json),
+      createdAt: row.created_at
+    }
+  });
+});
+
 app.use('/api/admin', adminGuard);
 
 app.get('/api/admin/orders', (req, res) => {
