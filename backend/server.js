@@ -33,6 +33,14 @@ app.use('/api/orders', orderGuard);
 const clean = (value, max = 500) => String(value ?? '').trim().slice(0, max);
 const statuses = ['Pending', 'Confirmed', 'Packed', 'Shipped', 'Delivered', 'Cancelled'];
 const trackingAttempts = new Map();
+const adminEventClients = new Set();
+function publishAdminEvent(type, orderId) {
+  const payload = JSON.stringify({ type, orderId, at: new Date().toISOString() });
+  for (const client of adminEventClients) {
+    try { client.write(`event: orders\\ndata: ${payload}\\n\\n`); }
+    catch { adminEventClients.delete(client); }
+  }
+}
 
 registerAccountRoutes(app, db);
 
@@ -90,6 +98,7 @@ app.post('/api/orders', async (req, res) => {
       (order_code, customer_json, items_json, subtotal, courier_charge, total, payment_method, status, created_at)
       VALUES (?, ?, ?, ?, ?, ?, 'COD', 'Pending', ?)
     `, [orderCode, JSON.stringify(data), JSON.stringify(items), subtotal, courierCharge, total, date.toISOString()]);
+    publishAdminEvent('created', orderCode);
     res.status(201).json({ ok: true, order: {
       orderId: orderCode, status: 'Pending', paymentMethod: 'Cash on Delivery',
       subtotal, courierCharge, total, items
@@ -129,6 +138,23 @@ app.post('/api/track-order', async (req, res) => {
 });
 
 app.use('/api/admin', adminGuard);
+app.get('/api/admin/events', (req, res) => {
+  res.status(200);
+  res.setHeader('Content-Type', 'text/event-stream; charset=utf-8');
+  res.setHeader('Cache-Control', 'no-cache, no-transform');
+  res.setHeader('Connection', 'keep-alive');
+  res.setHeader('X-Accel-Buffering', 'no');
+  res.flushHeaders?.();
+  adminEventClients.add(res);
+  res.write('event: connected\\ndata: {}\\n\\n');
+  const heartbeat = setInterval(() => {
+    try { res.write(': keepalive\\n\\n'); } catch {}
+  }, 25000);
+  req.on('close', () => {
+    clearInterval(heartbeat);
+    adminEventClients.delete(res);
+  });
+});
 app.get('/api/admin/orders', async (req, res) => {
   try {
     const result = await db.query('SELECT * FROM orders ORDER BY id DESC LIMIT 200');
@@ -150,6 +176,7 @@ app.patch('/api/admin/orders/:orderId/status', async (req, res) => {
   try {
     const result = await db.query('UPDATE orders SET status = ? WHERE order_code = ?', [status, clean(req.params.orderId, 50)]);
     if (!result.rowCount) return res.status(404).json({ error: 'Order not found.' });
+    publishAdminEvent('status', clean(req.params.orderId, 50));
     res.json({ ok: true, status });
   } catch (error) {
     console.error('Order status update failed:', error);
