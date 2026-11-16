@@ -328,3 +328,189 @@ body:has(.delivery-page) { background:#f4efe5; }
 .review-price-line b { color:#193d28; }
 .customer-care { margin-top:18px; color:#73766c; font-size:13px; }
 .customer-care a { color:#193d28; font-weight:700; }
+
+
+/* Customer order tracking page */
+.track-page {
+  width: min(760px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 54px 0 0;
+}
+.track-heading {
+  margin: 0 0 26px;
+}
+.track-heading h1 {
+  margin: 10px 0;
+  color: var(--order-green);
+  font: 600 clamp(30px, 4vw, 42px)/1.15 Georgia, serif;
+}
+.track-heading p {
+  margin: 0;
+  color: #6f746b;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.track-card {
+  padding: 30px;
+}
+.track-card form label {
+  display: block;
+  margin: 0 0 8px;
+  color: #39483b;
+  font-size: 13px;
+  font-weight: 700;
+}
+.track-card form input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: 48px;
+  margin: 0 0 20px;
+  padding: 0 14px;
+  border: 1px solid #d8cfbf;
+  border-radius: 8px;
+  background: #fff;
+  color: #263b2c;
+  font: inherit;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+.track-card form input:focus {
+  outline: 2px solid #b88a45;
+  outline-offset: 2px;
+}
+.track-card .err {
+  min-height: 20px;
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+.track-help {
+  margin: 24px 0 0;
+  color: #646b60;
+  text-align: center;
+  font-size: 14px;
+}
+.track-help a {
+  color: #315b3b;
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+}
+.track-result {
+  margin-top: 22px;
+}
+.track-result-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.track-result-head h2 {
+  margin: 7px 0;
+  color: var(--order-green);
+  font: 600 23px Georgia, serif;
+  overflow-wrap: anywhere;
+}
+.track-status {
+  padding: 8px 12px;
+  border-radius: 30px;
+  background: #e9efe4;
+  color: var(--order-green);
+  font-size: 12px;
+  font-weight: 700;
+}
+.track-date {
+  color: #77796f;
+  font-size: 12px;
+}
+.track-timeline {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin: 26px 0;
+  padding: 0;
+  list-style: none;
+}
+.track-timeline li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #8b8b80;
+  text-align: center;
+  font-size: 11px;
+}
+.track-dot {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #d8cfbf;
+  border-radius: 50%;
+  background: #fff;
+}
+.track-timeline li.complete .track-dot {
+  border-color: var(--order-green);
+  background: var(--order-green);
+  color: #fff;
+}
+.track-timeline li.current {
+  color: var(--order-green);
+  font-weight: 700;
+}
+.track-cancelled {
+  margin: 20px 0;
+  padding: 14px;
+  border-radius: 8px;
+  background: #f8e9e6;
+  color: #9a3027;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.track-breakdown {
+  margin-top: 22px;
+  padding-top: 12px;
+  border-top: 1px solid #e7dece;
+}
+.track-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 9px 0;
+  color: #6f746b;
+  font-size: 13px;
+}
+.track-line span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.track-line b {
+  flex: 0 0 auto;
+  color: #344536;
+}
+.track-grand {
+  margin-top: 8px;
+  padding-top: 15px;
+  border-top: 1px solid #e7dece;
+  color: var(--order-green);
+  font-weight: 700;
+}
+.track-grand b {
+  color: var(--order-green);
+  font-size: 17px;
+}
+@media (max-width: 600px) {
+  .track-page {
+    width: min(100% - 28px, 760px);
+    padding-top: 32px;
+  }
+  .track-card {
+    padding: 20px 16px;
+  }
+  .track-timeline {
+    gap: 3px;
+  }
+  .track-timeline li {
+    font-size: 9px;
+  }
+}
