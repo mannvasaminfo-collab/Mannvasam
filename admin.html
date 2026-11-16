@@ -184,6 +184,36 @@ async function move(id, status) {
 }
 async function load() { try { orders = await api('/admin/orders'); render(); } catch (e) { toast(e.message); } }
 
+async function connectLiveUpdates() {
+  // The stream uses the same admin key header as the protected REST endpoints.
+  while (!document.hidden || document.visibilityState === 'visible') {
+    try {
+      const k = await key();
+      const response = await fetch(API + '/admin/events', {
+        headers: { 'x-admin-key': k, 'Accept': 'text/event-stream' },
+        cache: 'no-store'
+      });
+      if (!response.ok || !response.body) throw new Error('Live updates unavailable');
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const frames = buffer.split('\\n\\n');
+        buffer = frames.pop() || '';
+        for (const frame of frames) {
+          if (frame.startsWith('event: orders')) load();
+        }
+      }
+    } catch (error) {
+      // Keep the dashboard usable; the existing timed refresh remains as fallback.
+    }
+    await new Promise(resolve => setTimeout(resolve, 4000));
+  }
+}
+
 const B = $('#board');
 B.addEventListener('dragstart', (e) => { const c = e.target.closest('.o'); if (!c) return; dragId = c.dataset.id; c.classList.add('drag'); e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', dragId); });
 B.addEventListener('dragend', () => { dragId = null; document.querySelectorAll('.drag,.over').forEach((x) => x.classList.remove('drag', 'over')); });
@@ -195,8 +225,7 @@ document.querySelectorAll('.nav[data-v]').forEach((b) => b.addEventListener('cli
 $('#q').addEventListener('input', (e) => { q = e.target.value.trim().toLowerCase(); render(); });
 $('#ref').addEventListener('click', load);
 $('#lock').addEventListener('click', () => { sessionStorage.removeItem('mv-admin-key'); load(); });
-load();
-setInterval(() => { if (!document.hidden && !dragId && !document.querySelector('dialog[open]')) load(); }, 30000);
+load();\nconnectLiveUpdates();\nsetInterval(() => { if (!document.hidden && !dragId && !document.querySelector('dialog[open]')) load(); }, 30000);
 </script>
 </body>
 </html>
