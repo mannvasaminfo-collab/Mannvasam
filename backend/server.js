@@ -46,11 +46,18 @@ db.exec(`
     customer_json TEXT NOT NULL,
     items_json TEXT NOT NULL,
     subtotal REAL NOT NULL,
+    courier_charge REAL NOT NULL DEFAULT 0,
+    total REAL NOT NULL DEFAULT 0,
     payment_method TEXT NOT NULL DEFAULT 'COD',
     status TEXT NOT NULL DEFAULT 'Pending',
     created_at TEXT NOT NULL
   )
 `);
+
+// Add columns safely for databases created by earlier app versions.
+const orderColumns = new Set(db.prepare("PRAGMA table_info(orders)").all().map(column => column.name));
+if (!orderColumns.has("courier_charge")) db.exec("ALTER TABLE orders ADD COLUMN courier_charge REAL NOT NULL DEFAULT 0");
+if (!orderColumns.has("total")) db.exec("ALTER TABLE orders ADD COLUMN total REAL NOT NULL DEFAULT 0");
 
 registerAccountRoutes(app, db);
 
@@ -121,20 +128,29 @@ app.post('/api/orders', (req, res) => {
       return res.status(400).json({ error: 'Order total is invalid.' });
     }
 
+    const cityKey = data.city.toLowerCase().replace(/[.]/g, "").trim();
+    const stateKey = data.state.toLowerCase().replace(/[^a-z]/g, "");
+    const courierCharge = cityKey === "chennai" || cityKey.startsWith("chennai ")
+      ? 40
+      : ["tamilnadu", "tn"].includes(stateKey) ? 60 : 80;
+    const total = subtotal + courierCharge;
+
     const date = new Date();
     const day = date.toISOString().slice(0, 10).replaceAll('-', '');
     const orderCode = `MV-${day}-${randomBytes(3).toString('hex').toUpperCase()}`;
 
     db.prepare(`
       INSERT INTO orders
-      (order_code, customer_json, items_json, subtotal,
+      (order_code, customer_json, items_json, subtotal, courier_charge, total,
        payment_method, status, created_at)
-      VALUES (?, ?, ?, ?, 'COD', 'Pending', ?)
+      VALUES (?, ?, ?, ?, ?, ?, 'COD', 'Pending', ?)
     `).run(
       orderCode,
       JSON.stringify(data),
       JSON.stringify(items),
       subtotal,
+      courierCharge,
+      total,
       date.toISOString()
     );
 
@@ -145,6 +161,8 @@ app.post('/api/orders', (req, res) => {
         status: 'Pending',
         paymentMethod: 'Cash on Delivery',
         subtotal,
+        courierCharge,
+        total,
         items
       }
     });
@@ -166,6 +184,8 @@ app.get('/api/admin/orders', (req, res) => {
     customer: JSON.parse(row.customer_json),
     items: JSON.parse(row.items_json),
     subtotal: row.subtotal,
+    courierCharge: row.courier_charge || 0,
+    total: row.total || row.subtotal,
     paymentMethod: row.payment_method,
     status: row.status,
     createdAt: row.created_at
