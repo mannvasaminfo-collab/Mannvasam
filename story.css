@@ -1,0 +1,14 @@
+.prog{position:fixed;left:0;top:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,#b68c50,#e5c58e);z-index:60;pointer-events:none}
+.chap{min-height:78vh;display:grid;place-items:center;padding:70px 20px;text-align:center;overflow:hidden}
+.chap .in{max-width:780px}
+.chap .num{display:block;font:700 clamp(5rem,16vw,11rem)/1 "Playfair Display",Georgia,serif;color:rgba(182,140,80,.25)}
+.chap small{display:block;letter-spacing:.3em;color:#b68c50;font-weight:700;font-size:12px;margin-top:-.4em}
+.chap h2{font:700 clamp(2rem,5.4vw,4rem)/1.1 "Playfair Display",Georgia,serif;margin:12px 0 16px;text-wrap:balance}
+.chap p{font-size:clamp(1.05rem,1.6vw,1.3rem);color:#3b5444;max-width:56ch;margin:0 auto}
+.chap.dark{background:linear-gradient(160deg,#24432f,#0f1a11);color:#f6f3eb}
+.chap.dark h2{color:#f6f3eb}.chap.dark p{color:#d9d5c6}.chap.dark small{color:#e5c58e}.chap.dark .num{color:rgba(229,197,142,.22)}
+.end{text-align:center;padding:90px 20px 110px;background:#f6f3eb}
+.end h2{font:700 clamp(2rem,5vw,3.6rem)/1.1 "Playfair Display",Georgia,serif;margin-bottom:22px}
+.end a{display:inline-block;margin:6px;border-radius:999px;padding:15px 28px;font-weight:800;letter-spacing:.05em;text-decoration:none}
+.end .a1{background:linear-gradient(90deg,#b68c50,#e5c58e);color:#1a1405}
+.end .a2{border:1px solid #b68c50;color:#24432f}

@@ -1,0 +1,42 @@
+body .mv-shop-card {
+  position: relative; overflow: hidden; border-radius: 22px; color: #f6f3eb;
+  background: linear-gradient(160deg, #24432f, #0f1a11);
+  border: 1px solid rgba(182, 140, 80, .25);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, .3);
+  transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s, border-color .45s;
+}
+body .mv-shop-card:hover {
+  transform: translateY(-8px); border-color: rgba(182, 140, 80, .7);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, .45), 0 0 0 1px rgba(182, 140, 80, .25);
+}
+body .mv-shop-card h3 { color: #f6f3eb; letter-spacing: .01em; }
+body .mv-shop-image { overflow: hidden; }
+body .mv-shop-image img { transition: transform .9s cubic-bezier(.2,.7,.2,1); }
+body .mv-shop-card:hover .mv-shop-image img { transform: scale(1.07); }
+body .mv-shop-category { color: #b68c50; letter-spacing: .18em; font-size: 11px; }
+body .mv-pack-label { color: #b9ad8c; font-size: 12px; }
+body .mv-pack-select {
+  background: #0f1a11; color: #f6f3eb; border: 1px solid rgba(182, 140, 80, .4);
+  border-radius: 12px; padding: 10px 12px; cursor: pointer;
+}
+body .mv-pack-select:focus { outline: 2px solid #b68c50; outline-offset: 2px; }
+body .mv-card-price { color: #e5c58e; font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+body .mv-add-button {
+  position: relative; overflow: hidden; isolation: isolate; cursor: pointer; border: 0;
+  border-radius: 999px; padding: 12px 18px; font-weight: 700; letter-spacing: .06em;
+  color: #1a1405; background: linear-gradient(90deg, #b68c50, #e5c58e);
+  transition: transform .2s, box-shadow .3s, filter .3s;
+}
+body .mv-add-button:hover { box-shadow: 0 8px 24px rgba(182, 140, 80, .4); }
+body .mv-add-button:active { transform: scale(.96); }
+body .mv-add-button::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; translate: -120% 0; skew: -20deg;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent);
+  transition: translate .7s ease;
+}
+body .mv-add-button:hover::after { translate: 120% 0; }
+body .mv-add-button.done { background: linear-gradient(90deg, #5fbf8f, #b9efd2); }
+@media (prefers-reduced-motion: reduce) {
+  body .mv-shop-card, body .mv-shop-image img, body .mv-add-button { transition: none; }
+  body .mv-shop-card:hover { transform: none; }
+}

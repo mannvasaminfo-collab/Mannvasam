@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#193d28">
+  <meta name="description" content="Your MANNVASAM customer account.">
+  <title>My Account | MANNVASAM</title>
+  <link rel="icon" type="image/png" href="/images/mannvasam-logo-transparent.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/account.css">
+</head>
+<body>
+  <main class="account-shell">
+    <a class="back-link" href="/">← Back to MANNVASAM</a>
+    <section class="story-panel">
+      <div class="sun"></div><div class="field field-one"></div><div class="field field-two"></div>
+      <div class="story-content">
+        <span class="brand-mark">M</span>
+        <p class="overline">ROOTED IN TRADITION • MADE FOR TODAY</p>
+        <h1>From Our Soil<br>to Your <em>Soul.</em></h1>
+        <p class="story-copy">A thoughtful food journey begins with a connection to the land, the people and the traditions behind every harvest.</p>
+        <div class="story-foot"><span></span> GOOD FOOD. GOOD ROOTS. <span></span></div>
+      </div>
+      <div class="grain grain-a">✳</div><div class="grain grain-b">✳</div>
+    </section>
+
+    <section class="form-panel">
+      <div class="mobile-brand">MANNVASAM <span>•</span> From Our Soil to Your Soul</div>
+      <div class="form-wrap" id="authView">
+        <p class="overline dark-overline">WELCOME TO MANNVASAM</p>
+        <h2 id="formTitle">Welcome <em>back.</em></h2>
+        <p class="intro" id="formIntro">Sign in to continue your journey with us.</p>
+
+        <div class="tabs" role="tablist" aria-label="Account access">
+          <button class="tab active" id="loginTab" type="button">Login</button>
+          <button class="tab" id="registerTab" type="button">Create account</button>
+        </div>
+
+        <form id="loginForm" class="account-form">
+          <label>Email or mobile number<input name="identifier" autocomplete="username" placeholder="Enter email or mobile number" required></label>
+          <label>Password<span class="password-wrap"><input name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required><button class="eye" type="button" data-toggle="password" aria-label="Show password">◉</button></span></label>
+          <button class="submit-button" type="submit">SIGN IN <span>→</span></button>
+        </form>
+
+        <form id="registerForm" class="account-form" hidden>
+          <label>Full name<input name="name" autocomplete="name" placeholder="Your full name" minlength="2" required></label>
+          <label>Mobile number<input name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile number" pattern="[6-9][0-9]{9}" maxlength="10" required></label>
+          <label>Email address<input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
+          <label>Create password<span class="password-wrap"><input name="password" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" required><button class="eye" type="button" data-toggle="password" aria-label="Show password">◉</button></span></label>
+          <label>Confirm password<input name="confirmPassword" type="password" autocomplete="new-password" minlength="8" placeholder="Enter password again" required></label>
+          <button class="submit-button" type="submit">CREATE MY ACCOUNT <span>→</span></button>
+        </form>
+        <p class="message" id="authMessage" role="status" aria-live="polite"></p>
+        <p class="privacy-note">Your account details are used to manage your MANNVASAM orders.</p>
+      </div>
+
+      <div class="form-wrap dashboard" id="dashboardView" hidden>
+        <p class="overline dark-overline">YOUR MANNVASAM SPACE</p>
+        <h2>Vanakkam, <em id="customerName">friend.</em></h2>
+        <p class="intro">Your account and food journey, all in one place.</p>
+        <div class="profile-card">
+          <div class="profile-avatar" id="avatarLetter">M</div>
+          <div><strong id="profileName"></strong><span id="profileEmail"></span><span id="profilePhone"></span></div>
+        </div>
+        <div class="orders-heading"><h3>Your orders</h3><span>ORDER HISTORY</span></div>
+        <div id="ordersList" class="orders-list"><p class="empty-orders">Loading your orders…</p></div>
+        <button class="submit-button logout-button" id="logoutButton" type="button">SIGN OUT <span>→</span></button>
+      </div>
+      <a class="home-link" href="/">Continue shopping <span>→</span></a>
+    </section>
+  </main>
+  <script type="module" src="/src/account.js"></script>
+</body>
+</html>

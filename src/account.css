@@ -1,0 +1,279 @@
+*{box-sizing:border-box}body{margin:0;background:#f5f0e6;color:#203728;font-family:"DM Sans",sans-serif;min-height:100vh}.account-shell{min-height:100vh;display:grid;grid-template-columns:1.02fr .98fr;position:relative}.back-link{position:absolute;z-index:5;top:28px;left:34px;color:#fff;text-decoration:none;font-size:13px;letter-spacing:.03em}.story-panel{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;padding:8vw;color:#fff;background:linear-gradient(145deg,#142c20 0%,#315b3b 48%,#8c8851 100%)}.story-panel:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 72% 18%,#f4d68b88,transparent 28%),linear-gradient(180deg,#142c2033,#142c20aa);z-index:1}.sun{position:absolute;width:210px;height:210px;border-radius:50%;background:#f4d994;right:17%;top:13%;filter:blur(1px);box-shadow:0 0 90px #f4d99466;animation:sunrise 8s ease-in-out infinite alternate}.field{position:absolute;left:-15%;width:135%;border-radius:50% 50% 0 0;transform:rotate(-8deg)}.field-one{height:48%;bottom:-12%;background:repeating-linear-gradient(95deg,#1a422b 0 28px,#315c37 29px 54px);box-shadow:0 -18px 45px #d8b96b22}.field-two{height:34%;bottom:-17%;left:15%;background:repeating-linear-gradient(100deg,#9b9655 0 20px,#c0aa64 21px 42px);opacity:.72}.story-content{position:relative;z-index:2;max-width:540px;margin-top:35px}.brand-mark{display:grid;place-items:center;width:54px;height:54px;border:1px solid #d7b76d;border-radius:50%;font-family:"Playfair Display",serif;font-size:30px;color:#e7c77d;margin-bottom:44px}.overline{font-size:10px;letter-spacing:.24em;font-weight:700;color:#e5c779}.story-content h1{font:600 clamp(48px,6vw,82px)/1.06 "Playfair Display",serif;margin:20px 0}.story-content h1 em,.form-wrap h2 em{color:#c4a45d;font-weight:500}.story-copy{max-width:420px;color:#e4e8dd;line-height:1.9;font-size:14px}.story-foot{display:flex;align-items:center;gap:12px;margin-top:58px;font-size:9px;letter-spacing:.2em;color:#e5c779}.story-foot span{height:1px;width:30px;background:#c4a45d}.grain{position:absolute;z-index:2;color:#d9bd76;opacity:.4;font-size:34px;animation:float 7s ease-in-out infinite}.grain-a{right:12%;top:48%}.grain-b{right:28%;bottom:13%;animation-delay:-3s}.form-panel{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:72px 8%;background:linear-gradient(135deg,#fbf8f0,#f1eadc)}.form-wrap{width:min(100%,430px);animation:appear .7s ease both}.dark-overline{color:#8c7542}.form-wrap h2{font:600 clamp(38px,4vw,52px)/1.1 "Playfair Display",serif;margin:14px 0 10px;color:#203728}.intro{font-size:13px;color:#788176;line-height:1.7;margin:0 0 26px}.tabs{display:grid;grid-template-columns:1fr 1fr;background:#e9e4d8;padding:5px;border-radius:8px;margin-bottom:25px}.tab{border:0;background:transparent;padding:12px;border-radius:6px;color:#687266;font:600 12px "DM Sans";cursor:pointer}.tab.active{background:#fff;box-shadow:0 3px 12px #263d2d12;color:#25432e}.account-form{display:grid;gap:15px}.account-form[hidden],[hidden]{display:none!important}.account-form label{display:grid;gap:7px;font-size:11px;font-weight:700;color:#435344;letter-spacing:.03em}.account-form input{width:100%;height:48px;border:1px solid #dedbcc;background:#fffdf8;border-radius:6px;padding:0 14px;font:400 13px "DM Sans";color:#203728;outline:none;transition:border .2s,box-shadow .2s}.account-form input:focus{border-color:#9c8246;box-shadow:0 0 0 3px #b99b4c20}.password-wrap{position:relative}.password-wrap input{padding-right:48px}.eye{position:absolute;right:7px;top:5px;width:38px;height:38px;border:0;background:transparent;color:#66725f;cursor:pointer}.submit-button{height:52px;margin-top:7px;padding:0 19px;border:0;border-radius:6px;background:#23452f;color:#fff;font:700 11px "DM Sans";letter-spacing:.15em;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:transform .2s,background .2s}.submit-button:hover{background:#315b3d;transform:translateY(-2px)}.submit-button:disabled{opacity:.6;cursor:wait;transform:none}.submit-button span{font-size:18px;color:#d5b66b}.message{min-height:20px;font-size:12px;line-height:1.5;color:#a33b32;margin:12px 0}.message.success{color:#2f7044}.privacy-note{font-size:10px;color:#99998d;line-height:1.7;margin-top:14px}.home-link{margin-top:35px;color:#65735f;text-decoration:none;font-size:12px}.home-link span{color:#a88948;margin-left:5px}.mobile-brand{display:none}.profile-card{display:flex;align-items:center;gap:15px;padding:18px;background:#fffdf8;border:1px solid #e7e0d1;border-radius:9px;margin:25px 0 30px}.profile-avatar{width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:#294b34;color:#e5c779;font:24px "Playfair Display"}.profile-card div:last-child{display:grid;gap:4px}.profile-card strong{font:600 16px "Playfair Display"}.profile-card span{font-size:11px;color:#7b8378}.orders-heading{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ded8c9;padding-bottom:10px}.orders-heading h3{font:600 21px "Playfair Display";margin:0}.orders-heading span{font-size:9px;letter-spacing:.15em;color:#9a854e}.orders-list{max-height:260px;overflow:auto}.empty-orders{font-size:12px;color:#81877c;padding:18px 0}.order-card{padding:14px 0;border-bottom:1px solid #e7e0d1;display:flex;justify-content:space-between;gap:12px;font-size:12px}.order-card strong{display:block;margin-bottom:5px;color:#294b34}.order-card small{color:#83887d}.order-status{align-self:center;border-radius:20px;background:#e9eddf;padding:6px 10px;font-size:10px;color:#385c3d}.logout-button{width:100%;margin-top:24px}.dashboard{animation:appear .5s ease both}@keyframes float{50%{transform:translateY(-18px) rotate(20deg)}}@keyframes sunrise{to{transform:translateY(16px);opacity:.8}}@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@media(max-width:800px){.account-shell{grid-template-columns:1fr}.story-panel{min-height:290px;padding:35px 8%;align-items:flex-end}.back-link{top:18px;left:20px}.story-content{margin:40px 0 8px}.brand-mark{width:38px;height:38px;font-size:22px;margin-bottom:15px}.story-content h1{font-size:43px;margin:10px 0}.story-copy{font-size:12px;max-width:340px;margin-bottom:10px}.story-foot{margin-top:20px}.sun{width:130px;height:130px;right:10%;top:10%}.field-one{height:45%}.field-two{height:32%}.form-panel{min-height:calc(100vh - 290px);padding:42px 8%}.form-wrap{max-width:480px}.mobile-brand{display:block;font-size:10px;letter-spacing:.12em;font-weight:700;color:#294b34;margin-bottom:28px}.mobile-brand span{color:#b18d45}.home-link{margin-top:20px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+
+/* =========================================
+   MANNVASAM — CINEMATIC FARM ANIMATIONS
+   ========================================= */
+
+.story-panel {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-size: 200% 200%;
+  animation: mvFarmAtmosphere 18s ease-in-out infinite alternate;
+}
+
+/* Moving golden sunlight across the landscape */
+.story-panel::after {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 22% 35%,
+      rgba(255, 218, 133, .30), transparent 27%),
+    linear-gradient(115deg,
+      transparent 30%,
+      rgba(255, 231, 174, .15) 48%,
+      transparent 65%);
+  background-size: 100% 100%, 220% 100%;
+  animation: mvGoldenLight 12s ease-in-out infinite alternate;
+}
+
+/* Sunrise movement and glow */
+.story-panel .sun {
+  transform-origin: center;
+  animation:
+    mvSunrise 9s ease-in-out infinite alternate,
+    mvSunGlow 4s ease-in-out infinite;
+}
+
+/* Paddy field layers moving at different speeds */
+.story-panel .field-one {
+  transform-origin: center bottom;
+  animation: mvFieldFront 7s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.story-panel .field-two {
+  transform-origin: center bottom;
+  animation: mvFieldBack 10s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Floating grain decorations */
+.story-panel .grain {
+  animation: mvGrainFloat 5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.story-panel .grain:nth-of-type(2n) {
+  animation-delay: -1.7s;
+}
+
+.story-panel .grain:nth-of-type(3n) {
+  animation-delay: -3.1s;
+}
+
+/* Atmospheric movement */
+@keyframes mvFarmAtmosphere {
+  0% { background-position: 0% 40%; }
+  100% { background-position: 100% 60%; }
+}
+
+@keyframes mvGoldenLight {
+  0% { transform: translateX(-7%) translateY(2%); opacity: .45; }
+  100% { transform: translateX(7%) translateY(-2%); opacity: .95; }
+}
+
+@keyframes mvSunrise {
+  0% { transform: translateY(12px) scale(.96); }
+  100% { transform: translateY(-12px) scale(1.06); }
+}
+
+@keyframes mvSunGlow {
+  0%, 100% { filter: drop-shadow(0 0 12px rgba(255, 205, 112, .35)); }
+  50% { filter: drop-shadow(0 0 34px rgba(255, 205, 112, .85)); }
+}
+
+@keyframes mvFieldFront {
+  0% { transform: translateX(-1.5%) skewX(-.5deg) scaleY(1); }
+  100% { transform: translateX(1.5%) skewX(.5deg) scaleY(1.035); }
+}
+
+@keyframes mvFieldBack {
+  0% { transform: translateX(1%) scaleY(1); }
+  100% { transform: translateX(-1%) scaleY(1.025); }
+}
+
+@keyframes mvGrainFloat {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-18px) rotate(7deg); }
+}
+
+/* Gentle cinematic entrance for the account panel */
+.story-panel .form-wrap {
+  animation: mvCinematicEntrance 1.2s cubic-bezier(.2,.75,.25,1) both;
+}
+
+@keyframes mvCinematicEntrance {
+  from { opacity: 0; transform: translateY(28px); filter: blur(5px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* Respect accessibility settings */
+@media (prefers-reduced-motion: reduce) {
+  .story-panel,
+  .story-panel::after,
+  .story-panel .sun,
+  .story-panel .field-one,
+  .story-panel .field-two,
+  .story-panel .grain,
+  .story-panel .form-wrap {
+    animation: none !important;
+  }
+}
+
+/* =========================================
+   MANNVASAM CINEMATIC ANIMATION UPGRADE
+   ========================================= */
+
+/* Slow camera movement across the farm */
+.story-panel {
+  animation:
+    mvFarmAtmosphere 18s ease-in-out infinite alternate,
+    mvCameraDrift 24s ease-in-out infinite alternate !important;
+}
+
+/* Deep atmospheric light and floating dust */
+.story-panel::before {
+  animation: mvSkyBreathing 9s ease-in-out infinite alternate;
+}
+
+.story-panel::after {
+  animation:
+    mvGoldenLight 12s ease-in-out infinite alternate,
+    mvLightSweep 16s linear infinite !important;
+}
+
+/* Stronger wind movement in the fields */
+.story-panel .field-one {
+  animation: mvWindFront 4.5s ease-in-out infinite alternate !important;
+  transform-origin: 50% 100%;
+}
+
+.story-panel .field-two {
+  animation: mvWindBack 7s ease-in-out infinite alternate !important;
+  transform-origin: 50% 100%;
+}
+
+/* Sunrise glow and gentle movement */
+.story-panel .sun {
+  animation:
+    mvSunrise 8s ease-in-out infinite alternate,
+    mvSunGlow 3s ease-in-out infinite !important;
+}
+
+/* Floating grain decorations */
+.story-panel .grain {
+  animation: mvGrainDance 4s ease-in-out infinite !important;
+  transform-origin: center bottom;
+  will-change: transform;
+}
+
+.story-panel .grain:nth-child(2n) {
+  animation-delay: -1.2s !important;
+}
+
+.story-panel .grain:nth-child(3n) {
+  animation-delay: -2.4s !important;
+}
+
+/* Floating, glowing dust particles across the scene */
+.story-panel {
+  background-image:
+    radial-gradient(circle, rgba(255,235,180,.8) 1px, transparent 2px),
+    radial-gradient(circle, rgba(255,220,140,.55) 1.5px, transparent 3px),
+    radial-gradient(circle, rgba(255,255,220,.55) 1px, transparent 2px),
+    linear-gradient(135deg, #183c2a, #526b3b 48%, #b28b4e);
+  background-size: 115px 130px, 190px 180px, 260px 220px, 200% 200%;
+  background-position: 0 0, 50px 70px, 120px 30px, 0 50%;
+  animation:
+    mvDustDrift 22s linear infinite,
+    mvFarmAtmosphere 18s ease-in-out infinite alternate !important;
+}
+
+/* Login panel gently rises and settles */
+.story-panel .form-wrap {
+  animation:
+    mvCinematicEntrance 1.2s cubic-bezier(.2,.75,.25,1) both,
+    mvPanelFloat 6s ease-in-out 1.2s infinite !important;
+}
+
+/* More noticeable interactive movement */
+.story-panel button,
+.story-panel input {
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease,
+    border-color .3s ease,
+    background-color .3s ease;
+}
+
+.story-panel button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(15, 40, 25, .25);
+}
+
+.story-panel input:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 4px rgba(190, 151, 78, .18);
+}
+
+/* Keyframes */
+@keyframes mvCameraDrift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes mvSkyBreathing {
+  0% { opacity: .55; }
+  100% { opacity: 1; }
+}
+
+@keyframes mvLightSweep {
+  0% { background-position: 0 0, -100% 0; }
+  100% { background-position: 0 0, 100% 0; }
+}
+
+@keyframes mvWindFront {
+  0% { transform: translateX(-2%) skewX(-1.5deg) scaleY(1); }
+  50% { transform: translateX(1%) skewX(1deg) scaleY(1.04); }
+  100% { transform: translateX(2%) skewX(-1deg) scaleY(1.02); }
+}
+
+@keyframes mvWindBack {
+  0% { transform: translateX(1.5%) skewX(1deg) scaleY(1); }
+  100% { transform: translateX(-1.5%) skewX(-1deg) scaleY(1.035); }
+}
+
+@keyframes mvGrainDance {
+  0%, 100% { transform: translateY(0) rotate(-8deg); }
+  25% { transform: translateY(-9px) rotate(4deg); }
+  50% { transform: translateY(-17px) rotate(10deg); }
+  75% { transform: translateY(-7px) rotate(-3deg); }
+}
+
+@keyframes mvDustDrift {
+  0% { background-position: 0 0, 50px 70px, 120px 30px, 0 50%; }
+  100% { background-position: 0 -500px, 50px -350px, 120px -650px, 100% 50%; }
+}
+
+@keyframes mvPanelFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .story-panel,
+  .story-panel::before,
+  .story-panel::after,
+  .story-panel .sun,
+  .story-panel .field-one,
+  .story-panel .field-two,
+  .story-panel .grain,
+  .story-panel .form-wrap {
+    animation: none !important;
+  }
+}

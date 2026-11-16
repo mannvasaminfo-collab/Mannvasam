@@ -1,0 +1,22 @@
+#game21{background:#f6f3eb;padding:clamp(60px,9vw,110px) 20px;text-align:center;color:#24432f}
+#game21 small{display:block;letter-spacing:.3em;color:#b68c50;font:700 12px "DM Sans",sans-serif;margin-bottom:8px}
+#game21 h2{font:700 clamp(2rem,5vw,3.4rem)/1.1 "Playfair Display",Georgia,serif;margin-bottom:20px}
+#game21 h2 i{color:#b68c50}
+#gs{max-width:520px;margin:0 auto;background:linear-gradient(160deg,#24432f,#0f1a11);color:#f6f3eb;border-radius:24px;padding:28px 22px;min-height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;box-shadow:0 20px 60px rgba(36,67,47,.25)}
+#gs .gp{color:#d9d5c6;max-width:38ch}
+#gs h3{font:700 2.4rem "Playfair Display",Georgia,serif}
+.gb{border:0;border-radius:999px;padding:14px 28px;cursor:pointer;font:800 15px "DM Sans",sans-serif;letter-spacing:.06em;color:#1a1405;background:linear-gradient(90deg,#b68c50,#e5c58e);text-decoration:none;display:inline-block}
+.gb:disabled{opacity:.5;cursor:default}
+.gb:active{transform:scale(.95)}
+.gb.ghost{background:transparent;border:1px solid #e5c58e;color:#e5c58e}
+.wb{position:relative;width:200px;height:120px;border:3px solid #e5c58e;border-top-width:0;border-radius:0 0 100px 100px;overflow:hidden;background:rgba(255,255,255,.08)}
+.wb .rice{position:absolute;left:12%;right:12%;bottom:0;height:45%;background:linear-gradient(#f6f3eb,#e5c58e);border-radius:50% 50% 0 0}
+.wb .cl{position:absolute;inset:0;background:#c9b58a;opacity:.95;transition:opacity .25s;z-index:2}
+.gauge,.hm{position:relative;width:60px;height:200px;border-radius:30px;background:rgba(255,255,255,.12);border:2px solid #e5c58e}
+.gauge .zone{position:absolute;left:0;right:0;top:40%;height:20%;background:rgba(95,191,143,.6)}
+.gauge .mk{position:absolute;left:-8px;right:-8px;height:8px;background:#e5c58e;border-radius:6px;margin-top:-4px}
+.hm{overflow:hidden}
+.hm .hz{position:absolute;left:0;right:0;bottom:40%;height:30%;background:rgba(95,191,143,.5)}
+.hm .hf{position:absolute;left:0;right:0;bottom:0;height:55%;background:linear-gradient(#ffb347,#e25822)}
+.fb{color:#e5c58e;font-weight:700;min-height:1.5em}
+.stars{font-size:44px;color:#e5c58e;letter-spacing:6px}

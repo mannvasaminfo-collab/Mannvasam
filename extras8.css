@@ -1,0 +1,8 @@
+.hw { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .12em; }
+.hw > span { display: inline-block; translate: 0 110%; animation: hwUp .9s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: var(--d, 0s); }
+@keyframes hwUp { to { translate: 0 0; } }
+.mv-cinematic-product img, .mv-product-glow, .mv-product-orbit { will-change: translate; }
+.gold-button { position: relative; overflow: hidden; isolation: isolate; }
+.gold-button::after { content: ""; position: absolute; inset: 0; z-index: -1; translate: -120% 0; skew: -20deg; background: linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent); transition: translate .7s ease; }
+.gold-button:hover::after { translate: 120% 0; }
+@media (prefers-reduced-motion: reduce) { .hw > span { translate: 0 0; animation: none; } }

@@ -1,0 +1,4 @@
+.toast19 { position: fixed; left: 50%; bottom: 26px; translate: -50% 0; z-index: 9995; background: #24432f; color: #f6f3eb; border: 1px solid rgba(182, 140, 80, .6); border-radius: 999px; padding: 12px 20px; font: 600 14px system-ui, sans-serif; box-shadow: 0 14px 40px rgba(0, 0, 0, .3); pointer-events: none; }
+.hint19 { position: fixed; left: 50%; bottom: 22px; translate: -50% 0; z-index: 9990; color: #e5c58e; font: 700 12px system-ui, sans-serif; letter-spacing: .2em; pointer-events: none; text-align: center; opacity: 0; }
+.hint19::after { content: "↓"; display: block; font-size: 18px; margin-top: 4px; }
+body .mv-card-price { display: inline-block; }

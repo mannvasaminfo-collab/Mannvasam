@@ -1,0 +1,193 @@
+/* MANNVASAM — Product, checkout and order pages */
+
+:root {
+  --order-green: #193d28;
+  --order-gold: #b88a45;
+  --order-cream: #f5efe3;
+  --order-text: #28352b;
+}
+
+body:has(.steps) {
+  margin: 0;
+  background: var(--order-cream);
+  color: var(--order-text);
+  font-family: Inter, Arial, sans-serif;
+}
+
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 6%;
+  background: #fffdf8;
+  border-bottom: 1px solid #e7dece;
+}
+
+.top .brand {
+  color: var(--order-green);
+  font-family: Georgia, serif;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+
+.top nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+.top nav a {
+  color: var(--order-green);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 22px 12px;
+  color: #827866;
+  font-size: 13px;
+}
+
+.card {
+  background: #fffdf8;
+  border: 1px solid #e9dfcf;
+  border-radius: 16px;
+  padding: 26px;
+  box-shadow: 0 12px 35px rgba(45, 49, 35, .06);
+}
+
+.k {
+  display: block;
+  color: #8c7145;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 14px;
+  padding: 15px 20px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--order-green);
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #2f5b3d;
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--order-green);
+  border: 1px solid var(--order-green);
+}
+
+.opt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0;
+  padding: 16px;
+  border: 1px solid #e7dece;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.opt.off {
+  opacity: .55;
+}
+
+.opt b {
+  color: var(--order-green);
+}
+
+.sum {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 18px 0;
+}
+
+.sum img {
+  width: 76px;
+  height: 90px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #f5efe3;
+}
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid #e7dece;
+}
+
+.err {
+  color: #b3261e;
+  font-size: 14px;
+}
+
+.ok {
+  text-align: center;
+}
+
+.tick {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: #e5efe5;
+  color: var(--order-green);
+  font-size: 32px;
+}
+
+footer {
+  margin-top: 50px;
+  padding: 28px 15px;
+  color: #eee8da;
+  background: var(--order-green);
+  text-align: center;
+  font-size: 13px;
+}
+
+@media (max-width: 650px) {
+  .top {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .top nav {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .steps {
+    gap: 10px;
+    font-size: 11px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+}

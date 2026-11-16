@@ -1,0 +1,13 @@
+#game21{background:radial-gradient(900px 400px at 50% 0%,#fbf8ef,#f1ece0)}
+#gs{position:relative;max-width:560px;background:radial-gradient(500px 260px at 50% 0%,#2f5a3f,#0f1a11 80%);border:1px solid rgba(229,197,142,.45);box-shadow:0 30px 80px rgba(15,26,17,.4),inset 0 1px 0 rgba(255,255,255,.12)}
+#gc{filter:drop-shadow(0 12px 24px rgba(0,0,0,.35))}
+#gs .gp{font-size:15px;line-height:1.5}
+.dots{display:flex;gap:8px}
+.dots i{width:34px;height:4px;border-radius:4px;background:rgba(246,243,235,.2);transition:background .4s}
+.dots i.on{background:linear-gradient(90deg,#b68c50,#e5c58e)}
+.gb{position:relative;overflow:hidden;box-shadow:0 8px 24px rgba(182,140,80,.35)}
+.gb::after{content:"";position:absolute;inset:0;translate:-120% 0;skew:-20deg;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);transition:translate .7s}
+.gb:hover::after{translate:120% 0}
+.stars .sr{display:inline-block;color:rgba(229,197,142,.25)}
+.stars .sr.on{color:#e5c58e;text-shadow:0 0 18px rgba(229,197,142,.8)}
+.ttl{font:700 13px "DM Sans",sans-serif;letter-spacing:.3em;color:#e5c58e;text-transform:uppercase}

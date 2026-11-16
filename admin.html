@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MANNVASAM Admin</title>
+<style>
+:root{--bg:#07080c;--glass:rgba(255,255,255,.045);--line:rgba(255,255,255,.09);--tx:#eef0f5;--mut:#8b91a3;--gold:#d4af37;--gold2:#f3e3b0}
+*{box-sizing:border-box;margin:0}
+body{font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;overflow-x:hidden}
+body::before,body::after{content:"";position:fixed;border-radius:50%;filter:blur(90px);z-index:-1}
+body::before{width:420px;height:420px;background:#8a6a12;top:-120px;right:-80px;opacity:.5}
+body::after{width:380px;height:380px;background:#0b5c7a;bottom:-140px;left:200px;opacity:.35}
+.app{display:grid;grid-template-columns:220px 1fr;gap:16px;padding:16px;min-height:100vh}
+.side,.card,.col{background:var(--glass);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.side{padding:16px;display:flex;flex-direction:column;gap:6px;position:sticky;top:16px;height:calc(100vh - 32px)}
+.brand{font-weight:800;letter-spacing:.14em;color:var(--gold2);padding:6px 8px 14px}
+.nav{display:flex;justify-content:space-between;padding:10px 12px;border-radius:12px;color:var(--mut);cursor:pointer;border:0;background:none;font:inherit;text-align:left;text-decoration:none}
+.nav.on{background:linear-gradient(90deg,rgba(212,175,55,.28),rgba(212,175,55,.08));color:var(--tx)}
+.nav b{font-weight:600;background:rgba(255,255,255,.1);border-radius:99px;padding:0 8px;font-size:12px}
+.sp{flex:1}
+.main{min-width:0;display:flex;flex-direction:column;gap:16px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+h1{font-size:26px}
+.sub,.k{color:var(--mut);font-size:13px}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+input.s{background:var(--glass);border:1px solid var(--line);color:var(--tx);border-radius:12px;padding:9px 12px;min-width:200px;font:inherit}
+.btn{border:1px solid var(--line);background:var(--glass);color:var(--tx);border-radius:12px;padding:9px 12px;cursor:pointer;font:inherit}
+.btn.pri{background:linear-gradient(90deg,var(--gold),var(--gold2));color:#1a1405;border:0;font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.card{padding:16px}
+.v{font-size:28px;font-weight:700;margin-top:4px}
+#chart{width:100%;height:auto;display:block;margin-top:8px}
+#lbl{display:flex;justify-content:space-between;color:var(--mut);font-size:11px}
+.board{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,1fr);gap:12px;overflow-x:auto;padding-bottom:8px}
+.col{padding:12px;min-height:300px;transition:border-color .2s,background .2s}
+.col.over{border-color:var(--gold);background:rgba(212,175,55,.08)}
+.ch{display:flex;justify-content:space-between;font-weight:600;margin-bottom:10px}
+.ch span{color:var(--mut);font-weight:500}
+.o{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px;cursor:grab;transition:transform .2s,box-shadow .2s}
+.o:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.4)}
+.o.drag{opacity:.35;transform:rotate(-2deg) scale(1.03)}
+.o .t{display:flex;justify-content:space-between;color:var(--mut);font-size:12px}
+.o .n{font-weight:600;margin:6px 0 2px}
+.o ul{list-style:none;padding:0;color:var(--mut);font-size:12.5px}
+.o .f{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.tag{font-size:11px;border:1px solid var(--line);border-radius:99px;padding:1px 8px;color:var(--gold2)}
+.empty{border:1px dashed var(--line);border-radius:14px;padding:22px;text-align:center;color:var(--mut)}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
+th{color:var(--mut);font-weight:500;font-size:12px}
+tr[data-id]{cursor:pointer}
+tr[data-id]:hover{background:rgba(255,255,255,.04)}
+select{background:#12141b;color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:5px 8px;font:inherit}
+#msg{position:fixed;bottom:18px;left:50%;translate:-50% 0;background:#fff;color:#111;padding:10px 16px;border-radius:99px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:50}
+#msg.on{opacity:1}
+dialog{background:#12141b;color:var(--tx);border:1px solid var(--line);border-radius:18px;padding:22px;width:min(380px,92vw);margin:auto}
+dialog::backdrop{background:rgba(0,0,0,.6);backdrop-filter:blur(4px)}
+dialog input{width:100%;margin:12px 0;background:var(--glass);border:1px solid var(--line);color:var(--tx);border-radius:12px;padding:10px;font:inherit}
+.r{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px solid var(--line)}
+hr{border:0;margin:8px 0}
+[hidden]{display:none!important}
+@media(max-width:900px){.app{grid-template-columns:1fr}.side{position:static;height:auto;flex-direction:row;flex-wrap:wrap}.sp{display:none}.stats{grid-template-columns:repeat(2,1fr)}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand">MANNVASAM</div>
+    <button class="nav on" data-v="board">Orders board <b id="cnt">0</b></button>
+    <button class="nav" data-v="list">All orders</button>
+    <div class="sp"></div>
+    <button class="nav" id="lock">Change admin key</button>
+    <a class="nav" href="/">View website</a>
+  </aside>
+  <div class="main">
+    <header>
+      <div><h1>Orders</h1><div class="sub" id="sub">Loading…</div></div>
+      <div class="tools"><input class="s" id="q" type="search" placeholder="Search orders, names, phones"><button class="btn pri" id="ref">Refresh</button></div>
+    </header>
+    <div class="stats">
+      <div class="card"><div class="k">Orders today</div><div class="v" id="s1">0</div></div>
+      <div class="card"><div class="k">Revenue today</div><div class="v" id="s2">₹0</div></div>
+      <div class="card"><div class="k">Last 7 days</div><div class="v" id="s3">₹0</div></div>
+      <div class="card"><div class="k">Still to deliver</div><div class="v" id="s4">0</div></div>
+    </div>
+    <div class="card"><div class="k">Sales, last 7 days</div><svg id="chart" viewBox="0 0 700 130"></svg><div id="lbl"></div></div>
+    <div class="board" id="board"></div>
+    <div class="card" id="list" hidden></div>
+  </div>
+</div>
+<div id="msg"></div>
+<dialog id="kd"><form method="dialog"><h2>Admin key</h2><p class="sub">Kept only until this tab is closed.</p><input id="ki" type="password" autocomplete="off" placeholder="Admin key"><button class="btn pri">Open admin</button></form></dialog>
+<dialog id="od"></dialog>
+<script type="module">
+const API = ((import.meta.env && import.meta.env.VITE_API_URL) || '') + '/api';
+const STATUSES = ['Pending', 'Confirmed', 'Packed', 'Shipped', 'Delivered', 'Cancelled'];
+const DONE = ['Delivered', 'Cancelled'];
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const inr = (n) => '₹' + Number(n || 0).toLocaleString('en-IN');
+let orders = [], view = 'board', q = '', dragId = null, kp;
+
+const toast = (t) => { const m = $('#msg'); m.textContent = t; m.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => m.classList.remove('on'), 2400); };
+const key = () => {
+  const s = sessionStorage.getItem('mv-admin-key');
+  if (s !== null) return s;
+  return kp || (kp = new Promise((res) => {
+    const d = $('#kd'); $('#ki').value = ''; d.showModal();
+    d.addEventListener('close', () => { const k = $('#ki').value; sessionStorage.setItem('mv-admin-key', k); kp = null; res(k); }, { once: true });
+  }));
+};
+async function api(path, opt = {}) {
+  const k = await key();
+  const r = await fetch(API + path, { ...opt, headers: { 'Content-Type': 'application/json', 'x-admin-key': k } });
+  if (r.status === 401) { sessionStorage.removeItem('mv-admin-key'); throw new Error('Wrong admin key. Press Refresh to try again.'); }
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.error || 'Request failed');
+  return j;
+}
+
+const cust = (o) => o.customer || {};
+const name = (o) => cust(o).name || cust(o).fullName || 'Customer';
+const items = (o) => (Array.isArray(o.items) ? o.items : []);
+const qty = (i) => i.qty || i.quantity || 1;
+const itemTxt = (i) => `${qty(i)}× ${i.name || i.title || 'Item'}${i.pack || i.size ? ' · ' + (i.pack || i.size) : ''}`;
+const dt = (o) => { const s = String(o.createdAt || ''); return new Date(/(Z|[+-]\d\d:?\d\d)$/.test(s) ? s : s.replace(' ', 'T') + 'Z'); };
+const same = (a, b) => a.toDateString() === b.toDateString();
+const live = (o) => o.status !== 'Cancelled';
+const ago = (o) => { const m = Math.max(0, (Date.now() - dt(o)) / 60000); return m < 60 ? Math.round(m) + ' min ago' : m < 1440 ? Math.round(m / 60) + ' h ago' : Math.round(m / 1440) + ' d ago'; };
+const match = (o) => !q || (o.orderId + JSON.stringify(cust(o)) + JSON.stringify(items(o))).toLowerCase().includes(q);
+const cols = () => [...STATUSES, ...new Set(orders.map((o) => o.status).filter((s) => s && !STATUSES.includes(s)))];
+
+function stats() {
+  const now = new Date(), wk = Date.now() - 7 * 864e5;
+  const sum = (a) => a.reduce((s, o) => s + Number(o.subtotal || 0), 0);
+  const today = orders.filter((o) => live(o) && same(dt(o), now));
+  $('#s1').textContent = today.length;
+  $('#s2').textContent = inr(sum(today));
+  $('#s3').textContent = inr(sum(orders.filter((o) => live(o) && dt(o) >= wk)));
+  $('#s4').textContent = orders.filter((o) => !DONE.includes(o.status)).length;
+}
+function chart() {
+  const days = [...Array(7)].map((_, i) => { const d = new Date(); d.setHours(0, 0, 0, 0); d.setDate(d.getDate() - 6 + i); return d; });
+  const vals = days.map((d) => orders.filter((o) => live(o) && same(dt(o), d)).reduce((s, o) => s + Number(o.subtotal || 0), 0));
+  const max = Math.max(...vals, 1), W = 700, H = 130;
+  const pts = vals.map((v, i) => [Math.round(i * W / 6), Math.round(H - 10 - (v / max) * (H - 28))]);
+  const line = pts.map((p) => p.join(',')).join(' ');
+  $('#chart').innerHTML = `<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d4af37" stop-opacity=".45"/><stop offset="1" stop-color="#d4af37" stop-opacity="0"/></linearGradient></defs><polygon points="0,${H} ${line} ${W},${H}" fill="url(#g)"/><polyline points="${line}" fill="none" stroke="#f3e3b0" stroke-width="2.5" stroke-linejoin="round"/>` +
+    pts.map((p, i) => `<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="#f3e3b0"><title>${esc(days[i].toDateString())}: ${inr(vals[i])}</title></circle>`).join('');
+  $('#lbl').innerHTML = days.map((d) => `<span>${d.toLocaleDateString('en-IN', { weekday: 'short' })}</span>`).join('');
+}
+const card = (o) => `<article class="o" draggable="true" data-id="${esc(o.orderId)}"><div class="t"><span>${esc(o.orderId)}</span><span>${ago(o)}</span></div><div class="n">${esc(name(o))}</div><ul>${items(o).slice(0, 3).map((i) => `<li>${esc(itemTxt(i))}</li>`).join('')}${items(o).length > 3 ? `<li>+${items(o).length - 3} more</li>` : ''}</ul><div class="f"><b>${inr(o.subtotal)}</b><span class="tag">${esc(o.paymentMethod || 'COD')}</span></div></article>`;
+function board() {
+  const list = orders.filter(match);
+  $('#board').innerHTML = cols().map((s) => { const os = list.filter((o) => o.status === s); return `<section class="col" data-s="${esc(s)}"><div class="ch">${esc(s)}<span>${os.length}</span></div>${os.map(card).join('') || '<div class="empty">Drop an order here</div>'}</section>`; }).join('');
+}
+function table() {
+  const opts = (cur) => cols().map((s) => `<option${s === cur ? ' selected' : ''}>${esc(s)}</option>`).join('');
+  $('#list').innerHTML = `<table><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Payment</th><th>Status</th></tr>${orders.filter(match).map((o) => `<tr data-id="${esc(o.orderId)}"><td>${esc(o.orderId)}</td><td>${esc(name(o))}</td><td>${items(o).length}</td><td>${inr(o.subtotal)}</td><td>${esc(o.paymentMethod || '')}</td><td><select data-st="${esc(o.orderId)}">${opts(o.status)}</select></td></tr>`).join('') || '<tr><td colspan="6" class="empty">No orders yet</td></tr>'}</table>`;
+}
+function render() {
+  $('#cnt').textContent = orders.length;
+  $('#sub').textContent = new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long' }) + ' · ' + orders.length + ' orders';
+  stats(); chart();
+  $('#board').hidden = view !== 'board'; $('#list').hidden = view !== 'list';
+  view === 'board' ? board() : table();
+}
+function detail(id) {
+  const o = orders.find((x) => x.orderId === id); if (!o) return;
+  const c = cust(o), ph = String(c.phone || c.mobile || '').replace(/\D/g, ''), full = ph.length === 10 ? '91' + ph : ph;
+  $('#od').innerHTML = `<form method="dialog"><h2>${esc(o.orderId)}</h2><p class="sub">${esc(o.status)} · ${esc(o.paymentMethod || '')} · ${esc(dt(o).toLocaleString('en-IN'))}</p><hr>` +
+    Object.entries(c).map(([k, v]) => `<div class="r"><span class="k">${esc(k)}</span><span>${esc(v)}</span></div>`).join('') + '<hr>' +
+    items(o).map((i) => `<div class="r"><span>${esc(itemTxt(i))}</span><span>${Number(i.price) ? inr(i.price * qty(i)) : ''}</span></div>`).join('') +
+    `<div class="r"><b>Total</b><b>${inr(o.subtotal)}</b></div><div class="tools" style="margin-top:14px">${full ? `<a class="btn" href="tel:+${full}">Call</a><a class="btn" target="_blank" rel="noopener" href="https://wa.me/${full}">WhatsApp</a>` : ''}<button class="btn pri">Close</button></div></form>`;
+  $('#od').showModal();
+}
+async function move(id, status) {
+  const o = orders.find((x) => x.orderId === id); if (!o || o.status === status) return;
+  const old = o.status; o.status = status; render();
+  try { await api(`/admin/orders/${encodeURIComponent(id)}/status`, { method: 'PATCH', body: JSON.stringify({ status }) }); toast(`${id} moved to ${status}`); }
+  catch (err) { o.status = old; render(); toast(err.message); }
+}
+async function load() { try { orders = await api('/admin/orders'); render(); } catch (e) { toast(e.message); } }
+
+const B = $('#board');
+B.addEventListener('dragstart', (e) => { const c = e.target.closest('.o'); if (!c) return; dragId = c.dataset.id; c.classList.add('drag'); e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', dragId); });
+B.addEventListener('dragend', () => { dragId = null; document.querySelectorAll('.drag,.over').forEach((x) => x.classList.remove('drag', 'over')); });
+B.addEventListener('dragover', (e) => { const c = e.target.closest('.col'); if (!c) return; e.preventDefault(); document.querySelectorAll('.col.over').forEach((x) => x !== c && x.classList.remove('over')); c.classList.add('over'); });
+B.addEventListener('drop', (e) => { const c = e.target.closest('.col'); if (!c || !dragId) return; e.preventDefault(); const id = dragId; dragId = null; move(id, c.dataset.s); });
+document.addEventListener('click', (e) => { const r = e.target.closest('[data-id]'); if (r && !e.target.closest('select')) detail(r.dataset.id); });
+document.addEventListener('change', (e) => { if (e.target.dataset.st) move(e.target.dataset.st, e.target.value); });
+document.querySelectorAll('.nav[data-v]').forEach((b) => b.addEventListener('click', () => { view = b.dataset.v; document.querySelectorAll('.nav[data-v]').forEach((x) => x.classList.toggle('on', x === b)); render(); }));
+$('#q').addEventListener('input', (e) => { q = e.target.value.trim().toLowerCase(); render(); });
+$('#ref').addEventListener('click', load);
+$('#lock').addEventListener('click', () => { sessionStorage.removeItem('mv-admin-key'); load(); });
+load();
+setInterval(() => { if (!document.hidden && !dragId && !document.querySelector('dialog[open]')) load(); }, 30000);
+</script>
+</body>
+</html>

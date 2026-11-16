@@ -1,0 +1,94 @@
+.bk-fab { position: fixed; left: 18px; bottom: 18px; z-index: 45; border: 0; border-radius: 999px; background: var(--gold); color: var(--deep); font: inherit; font-weight: 700; padding: 12px 20px; cursor: pointer; box-shadow: 0 12px 26px -10px rgba(0,0,0,.5); display: none; }
+.bk-fab.show { display: inline-flex; gap: 8px; align-items: center; }
+.bk-fab b { background: var(--deep); color: #fff; border-radius: 999px; min-width: 24px; height: 24px; display: grid; place-items: center; font-size: .85rem; }
+.bk-scrim { position: fixed; inset: 0; background: rgba(0,0,0,.45); opacity: 0; pointer-events: none; transition: opacity .3s; z-index: 70; }
+.bk { position: fixed; top: 0; right: 0; height: 100%; width: min(400px, 100%); background: #fff; z-index: 71; padding: 26px; display: flex; flex-direction: column; translate: 100% 0; transition: translate .35s ease; }
+.bk.open { translate: 0 0; }
+.bk.open + .bk-scrim, .bk-scrim.open { opacity: 1; pointer-events: auto; }
+.bk-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.bk-head h3 { font-size: 1.9rem; color: var(--green); }
+.bk-head button { border: 0; background: var(--sand); width: 38px; height: 38px; border-radius: 50%; font-size: 1.3rem; cursor: pointer; }
+.bk ul { list-style: none; margin: 0; padding: 0; flex: 1; overflow: auto; display: grid; gap: 10px; align-content: start; }
+.bk li { display: flex; align-items: center; gap: 10px; background: var(--sand); border-radius: 14px; padding: 12px 14px; }
+.bk li span { flex: 1; font-weight: 700; }
+.bk li button { border: 0; width: 30px; height: 30px; border-radius: 50%; background: #fff; font-size: 1.1rem; cursor: pointer; }
+.bk-note { color: var(--soft); font-size: .92rem; margin: 14px 0; }
+.bk-actions { display: grid; gap: 10px; }
+.bk-empty { color: var(--soft); }
+
+.recipes { background: var(--cream); }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 22px; }
+.tabs button { border: 2px solid var(--green); background: transparent; color: var(--green); border-radius: 999px; padding: 9px 22px; font: inherit; font-weight: 700; cursor: pointer; }
+.tabs button.on { background: var(--green); color: #fff; }
+.rcard { display: grid; grid-template-columns: 1fr 1.2fr; gap: 28px; background: #fff; border-radius: 26px; padding: 32px; box-shadow: 0 24px 50px -30px rgba(38, 61, 45, .45); }
+.rmeta { display: flex; gap: 10px; margin: 10px 0 18px; flex-wrap: wrap; }
+.rmeta span { background: var(--sand); border-radius: 999px; padding: 3px 14px; font-size: .9rem; font-weight: 700; color: var(--green); }
+.rcard h3 { font-size: 2.2rem; color: var(--green); }
+.rcard h4 { margin: 0 0 8px; font-size: 1.05rem; }
+.rcard ul, .rcard ol { margin: 0 0 12px; padding-left: 1.2rem; display: grid; gap: 6px; }
+
+.faq { background: var(--sand); }
+.faq details { background: #fff; border-radius: 18px; padding: 4px 22px; margin-top: 12px; }
+.faq summary { cursor: pointer; font-weight: 700; padding: 16px 0; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--gold); transition: rotate .25s; }
+.faq details[open] summary::after { rotate: 45deg; }
+.faq details p { margin: 0 0 18px; color: var(--soft); max-width: 70ch; }
+@me
+cat > extras2.js << 'EOF'
+import { WHATSAPP } from "./extras.js";
+import "./extras2.css";
+
+const $ = (s) => document.querySelector(s);
+const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+/* ---------- enquiry list ---------- */
+const list = new Map();
+document.body.insertAdjacentHTML("beforeend", `
+  <button class="bk-fab" id="bkFab">Enquiry list <b id="bkCount">0</b></button>
+  <aside class="bk" id="bk" aria-label="Enquiry list">
+    <div class="bk-head"><h3>Your enquiry list</h3><button id="bkClose" aria-label="Close">×</button></div>
+    <ul id="bkList"></ul>
+    <p class="bk-note">Send your list and the team will get back to you.</p>
+    <div class="bk-actions" id="bkActions"></div>
+  </aside>
+  <div class="bk-scrim" id="bkScrim"></div>`);
+const bk = $("#bk"), scrim = $("#bkScrim"), fab = $("#bkFab");
+const setOpen = (o) => { bk.classList.toggle("open", o); scrim.classList.toggle("open", o); };
+const message = () => "Hi MANNVASAM, I would like to enquire about:\n" + [...list].map(([n, q]) => `- ${n} x ${q}`).join("\n");
+
+function render() {
+  const total = [...list.values()].reduce((a, b) => a + b, 0);
+  $("#bkCount").textContent = total;
+  fab.classList.toggle("show", total > 0);
+  $("#bkList").innerHTML = list.size
+    ? [...list].map(([n, q]) => `<li><span>${esc(n)}</span><button data-a="-" data-n="${esc(n)}" aria-label="Less">−</button><b>${q}</b><button data-a="+" data-n="${esc(n)}" aria-label="More">+</button></li>`).join("")
+    : '<li class="bk-empty">Nothing here yet.</li>';
+  $("#bkActions").innerHTML = WHATSAPP
+    ? `<a class="btn" target="_blank" rel="noreferrer" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message())}">Send on WhatsApp</a>`
+    : '<button class="btn" id="bkCopy" type="button">Copy list</button>';
+  const copy = $("#bkCopy");
+  if (copy) copy.onclick = () => navigator.clipboard.writeText(message()).then(() => { copy.textContent = "Copied"; setTimeout(() => (copy.textContent = "Copy list"), 1600); });
+}
+$("#bkList").addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-a]");
+  if (!b) return;
+  const n = b.dataset.n, q = (list.get(n) || 0) + (b.dataset.a === "+" ? 1 : -1);
+  q > 0 ? list.set(n, q) : list.delete(n);
+  render();
+});
+document.querySelectorAll(".card .btn.dark").forEach((btn) =>
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const name = btn.closest(".card").querySelector("h3").textContent.trim();
+    list.set(name, (list.get(name) || 0) + 1);
+    render();
+    const old = btn.textContent;
+    btn.textContent = "Added ✓";
+    setTimeout(() => (btn.textContent = old), 1400);
+  })
+);
+fab.onclick = () => setOpen(true);
+$("#bkClose").onclick = scrim.onclick = () => setOpen(false);
+document.addEventListener("keydown", (e) => e.key === "Escape" && setOpen(false));
+render();

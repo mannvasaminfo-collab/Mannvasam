@@ -1,0 +1,23 @@
+body .mv-shop-image { position: relative; cursor: pointer; }
+body .mv-shop-card h3 { cursor: pointer; }
+body .mv-shop-image::after { content: "TAP TO EXPLORE"; position: absolute; left: 50%; bottom: 14px; translate: -50% 8px; opacity: 0; padding: 7px 14px; border-radius: 999px; background: rgba(15,26,17,.85); color: #e5c58e; font: 700 11px system-ui, sans-serif; letter-spacing: .16em; transition: opacity .3s, translate .3s; pointer-events: none; }
+body .mv-shop-card:hover .mv-shop-image::after { opacity: 1; translate: -50% 0; }
+#j20 { position: fixed; inset: 0; z-index: 9985; display: grid; place-items: center; overflow: hidden; color: #f6f3eb; background: radial-gradient(900px 520px at 50% 38%, #2f5a3f, #0f1a11 70%); }
+#j20 canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+#j20 .skip { position: absolute; top: 18px; right: 20px; z-index: 3; border: 1px solid rgba(229,197,142,.5); background: transparent; color: #e5c58e; border-radius: 999px; padding: 9px 16px; cursor: pointer; font: 600 13px system-ui, sans-serif; }
+#j20 .dots { position: absolute; top: 26px; left: 50%; translate: -50% 0; display: flex; gap: 8px; z-index: 3; }
+#j20 .dots i { width: 28px; height: 4px; border-radius: 4px; background: rgba(246,243,235,.25); transition: background .4s; }
+#j20 .dots i.on { background: #b68c50; }
+#j20 .stage { position: relative; z-index: 2; width: min(92vw, 560px); text-align: center; padding: 16px; }
+#j20 small { display: block; letter-spacing: .28em; color: #e5c58e; font: 700 12px system-ui, sans-serif; margin-bottom: 10px; }
+#j20 h2 { font: 700 clamp(30px, 6vw, 52px)/1.08 "Playfair Display", Georgia, serif; margin-bottom: 10px; text-wrap: balance; }
+#j20 p { color: #d9d5c6; line-height: 1.6; margin: 0 auto 22px; max-width: 42ch; }
+#j20 .pack { width: min(44vw, 240px); margin: 0 auto 22px; perspective: 900px; }
+#j20 .pack img { width: 100%; height: auto; display: block; border-radius: 10px; filter: drop-shadow(0 28px 44px rgba(0,0,0,.55)); }
+#j20 .chips { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 18px; }
+#j20 .chip, #j20 .idea { border: 1px solid rgba(229,197,142,.55); background: transparent; color: #f6f3eb; border-radius: 999px; padding: 12px 20px; font: 600 15px system-ui, sans-serif; }
+#j20 .chip { cursor: pointer; transition: background .25s; }
+#j20 .chip.on { background: #b68c50; border-color: transparent; color: #1a1405; }
+#j20 .price { font: 700 clamp(44px, 9vw, 72px)/1 "Playfair Display", Georgia, serif; color: #e5c58e; margin: 6px 0 22px; }
+#j20 .go { border: 0; border-radius: 999px; padding: 16px 30px; cursor: pointer; font: 800 15px system-ui, sans-serif; letter-spacing: .06em; color: #1a1405; background: linear-gradient(90deg, #b68c50, #e5c58e); }
+#j20 .link { display: block; margin: 14px auto 0; background: none; border: 0; color: #d9d5c6; cursor: pointer; text-decoration: underline; font: 14px system-ui, sans-serif; }

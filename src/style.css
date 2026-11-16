@@ -1,0 +1,4115 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
+
+:root{font-family:'DM Sans',sans-serif;color:#263b2c;background:#f6f3eb;font-synthesis:none;text-rendering:optimizeLegibility}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0}
+a{color:inherit;text-decoration:none}
+.header{height:88px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:#f6f3eb;position:relative;z-index:10}
+.brand{display:flex;align-items:center;gap:12px;font-size:17px;font-weight:700;letter-spacing:2px}
+.brand-mark{width:39px;height:39px;border:1px solid #b58a4b;display:grid;place-items:center;color:#b58a4b;font-family:'Playfair Display';font-size:25px}
+.brand small{display:block;font-size:8px;letter-spacing:2px;margin-top:5px;font-weight:500}
+.nav{display:flex;gap:37px;font-size:12px}
+.nav a{transition:color .3s}
+.nav a:hover,.text-link:hover{color:#b58a4b}
+.cart,.gold-button{font-size:10px;letter-spacing:1.5px;font-weight:700}
+.cart span{color:#b58a4b;margin-left:8px}
+.menu{display:none;background:none;border:0;font-size:24px;color:#263b2c}
+.hero{height:min(760px,calc(100vh - 88px));min-height:610px;position:relative;color:white;display:flex;align-items:center;overflow:hidden;background:#283e2d}
+.hero-image{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=2200&q=90') center 52%/cover;animation:heroZoom 14s ease-out both}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,30,19,.78),rgba(12,30,19,.38) 55%,rgba(12,30,19,.08))}
+.hero-content{position:relative;margin-left:12%;padding-top:20px;animation:rise 1.2s both}
+.eyebrow{font-size:9px;letter-spacing:3px;font-weight:600}
+.hero .eyebrow{color:#e2c38e}
+h1,h2{font-family:'Playfair Display',serif;font-weight:500;letter-spacing:-2px}
+.hero h1{font-size:clamp(58px,7.5vw,105px);line-height:.99;margin:28px 0}
+h1 i,h2 i{color:#c9a36c;font-weight:500}
+.hero-desc{font-size:13px;line-height:2;color:#e7e7df;margin-bottom:32px}
+.gold-button{display:inline-flex;align-items:center;gap:25px;padding:18px 23px;background:#b68c50;color:white;transition:.3s}
+.gold-button:hover{background:#d0a96b;transform:translateY(-3px)}
+.hero-bottom{position:absolute;bottom:28px;left:6%;right:6%;display:flex;justify-content:space-between;font-size:9px;letter-spacing:2px;color:#eee}
+.vertical-note{position:absolute;right:3%;top:43%;writing-mode:vertical-rl;font-size:8px;letter-spacing:3px}
+.ticker{height:66px;background:#263d2d;color:#e8d6b7;display:flex;align-items:center;justify-content:space-around;gap:20px;white-space:nowrap;overflow:hidden;font-family:'Playfair Display';font-size:15px;letter-spacing:2px}
+.section{padding:115px 9%}
+.intro{display:grid;grid-template-columns:1.05fr .95fr;gap:10%;align-items:center}
+.intro-image{position:relative;height:490px}
+.intro-image img,.collection-card img,.product-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s}
+.intro-image:hover img,.collection-card:hover img,.product:hover img{transform:scale(1.045)}
+.image-caption{position:absolute;bottom:0;left:0;background:#263d2d;color:#fff;padding:15px 20px;font-size:8px;letter-spacing:2px}
+.intro-copy h2,.section-heading h2{font-size:clamp(39px,4.5vw,61px);line-height:1.12;margin:24px 0}
+.intro-copy>p:not(.eyebrow){font-size:13px;line-height:2.1;color:#777c70;max-width:390px;margin-bottom:32px}
+.text-link{font-size:9px;font-weight:700;letter-spacing:1.6px;border-bottom:1px solid #b68c50;padding-bottom:10px}
+.intro-number{margin-top:80px;font-family:'Playfair Display';font-size:30px;color:#b68c50}
+.intro-number span{font-family:'DM Sans';font-size:8px;letter-spacing:2px;color:#777}
+.collections{background:#eeece3}
+.section-heading{display:flex;align-items:end;justify-content:space-between;margin-bottom:42px}
+.section-heading>p{font-size:12px;line-height:1.9;color:#858579}
+.collection-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.collection-card{height:440px;position:relative;overflow:hidden;color:white;background:#263d2d}
+.collection-card:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+.collection-index,.collection-title{position:absolute;z-index:1;left:24px}
+.collection-index{top:22px;font-size:9px;letter-spacing:2px}
+.collection-title{bottom:25px;font-family:'Playfair Display';font-size:25px}
+.quote-section{padding:105px 20px;text-align:center;background:#293f30;color:#f7f3e9}
+.quote-section .eyebrow{color:#d1b17e}
+.quote-section h2,.closing h2{font-size:clamp(42px,6vw,74px);line-height:1.1;margin:25px 0}
+.quote-section>span{color:#c9a36c;font-size:28px}
+.products{padding-top:110px;padding-bottom:120px}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.product-image{height:330px;overflow:hidden;position:relative;background:#e8e3d7}
+.product-image>span{position:absolute;left:14px;top:14px;background:#f6f3eb;padding:9px 12px;font-size:8px;letter-spacing:1px}
+.product>p{font-size:8px;letter-spacing:2px;color:#9b8057;margin-top:22px}
+.product h3{font-family:'Playfair Display';font-size:23px;font-weight:500;margin:9px 0 15px}
+.product>a{font-size:8px;letter-spacing:1.5px;border-bottom:1px solid #b68c50;padding-bottom:8px}
+.closing{text-align:center;padding:100px 20px;background:#e9e4d7}
+.closing .eyebrow{letter-spacing:2px}
+.closing h2{color:#293f30}
+footer{background:#1f3427;color:#e9e4d7;padding:38px 7%;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.footer-brand{font-size:14px}
+footer p,footer>span{font-size:10px;color:#b8b9aa}
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .9s ease,transform .9s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes rise{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+@keyframes heroZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+
+@media(max-width:800px){
+.header{height:74px;padding:0 5%}.brand{font-size:14px}.brand-mark{width:34px;height:34px}
+.menu{display:block}.nav{display:none;position:absolute;top:74px;left:0;right:0;background:#f6f3eb;padding:25px;flex-direction:column;gap:23px}.nav.nav-open{display:flex}
+.cart{display:none}.hero{min-height:650px;height:calc(90vh - 74px)}.hero-content{margin:0 8%}.hero h1{font-size:67px}
+.vertical-note{display:none}.ticker{justify-content:flex-start;padding-left:25px;font-size:12px}
+.section{padding:75px 7%}.intro{grid-template-columns:1fr;gap:40px}.intro-image{height:350px}.intro-number{margin-top:45px}
+.section-heading{align-items:start;gap:20px;flex-direction:column}.collection-grid,.product-grid{grid-template-columns:1fr;gap:25px}
+.collection-card{height:390px}.product-image{height:350px}
+footer{flex-direction:column;align-items:flex-start;padding:40px 7%}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* MANNVASAM BRAND VALUES */
+.home-values{background:#f6f3eb}
+.home-values .section-heading>p{max-width:430px;line-height:2.1}
+.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px}
+.value-card{padding:32px 24px;background:#eeece3;border-bottom:2px solid #b68c50;transition:transform .35s,background .35s}
+.value-card:hover{transform:translateY(-8px);background:#e7e4d8}
+.value-card>span{font-size:30px}
+.value-card h3{font-family:'Playfair Display';font-size:21px;font-weight:500;margin:25px 0 10px}
+.value-card p,.trust-card>p:not(.eyebrow),.journey-step p{font-size:12px;line-height:2;color:#777c70}
+
+/* SOURCING TRUST */
+.trust-section{background:#263d2d;color:#f6f3eb}
+.trust-heading{text-align:center;max-width:680px;margin:0 auto 55px}
+.trust-heading .eyebrow{color:#c9a36c}
+.trust-heading h2{font-size:clamp(40px,5vw,65px);line-height:1.15;margin:20px 0}
+.trust-heading>p:last-child{font-size:13px;line-height:2;color:#c7c9bd}
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px;max-width:1000px;margin:auto}
+.trust-card{padding:45px;background:#f5f1e8;color:#293f30;position:relative}
+.trust-card.natural{background:#e8e4d8}
+.trust-icon{font-size:36px}
+.trust-card .eyebrow{color:#a17b45;margin-top:28px}
+.trust-card h3{font-family:'Playfair Display';font-size:29px;font-weight:500;margin:14px 0}
+.trust-card>p:not(.eyebrow){line-height:2.1}
+.trust-card ul{padding-left:18px;margin:25px 0}
+.trust-card li{font-size:12px;line-height:2.5;color:#536353}
+.trust-foot{display:block;margin-top:25px;padding-top:18px;border-top:1px solid #c9c4b5;font-size:9px;letter-spacing:1.5px;color:#967548}
+
+/* FARM TO HOME */
+.journey-section{background:#eeece3}
+.journey-heading{text-align:center;margin-bottom:65px}
+.journey-heading h2{font-size:clamp(37px,4.5vw,58px);margin:20px 0}
+.journey-line{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;position:relative}
+.journey-line:before{content:"";position:absolute;top:29px;left:8%;right:8%;height:1px;background:#c5a577}
+.journey-step{position:relative;z-index:1}
+.step-number{display:block;font-family:'Playfair Display';font-size:13px;color:#a37c47;margin-bottom:22px}
+.step-icon{width:58px;height:58px;border-radius:50%;background:#263d2d;display:grid;place-items:center;font-size:25px;border:5px solid #eeece3;box-sizing:content-box}
+.journey-step h3{font-family:'Playfair Display';font-size:21px;font-weight:500;margin:22px 0 8px}
+.journey-step p{max-width:190px}
+
+/* RESPONSIBLE SOURCING FEATURE */
+.responsible-section{height:570px;position:relative;display:flex;align-items:center;overflow:hidden;color:white;background:#243b2c}
+.responsible-image{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=2000&q=85') center/cover;transform:scale(1.02)}
+.responsible-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,43,28,.9),rgba(20,43,28,.48),rgba(20,43,28,.12))}
+.responsible-content{position:relative;margin-left:12%;max-width:520px}
+.responsible-content .eyebrow{color:#d7bd8f}
+.responsible-content h2{font-size:clamp(48px,6vw,75px);line-height:1.05;margin:24px 0}
+.responsible-content>p:not(.eyebrow){font-size:13px;line-height:2;color:#e2e4da;max-width:440px;margin-bottom:30px}
+
+@media(max-width:800px){
+.values-grid{grid-template-columns:1fr 1fr}
+.trust-grid{grid-template-columns:1fr}
+.trust-card{padding:30px}
+.journey-line{grid-template-columns:1fr;gap:30px}
+.journey-line:before{top:30px;bottom:35px;left:32px;right:auto;width:1px;height:auto}
+.journey-step{display:grid;grid-template-columns:65px 1fr;column-gap:15px}
+.step-number{grid-column:2;margin:0 0 5px}
+.step-icon{grid-column:1;grid-row:1/4}
+.journey-step h3{grid-column:2;margin:0 0 5px}
+.journey-step p{grid-column:2;max-width:100%;margin:0}
+.responsible-section{height:550px}
+.responsible-content{margin:0 7%}
+}
+@media(max-width:420px){.values-grid{grid-template-columns:1fr}}
+
+/* ==================================
+   MANNVASAM CINEMATIC MOTION DESIGN
+================================== */
+
+/* Top scroll progress */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #b68c50, #e9d2a4, #b68c50);
+  z-index: 9999;
+  box-shadow: 0 0 12px #c7a36c;
+}
+
+/* Cinematic staggered reveals */
+.cinematic-reveal {
+  opacity: 0;
+  transform: translateY(55px) scale(.97);
+  filter: blur(5px);
+  transition:
+    opacity 1s ease,
+    transform 1.1s cubic-bezier(.2,.75,.25,1),
+    filter 1s ease;
+}
+
+.cinematic-reveal.cinematic-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* Hero atmospheric movement */
+.hero-image {
+  will-change: transform;
+}
+
+.hero-content h1 {
+  animation: cinematicTitle 1.3s cubic-bezier(.2,.8,.2,1) both;
+  animation-delay: .2s;
+}
+
+.hero-content .eyebrow {
+  animation: cinematicTitle .9s ease both;
+  animation-delay: .1s;
+}
+
+.hero-content .hero-desc {
+  animation: cinematicTitle 1.1s ease both;
+  animation-delay: .5s;
+}
+
+.hero-content .gold-button {
+  animation: cinematicTitle 1.2s ease both;
+  animation-delay: .7s;
+}
+
+@keyframes cinematicTitle {
+  from {
+    opacity: 0;
+    transform: translateY(45px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Floating grain particles */
+.grain-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.grain-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #e5c38c;
+  opacity: 0;
+  box-shadow: 0 0 12px #d5b17b;
+  animation: grainFloat 10s ease-in-out infinite;
+}
+
+@keyframes grainFloat {
+  0% { transform: translate3d(0, 30px, 0) scale(.5); opacity: 0; }
+  25% { opacity: .65; }
+  75% { opacity: .35; }
+  100% { transform: translate3d(35px, -150px, 0) scale(1.2); opacity: 0; }
+}
+
+/* Product image cinematic zoom */
+.product-image {
+  overflow: hidden;
+  position: relative;
+}
+
+.product-image img {
+  transition: transform 1.1s cubic-bezier(.2,.7,.2,1);
+}
+
+.product:hover .product-image img {
+  transform: scale(1.1);
+}
+
+.product-image:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+    rgba(255,255,255,.2),
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity .4s;
+}
+
+.product:hover .product-image:after {
+  opacity: 1;
+}
+
+/* Collection image movement */
+.collection-card img {
+  transition: transform 1.4s cubic-bezier(.2,.7,.2,1);
+}
+
+.collection-card:hover img {
+  transform: scale(1.12);
+}
+
+/* Animated card border */
+.value-card,
+.trust-card {
+  transition: transform .5s ease, box-shadow .5s ease;
+}
+
+.value-card:hover,
+.trust-card:hover {
+  box-shadow: 0 20px 50px rgba(24,44,29,.12);
+}
+
+/* Journey step hover */
+.journey-step {
+  transition: transform .5s ease;
+}
+
+.journey-step:hover {
+  transform: translateY(-9px);
+}
+
+.journey-step:hover .step-icon {
+  background: #b68c50;
+  transform: rotate(12deg) scale(1.08);
+}
+
+.step-icon {
+  transition: all .5s ease;
+}
+
+/* Navigation underline */
+.nav a {
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.nav a:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #b68c50;
+  transition: width .35s ease;
+}
+
+.nav a:hover:after,
+.nav a.nav-active:after {
+  width: 100%;
+}
+
+/* Button shine */
+.gold-button {
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s ease, background .3s ease;
+}
+
+.gold-button:before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 50%;
+  height: 200%;
+  transform: rotate(25deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.35),
+    transparent
+  );
+  transition: left .7s ease;
+}
+
+.gold-button:hover:before {
+  left: 150%;
+}
+
+/* Responsible sourcing image */
+.responsible-image {
+  will-change: transform;
+  transition: transform 1.5s ease;
+}
+
+.responsible-section:hover .responsible-image {
+  transform: scale(1.07);
+}
+
+/* Smooth ticker movement */
+.ticker {
+  position: relative;
+}
+
+/* Mobile and accessibility */
+@media(max-width:800px) {
+  .cinematic-reveal {
+    transform: translateY(30px);
+    filter: none;
+  }
+
+  .grain-particle {
+    animation-duration: 12s;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .cinematic-reveal,
+  .grain-particle,
+  .hero-content h1,
+  .hero-content .eyebrow,
+  .hero-content .hero-desc,
+  .hero-content .gold-button {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* =========================================
+   MANNVASAM — CINEMATIC EXPERIENCE UPGRADE
+========================================= */
+
+/* Cinematic opening */
+.mv-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: grid;
+  place-items: center;
+  background: #1f3427;
+  color: #f6f3eb;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .8s ease, visibility .8s ease;
+}
+
+.mv-loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+}
+
+.loader-mark {
+  width: 68px;
+  height: 68px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #c9a36c;
+  color: #c9a36c;
+  font: 42px 'Playfair Display', serif;
+  animation: loaderPulse 1.8s ease-in-out infinite;
+}
+
+.loader-name {
+  font-size: 17px;
+  letter-spacing: 5px;
+}
+
+.loader-tagline {
+  color: #c9a36c;
+  font-size: 8px;
+  letter-spacing: 3px;
+}
+
+.loader-line {
+  width: 130px;
+  height: 1px;
+  margin-top: 16px;
+  background: linear-gradient(90deg, transparent, #c9a36c, transparent);
+  transform-origin: left;
+  animation: loaderLine 1.4s ease-in-out infinite;
+}
+
+@keyframes loaderPulse {
+  50% { transform: scale(1.08); }
+}
+
+@keyframes loaderLine {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+/* Header glass effect */
+.header {
+  position: sticky;
+  top: 0;
+  transition: background .4s ease, box-shadow .4s ease;
+}
+
+.header.header-scrolled {
+  background: rgba(246, 243, 235, .94);
+  box-shadow: 0 8px 30px rgba(31, 52, 39, .08);
+  backdrop-filter: blur(14px);
+}
+
+/* Continuous ticker */
+.ticker {
+  justify-content: flex-start;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  flex: 0 0 auto;
+  animation: tickerTravel 32s linear infinite;
+}
+
+.ticker-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 35px;
+  padding-right: 35px;
+  flex: 0 0 auto;
+}
+
+.ticker:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes tickerTravel {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Image reveal */
+.image-reveal {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.3s cubic-bezier(.77, 0, .18, 1);
+}
+
+.image-reveal.image-is-visible {
+  clip-path: inset(0 0 0 0);
+}
+
+.collection-card.image-reveal {
+  clip-path: inset(0 0 100% 0);
+}
+
+.collection-card.image-reveal.image-is-visible {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Three-dimensional card movement */
+.product,
+.collection-card {
+  transform-style: preserve-3d;
+  transition: transform .35s ease, box-shadow .5s ease;
+}
+
+.product.tilt-active,
+.collection-card.tilt-active {
+  transform:
+    perspective(1000px)
+    rotateX(var(--tilt-y, 0deg))
+    rotateY(var(--tilt-x, 0deg))
+    translateY(-5px);
+  box-shadow: 0 22px 45px rgba(28, 45, 32, .15);
+}
+
+/* Editorial heading treatment */
+.editorial-heading {
+  position: relative;
+}
+
+.editorial-heading h2 {
+  text-wrap: balance;
+}
+
+.editorial-heading .eyebrow {
+  color: #a17b45;
+}
+
+/* Premium image hover */
+.collection-card img,
+.product-image img {
+  backface-visibility: hidden;
+}
+
+.product-image {
+  background: #e8e3d7;
+}
+
+/* Mobile refinements */
+@media(max-width:800px) {
+  .header.header-scrolled {
+    background: rgba(246, 243, 235, .98);
+  }
+
+  .ticker-track {
+    animation-duration: 25s;
+  }
+
+  .product.tilt-active,
+  .collection-card.tilt-active {
+    transform: none;
+  }
+
+  .mv-loader .loader-name {
+    font-size: 15px;
+  }
+}
+
+/* Accessibility */
+@media(prefers-reduced-motion:reduce) {
+  .mv-loader,
+  .loader-mark,
+  .loader-line,
+  .ticker-track {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .image-reveal,
+  .collection-card.image-reveal {
+    clip-path: none !important;
+  }
+
+  .product,
+  .collection-card {
+    transform: none !important;
+  }
+}
+
+
+/* OFFICIAL MANNVASAM LOGO */
+.brand-logo,
+.footer-brand .brand-logo {
+  display: block;
+  width: 64px;
+  height: 44px;
+  object-fit: contain;
+  object-position: center;
+  flex: 0 0 auto;
+}
+
+.loader-logo {
+  display: block;
+  width: 120px;
+  height: 80px;
+  margin: 0 auto 12px;
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (max-width: 600px) {
+  .brand-logo,
+  .footer-brand .brand-logo {
+    width: 54px;
+    height: 38px;
+  }
+}
+
+
+
+
+/* ==========================================
+   MANNVASAM — CINEMATIC EXPERIENCE UPGRADE
+   Stage 1: Motion, depth and interaction
+   ========================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Cinematic hero entrance */
+.hero {
+  isolation: isolate;
+}
+
+.hero::before {
+  animation: mvHeroAtmosphere 16s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.hero-content {
+  animation: mvHeroContent 1.2s cubic-bezier(.2,.7,.2,1) both;
+}
+
+.hero-content .eyebrow {
+  animation: mvFadeUp .9s .25s both;
+}
+
+.hero-content h1 {
+  animation: mvFadeUp 1.1s .4s both;
+  text-wrap: balance;
+}
+
+.hero-content .hero-desc {
+  animation: mvFadeUp 1s .65s both;
+}
+
+.hero-content .gold-button {
+  animation: mvFadeUp .9s .85s both;
+}
+
+/* Premium button interaction */
+.gold-button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.gold-button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  transform: translateX(-120%) skewX(-20deg);
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    rgba(255,255,255,.35) 50%,
+    transparent 75%
+  );
+  transition: transform .75s ease;
+}
+
+.gold-button:hover::before {
+  transform: translateX(120%) skewX(-20deg);
+}
+
+.gold-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 35px rgba(20,40,25,.2);
+}
+
+/* Collection cards */
+.collection-card {
+  transform: translateZ(0);
+  transition: transform .55s cubic-bezier(.2,.7,.2,1),
+              box-shadow .55s ease;
+}
+
+.collection-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 24px 55px rgba(25,45,28,.16);
+}
+
+.collection-card img {
+  transition: transform 1s cubic-bezier(.2,.7,.2,1),
+              filter .7s ease;
+}
+
+.collection-card:hover img {
+  transform: scale(1.075);
+  filter: saturate(1.12);
+}
+
+/* Product and journey interaction */
+.product-card,
+.journey-step {
+  transition: transform .45s ease, box-shadow .45s ease;
+}
+
+.product-card:hover,
+.journey-step:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 42px rgba(25,45,28,.11);
+}
+
+/* Scroll reveal refinement */
+.reveal {
+  transition:
+    opacity .9s ease,
+    transform 1s cubic-bezier(.2,.7,.2,1),
+    filter .9s ease;
+}
+
+.cinematic-reveal {
+  filter: blur(0);
+  transition:
+    opacity 1s ease,
+    transform 1.1s cubic-bezier(.2,.7,.2,1),
+    filter 1s ease;
+}
+
+/* Header polish */
+.header {
+  transition:
+    background .4s ease,
+    box-shadow .4s ease,
+    padding .4s ease,
+    backdrop-filter .4s ease;
+}
+
+.header.header-scrolled {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 30px rgba(20,40,25,.09);
+}
+
+/* Editorial image depth */
+.image-reveal {
+  overflow: hidden;
+}
+
+.image-reveal img {
+  transition: transform 1.2s cubic-bezier(.2,.7,.2,1);
+}
+
+.image-reveal:hover img {
+  transform: scale(1.045);
+}
+
+/* Responsible sourcing atmosphere */
+.responsible-section {
+  isolation: isolate;
+}
+
+.responsible-image {
+  transition: transform 1.5s ease;
+}
+
+.responsible-section:hover .responsible-image {
+  transform: scale(1.025);
+}
+
+/* Floating grain atmosphere */
+.grain-particle {
+  will-change: transform, opacity;
+  animation: mvGrainFloat 9s ease-in-out infinite alternate;
+}
+
+.grain-particle:nth-child(3n) {
+  animation-duration: 12s;
+  animation-delay: -3s;
+}
+
+.grain-particle:nth-child(3n + 1) {
+  animation-duration: 7s;
+  animation-delay: -5s;
+}
+
+/* Motion keyframes */
+@keyframes mvHeroContent {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mvFadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mvHeroAtmosphere {
+  from { transform: scale(1); }
+  to { transform: scale(1.045); }
+}
+
+@keyframes mvGrainFloat {
+  from { transform: translate3d(0, 0, 0) rotate(0deg); }
+  to { transform: translate3d(10px, -24px, 0) rotate(18deg); }
+}
+
+/* Mobile refinement */
+@media (max-width: 768px) {
+  .hero-content {
+    animation-duration: .9s;
+  }
+
+  .collection-card:hover,
+  .product-card:hover,
+  .journey-step:hover {
+    transform: none;
+  }
+
+  .gold-button:hover {
+    transform: none;
+  }
+}
+
+/* Accessibility: respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+
+
+/* ==========================================
+   MANNVASAM — 3D PRODUCT REVEAL EXPERIENCE
+   ========================================== */
+.mv-product-experience {
+  --mv-progress: 0;
+  position: relative;
+  min-height: 760px;
+  padding: 110px 7vw 85px;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  color: #f8f1e4;
+  background:
+    radial-gradient(ellipse at 72% 45%, rgba(190,148,75,.19), transparent 36%),
+    linear-gradient(115deg, #10291d 0%, #1b3c2b 52%, #0c2118 100%);
+}
+.mv-product-glow {
+  position: absolute;
+  z-index: -1;
+  width: 620px;
+  height: 620px;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(220,184,112,.19), rgba(220,184,112,0) 68%);
+  filter: blur(12px);
+}
+.mv-product-inner {
+  width: min(1250px, 100%);
+  margin: auto;
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  align-items: center;
+  gap: 4vw;
+}
+.mv-product-copy {
+  position: relative;
+  z-index: 3;
+  max-width: 490px;
+  opacity: 0;
+  transform: translateY(45px);
+  transition: opacity 1s ease .2s, transform 1s cubic-bezier(.2,.7,.2,1) .2s;
+}
+.mv-product-experience.mv-visible .mv-product-copy {
+  opacity: 1;
+  transform: translateY(0);
+}
+.mv-product-kicker,
+.mv-product-index,
+.mv-product-meta,
+.mv-product-caption,
+.mv-product-scroll-note {
+  font-size: 10px;
+  letter-spacing: .2em;
+}
+.mv-product-kicker { color: #d4b477; margin: 0 0 32px; }
+.mv-product-index { color: rgba(248,241,228,.48); margin-bottom: 22px; }
+.mv-product-copy h2 {
+  margin: 0 0 25px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(48px, 6.2vw, 82px);
+  font-weight: 400;
+  line-height: .99;
+  letter-spacing: -.055em;
+}
+.mv-product-copy h2 i { color: #d5b477; font-weight: 400; }
+.mv-product-description {
+  max-width: 390px;
+  color: rgba(248,241,228,.75);
+  font-size: 15px;
+  line-height: 1.9;
+}
+.mv-product-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin: 30px 0;
+  color: #d9c49b;
+  font-size: 9px;
+}
+.mv-product-meta span + span { border-left: 1px solid rgba(255,255,255,.25); padding-left: 22px; }
+.mv-product-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 35px;
+  padding: 17px 21px;
+  border: 1px solid rgba(218,188,132,.65);
+  color: #f8f1e4;
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: .14em;
+  transition: background .3s ease, color .3s ease, transform .3s ease;
+}
+.mv-product-button:hover {
+  color: #142b1e;
+  background: #d5b477;
+  transform: translateY(-4px);
+}
+.mv-product-stage {
+  position: relative;
+  min-height: 570px;
+  display: grid;
+  place-items: center;
+  perspective: 1200px;
+}
+.mv-product-packet {
+  position: relative;
+  z-index: 2;
+  width: clamp(220px, 25vw, 320px);
+  height: clamp(340px, 39vw, 455px);
+  padding: 0 20px 17px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 12px 12px 19px 19px;
+  color: #263b27;
+  background:
+    linear-gradient(105deg, rgba(255,255,255,.4), transparent 18%, transparent 80%, rgba(0,0,0,.12)),
+    linear-gradient(145deg, #e8d8b5, #cbb88f 48%, #e8d9b9);
+  box-shadow: 22px 32px 65px rgba(0,0,0,.38), inset 5px 0 12px rgba(255,255,255,.25), inset -5px 0 14px rgba(0,0,0,.08);
+  transform-style: preserve-3d;
+  transform: translate3d(0, 45px, -180px) rotateY(-19deg) rotateX(5deg) scale(.76);
+  opacity: .35;
+  transition: transform 1.5s cubic-bezier(.16,1,.3,1), opacity 1s ease;
+  will-change: transform;
+}
+.mv-product-experience.mv-visible .mv-product-packet {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) rotateY(-9deg) rotateX(2deg) scale(1);
+  animation: mvPacketFloat 5s ease-in-out 1.6s infinite;
+}
+.mv-packet-top {
+  height: 22px;
+  margin: 0 -20px 14px;
+  border-bottom: 3px double rgba(72,65,42,.38);
+  background: linear-gradient(#d7c59f,#b9a77f);
+}
+.mv-packet-seal {
+  margin: 0 auto;
+  padding: 8px 4px;
+  width: 80%;
+  text-align: center;
+  color: #e9d8b6;
+  background: #24432e;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  letter-spacing: .2em;
+}
+.mv-packet-art {
+  position: relative;
+  height: 34%;
+  margin: 15px -5px 0;
+  overflow: hidden;
+  background: linear-gradient(#e6d5ae 0%, #d8c69b 65%, #8a9861 66%, #536f42 100%);
+}
+.mv-packet-sun {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  top: 14px;
+  left: calc(50% - 32px);
+  border-radius: 50%;
+  background: #c79b53;
+  box-shadow: 0 0 35px rgba(199,155,83,.4);
+}
+.mv-packet-field {
+  position: absolute;
+  width: 140%;
+  height: 55px;
+  left: -20%;
+  border-radius: 50% 50% 0 0;
+}
+.field-one { bottom: 0; background: #526d3e; }
+.field-two { bottom: -19px; background: #38583a; transform: rotate(-7deg); }
+.field-three { bottom: -34px; background: #263f2c; transform: rotate(6deg); }
+.mv-packet-label {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 14px;
+}
+.mv-packet-brand {
+  font-family: Georgia, serif;
+  font-size: 15px;
+  letter-spacing: .2em;
+}
+.mv-packet-rule {
+  width: 55%;
+  height: 1px;
+  margin: 9px 0;
+  background: #9b8050;
+}
+.mv-packet-type { font-size: 9px; letter-spacing: .28em; }
+.mv-packet-label strong {
+  margin: 2px 0 5px;
+  font-family: Georgia, serif;
+  font-size: clamp(29px, 3.5vw, 43px);
+  font-weight: 500;
+  letter-spacing: .08em;
+}
+.mv-packet-subtitle { font-size: 7px; letter-spacing: .14em; }
+.mv-packet-bottom {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  color: #5e6047;
+  font-size: 6px;
+  letter-spacing: .09em;
+}
+.mv-product-shadow {
+  position: absolute;
+  bottom: 53px;
+  width: 300px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(0,0,0,.38);
+  filter: blur(20px);
+  transform: scale(.7);
+  transition: transform 1.3s ease;
+}
+.mv-product-experience.mv-visible .mv-product-shadow { transform: scale(1); }
+.mv-product-orbit {
+  position: absolute;
+  width: 440px;
+  height: 440px;
+  border: 1px solid rgba(220,184,112,.18);
+  border-radius: 50%;
+}
+.mv-orbit-two { width: 520px; height: 520px; border-style: dashed; opacity: .45; }
+.mv-product-caption {
+  position: absolute;
+  bottom: 22px;
+  color: rgba(248,241,228,.6);
+}
+.mv-product-grains span {
+  position: absolute;
+  z-index: 1;
+  width: 9px;
+  height: 19px;
+  border-radius: 80% 15% 80% 15%;
+  background: linear-gradient(135deg,#f0dba9,#b48b4c);
+  opacity: .65;
+  animation: mvGrainDrift 7s ease-in-out infinite alternate;
+}
+.mv-product-grains span:nth-child(1) { left: 56%; top: 18%; }
+.mv-product-grains span:nth-child(2) { left: 83%; top: 27%; animation-delay: -2s; }
+.mv-product-grains span:nth-child(3) { left: 69%; top: 73%; animation-delay: -4s; }
+.mv-product-grains span:nth-child(4) { left: 91%; top: 65%; animation-delay: -1s; }
+.mv-product-grains span:nth-child(5) { left: 48%; top: 78%; animation-delay: -3s; }
+.mv-product-grains span:nth-child(6) { left: 75%; top: 12%; animation-delay: -5s; }
+.mv-product-grains span:nth-child(7) { left: 60%; top: 48%; animation-delay: -2s; }
+.mv-product-grains span:nth-child(8) { left: 94%; top: 43%; animation-delay: -4s; }
+.mv-product-grains span:nth-child(9) { left: 52%; top: 32%; animation-delay: -1s; }
+.mv-product-grains span:nth-child(10) { left: 86%; top: 83%; animation-delay: -3s; }
+.mv-product-grains span:nth-child(11) { left: 66%; top: 88%; animation-delay: -5s; }
+.mv-product-grains span:nth-child(12) { left: 78%; top: 52%; animation-delay: -2s; }
+.mv-product-scroll-note {
+  position: absolute;
+  bottom: 28px;
+  left: 7vw;
+  color: rgba(248,241,228,.52);
+  font-size: 8px;
+}
+.mv-product-scroll-note span { margin-left: 12px; color: #d5b477; }
+
+@keyframes mvPacketFloat {
+  0%,100% { translate: 0 0; }
+  50% { translate: 0 -13px; }
+}
+@keyframes mvGrainDrift {
+  from { transform: translate3d(0,0,0) rotate(0deg); }
+  to { transform: translate3d(17px,-24px,0) rotate(65deg); }
+}
+
+@media (max-width: 760px) {
+  .mv-product-experience { padding: 85px 22px 75px; min-height: auto; }
+  .mv-product-inner { grid-template-columns: 1fr; gap: 12px; }
+  .mv-product-copy { order: 1; }
+  .mv-product-stage { order: 2; min-height: 460px; }
+  .mv-product-packet { width: 230px; height: 355px; }
+  .mv-product-orbit { width: 320px; height: 320px; }
+  .mv-orbit-two { width: 380px; height: 380px; }
+  .mv-product-scroll-note { left: 22px; bottom: 18px; }
+  .mv-product-meta { font-size: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mv-product-packet,
+  .mv-product-grains span { animation: none !important; }
+  .mv-product-packet { transform: none !important; opacity: 1 !important; }
+}
+
+
+/* MANNVASAM PRODUCT PACKET — VISIBILITY FIX */
+.mv-product-stage {
+  position: relative !important;
+  min-height: 570px;
+  display: grid !important;
+  place-items: center !important;
+  overflow: visible !important;
+}
+
+.mv-product-packet {
+  display: flex !important;
+  flex-direction: column !important;
+  visibility: visible !important;
+  position: relative !important;
+  z-index: 5 !important;
+  opacity: 1 !important;
+  transform: perspective(1200px) rotateY(-9deg) !important;
+  animation: mvPacketVisibleFloat 4.5s ease-in-out infinite !important;
+}
+
+.mv-product-packet > * {
+  flex-shrink: 0;
+}
+
+.mv-product-experience .mv-product-inner,
+.mv-product-experience .mv-product-stage {
+  visibility: visible !important;
+}
+
+.mv-product-experience .mv-product-copy {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes mvPacketVisibleFloat {
+  0%, 100% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+  50% {
+    translate: 0 -14px;
+    rotate: 1deg;
+  }
+}
+
+@media (max-width: 760px) {
+  .mv-product-stage {
+    min-height: 460px !important;
+  }
+  .mv-product-packet {
+    width: 230px !important;
+    height: 355px !important;
+  }
+}
+
+
+/* MANNVASAM REAL RICE PHOTO */
+.mv-product-packet {
+  display: block !important;
+  position: relative !important;
+  width: clamp(250px, 27vw, 370px) !important;
+  height: auto !important;
+  aspect-ratio: 975 / 1480 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.mv-product-packet > *:not(.mv-product-photo) {
+  display: none !important;
+}
+
+.mv-product-photo {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 28px 28px rgba(0,0,0,.35));
+  backface-visibility: hidden;
+}
+
+@media (max-width: 760px) {
+  .mv-product-packet {
+    width: 250px !important;
+  }
+}
+
+
+/* FINAL MANNVASAM PRODUCT PHOTO OVERRIDE */
+.mv-product-experience .mv-product-packet {
+  position: relative !important;
+  display: block !important;
+  width: clamp(250px, 27vw, 370px) !important;
+  height: auto !important;
+  aspect-ratio: 975 / 1480 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transform-style: preserve-3d !important;
+}
+
+.mv-product-experience .mv-product-packet::before,
+.mv-product-experience .mv-product-packet::after {
+  display: none !important;
+  content: none !important;
+}
+
+.mv-product-experience .mv-product-packet > *:not(.mv-product-photo) {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.mv-product-experience .mv-product-photo {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  z-index: 20 !important;
+  filter: drop-shadow(0 28px 30px rgba(0,0,0,.38));
+  transform: translateZ(35px);
+}
+
+@media (max-width: 760px) {
+  .mv-product-experience .mv-product-packet {
+    width: 250px !important;
+  }
+}
+
+
+/* MANNVASAM CINEMATIC SCROLL-DRIVEN 3D PRODUCT */
+.mv-product-experience {
+  perspective: 1400px;
+  perspective-origin: 50% 48%;
+  overflow: hidden;
+}
+
+.mv-product-stage {
+  perspective: 1400px;
+  perspective-origin: 50% 45%;
+  transform-style: preserve-3d;
+  overflow: visible !important;
+}
+
+.mv-product-packet {
+  transform-style: preserve-3d !important;
+  transform-origin: 50% 55%;
+  will-change: transform;
+  transition: none !important;
+  animation: mvPhotoFloat 5s ease-in-out infinite !important;
+}
+
+.mv-product-photo {
+  transform: translateZ(1px);
+  backface-visibility: hidden;
+  will-change: filter, transform;
+}
+
+@keyframes mvPhotoFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -13px; }
+}
+
+.mv-product-glow {
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+@media (max-width: 760px) {
+  .mv-product-experience {
+    perspective: 1000px;
+  }
+  .mv-product-stage {
+    perspective: 1000px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mv-product-packet {
+    animation: none !important;
+  }
+}
+
+
+/* MANNVASAM PRODUCT PHOTO — SAFARI VISIBILITY FIX */
+.mv-product-experience .mv-product-stage {
+  position: relative !important;
+  perspective: 1400px;
+  min-height: 520px;
+}
+
+.mv-product-experience .mv-product-packet {
+  position: relative !important;
+  display: block !important;
+  width: clamp(250px, 27vw, 370px) !important;
+  height: auto !important;
+  aspect-ratio: 975 / 1480 !important;
+  overflow: visible !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: transparent !important;
+}
+
+.mv-product-experience .mv-product-photo {
+  position: absolute !important;
+  display: block !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 50 !important;
+  backface-visibility: visible !important;
+  transform: translateZ(0) !important;
+}
+
+@media (max-width: 760px) {
+  .mv-product-experience .mv-product-stage {
+    min-height: 420px;
+  }
+}
+
+
+/* =========================================
+   MANNVASAM — CINEMATIC 3D RICE POUCH
+   ========================================= */
+
+.mv-product-experience .mv-product-stage {
+  perspective: 1600px !important;
+  perspective-origin: 50% 45%;
+  transform-style: preserve-3d;
+}
+
+.mv-product-experience .mv-product-packet {
+  position: relative !important;
+  transform-style: preserve-3d !important;
+  transform-origin: 50% 50% !important;
+  isolation: isolate;
+  overflow: visible !important;
+  animation: mvPouchFloat 4.5s ease-in-out infinite;
+  filter: drop-shadow(0 30px 24px rgba(23, 31, 19, .28));
+}
+
+/* Back surface of the pouch */
+.mv-product-experience .mv-product-packet::after {
+  content: "";
+  display: block !important;
+  visibility: visible !important;
+  position: absolute;
+  inset: 1%;
+  z-index: -2;
+  border: 1px solid rgba(185, 145, 76, .65);
+  border-radius: 9px;
+  background:
+    linear-gradient(90deg, #9b7139, #e0c18a 18%, #87602f 70%, #604322);
+  transform: translateZ(-16px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.22);
+}
+
+/* Visible right-side gusset */
+.mv-product-experience .mv-product-packet::before {
+  content: "";
+  display: block !important;
+  visibility: visible !important;
+  position: absolute;
+  top: 2%;
+  left: calc(100% - 1px);
+  width: 24px;
+  height: 96%;
+  z-index: 2;
+  transform-origin: left center;
+  transform: rotateY(90deg);
+  border: 1px solid rgba(104, 72, 34, .6);
+  border-radius: 0 7px 7px 0;
+  background:
+    linear-gradient(90deg,
+      #604322 0%,
+      #c49a5b 22%,
+      #ead4a4 48%,
+      #8b6333 100%);
+  box-shadow: inset 3px 0 6px rgba(255,255,255,.3);
+}
+
+.mv-product-experience .mv-product-photo {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 3 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  transform: translateZ(2px) !important;
+  backface-visibility: visible !important;
+  filter: drop-shadow(8px 12px 12px rgba(0,0,0,.22));
+}
+
+@keyframes mvPouchFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mv-product-experience .mv-product-packet {
+    animation: none !important;
+  }
+}
+
+
+/* MANNVASAM SHOP — catalogue and shopping bag */
+.mv-shop { padding: 110px max(5vw, 22px); background: #f5f0e6; color: #203b2a; }
+.mv-shop-heading { text-align:center; max-width:720px; margin:0 auto 28px; }
+.mv-shop-heading h2 { font: clamp(38px,5vw,66px)/1.05 'Playfair Display',serif; margin:12px 0; }
+.mv-shop-heading h2 i { color:#a47b43; }
+.mv-shop-heading > p:last-child { color:#6d7168; }
+.mv-demo-note { text-align:center; color:#856b42; font-size:10px; letter-spacing:1.5px; margin:26px 0; }
+.mv-shop-tools { display:flex; justify-content:space-between; align-items:center; gap:20px; margin:35px 0 20px; flex-wrap:wrap; }
+.mv-categories { display:flex; gap:8px; flex-wrap:wrap; }
+.mv-filter { border:1px solid #c9c2b2; background:transparent; color:#294532; padding:11px 17px; border-radius:30px; cursor:pointer; font:inherit; font-size:12px; transition:.25s; }
+.mv-filter.active,.mv-filter:hover { background:#24432f; color:#fff; border-color:#24432f; }
+.mv-search { width:min(270px,100%); border:1px solid #c9c2b2; background:#fffdf8; padding:13px 17px; border-radius:30px; font:inherit; outline:none; }
+.mv-results { color:#77786e; font-size:12px; margin:18px 0; }
+.mv-product-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
+.mv-shop-card { background:#fffdf8; border:1px solid rgba(60,70,45,.1); }
+.mv-shop-image { height:260px; position:relative; overflow:hidden; background:#e9e3d6; }
+.mv-shop-image img { width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.2,.7,.2,1); }
+.mv-shop-card:hover .mv-shop-image img { transform:scale(1.08); }
+.mv-shop-image span { position:absolute; left:14px; bottom:14px; background:#f5f0e6; color:#34513b; padding:8px 11px; font-size:9px; letter-spacing:1.2px; }
+.mv-shop-card-body { padding:22px; }
+.mv-shop-category { font-size:10px; color:#a17b43; letter-spacing:1.7px; }
+.mv-shop-card h3 { font:24px 'Playfair Display',serif; margin:8px 0 18px; }
+.mv-pack-label { display:block; font-size:11px; color:#77786e; margin-bottom:7px; }
+.mv-pack-select { width:100%; padding:11px; border:1px solid #d8d1c3; background:#fff; color:#263d2d; font:inherit; }
+.mv-shop-buy { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:18px; }
+.mv-card-price { font-size:20px; }
+.mv-add-button { border:0; background:#24432f; color:white; padding:13px 15px; cursor:pointer; font-size:10px; letter-spacing:1px; }
+.mv-add-button:hover { background:#a17b43; }
+.mv-cart-float { position:fixed; z-index:1000; right:24px; bottom:24px; border:0; background:#24432f; color:#fff; padding:15px 19px; letter-spacing:1px; font-size:11px; cursor:pointer; box-shadow:0 8px 25px #172b1d40; }
+.mv-cart-count { display:inline-grid; place-items:center; margin-left:9px; width:23px; height:23px; border-radius:50%; background:#c4a16b; color:#1d3525; font-weight:bold; }
+.mv-cart-overlay { position:fixed; inset:0; z-index:1100; background:#1119; opacity:0; visibility:hidden; transition:.3s; }
+.mv-cart-overlay.open { opacity:1; visibility:visible; }
+.mv-cart-panel { position:absolute; right:0; top:0; height:100%; width:min(480px,100%); background:#f8f4eb; padding:30px; display:flex; flex-direction:column; transform:translateX(100%); transition:transform .35s; }
+.mv-cart-overlay.open .mv-cart-panel { transform:translateX(0); }
+.mv-cart-head { display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #ddd5c6; padding-bottom:20px; }
+.mv-cart-head h2 { font:28px 'Playfair Display',serif; margin:5px 0; }
+.mv-cart-close,.mv-remove { border:0; background:transparent; font-size:28px; cursor:pointer; color:#24432f; }
+.mv-cart-items { flex:1; overflow:auto; }
+.mv-cart-row { display:grid; grid-template-columns:1fr auto auto; align-items:center; gap:14px; padding:20px 0; border-bottom:1px solid #ddd5c6; }
+.mv-cart-row h3 { font:18px 'Playfair Display',serif; margin:0 0 5px; }
+.mv-cart-row p { font-size:12px; color:#777; margin:0 0 10px; }
+.mv-quantity { display:flex; align-items:center; gap:12px; font-size:13px; }
+.mv-quantity button { width:27px; height:27px; border:1px solid #c9c2b2; background:transparent; cursor:pointer; }
+.mv-cart-footer { border-top:1px solid #ddd5c6; padding-top:20px; }
+.mv-cart-total { display:flex; justify-content:space-between; font-size:18px; }
+.mv-cart-footer p { color:#777; font-size:11px; }
+.mv-checkout-preview { width:100%; border:0; padding:17px; background:#b8ad98; color:#fff; letter-spacing:1px; }
+.mv-empty-cart { text-align:center; padding:65px 10px; color:#777; }
+.mv-empty-cart span { font-size:34px; color:#a17b43; }
+.mv-empty-cart h3 { font:25px 'Playfair Display',serif; color:#24432f; }
+@media(max-width:850px) { .mv-product-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:560px) {
+  .mv-shop { padding:75px 18px; }
+  .mv-product-grid { grid-template-columns:1fr; gap:18px; }
+  .mv-shop-image { height:250px; }
+  .mv-shop-tools { align-items:stretch; }
+  .mv-search { width:100%; }
+  .mv-cart-float { right:14px; bottom:14px; }
+  .mv-cart-panel { padding:22px; }
+}
+
+
+/* MANNVASAM PRODUCT DETAIL EXPERIENCE */
+.mv-detail-trigger {
+  width:100%;
+  margin-top:14px;
+  padding:12px;
+  border:1px solid #b9a77f;
+  background:transparent;
+  color:#294532;
+  font-size:10px;
+  letter-spacing:1.3px;
+  cursor:pointer;
+  transition:background .25s,color .25s;
+}
+.mv-detail-trigger:hover { background:#24432f; color:white; }
+.mv-detail-overlay {
+  position:fixed;
+  inset:0;
+  z-index:1200;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:rgba(12,22,15,.78);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+}
+.mv-detail-overlay.open { opacity:1; visibility:visible; }
+.mv-detail-panel {
+  position:relative;
+  width:min(900px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:#f8f4eb;
+  transform:translateY(20px);
+  transition:transform .35s;
+}
+.mv-detail-overlay.open .mv-detail-panel { transform:translateY(0); }
+.mv-detail-close {
+  position:absolute;
+  top:12px;
+  right:16px;
+  z-index:2;
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:#f8f4eb;
+  color:#24432f;
+  font-size:28px;
+  cursor:pointer;
+}
+.mv-detail-content {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:470px;
+}
+.mv-detail-image {
+  position:relative;
+  min-height:470px;
+  background:#e9e3d6;
+}
+.mv-detail-image img { width:100%; height:100%; position:absolute; inset:0; object-fit:cover; }
+.mv-detail-image span {
+  position:absolute;
+  bottom:20px;
+  left:20px;
+  padding:9px 12px;
+  background:#f8f4eb;
+  color:#294532;
+  font-size:10px;
+  letter-spacing:1px;
+}
+.mv-detail-info { padding:65px 38px 35px; display:flex; flex-direction:column; align-items:flex-start; }
+.mv-detail-info h2 { font:clamp(30px,4vw,43px)/1.1 'Playfair Display',serif; color:#24432f; margin:12px 0; }
+.mv-detail-description { color:#686e62; line-height:1.8; font-size:14px; }
+.mv-detail-origin { margin:22px 0; color:#a17b43; font-size:10px; letter-spacing:1.5px; }
+.mv-detail-info label { font-size:12px; margin-bottom:8px; }
+.mv-detail-pack { width:100%; padding:13px; background:white; border:1px solid #d8d1c3; color:#24432f; font:inherit; }
+.mv-detail-price { font-size:26px; color:#24432f; margin:20px 0; }
+.mv-detail-add { width:100%; padding:16px; border:0; background:#24432f; color:white; cursor:pointer; letter-spacing:1px; }
+.mv-detail-add:hover { background:#a17b43; }
+.mv-detail-note { font-size:10px; line-height:1.6; color:#888; margin-top:16px; }
+body.mv-detail-open, body.mv-cart-open { overflow:hidden; }
+@media(max-width:650px) {
+  .mv-detail-overlay { padding:10px; }
+  .mv-detail-panel { max-height:94vh; }
+  .mv-detail-content { grid-template-columns:1fr; }
+  .mv-detail-image { min-height:280px; }
+  .mv-detail-info { padding:30px 24px; }
+}
+
+
+/* MANNVASAM CHECKOUT PREVIEW */
+.mv-checkout-overlay {
+  position:fixed;
+  inset:0;
+  z-index:1300;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  background:rgba(12,22,15,.82);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+}
+.mv-checkout-overlay.open { opacity:1; visibility:visible; }
+.mv-checkout-panel {
+  position:relative;
+  width:min(1000px,100%);
+  max-height:94vh;
+  overflow:auto;
+  padding:36px;
+  background:#f8f4eb;
+  color:#24432f;
+  transform:translateY(20px);
+  transition:transform .3s;
+}
+.mv-checkout-overlay.open .mv-checkout-panel { transform:translateY(0); }
+.mv-checkout-close {
+  position:absolute;
+  top:12px;
+  right:18px;
+  border:0;
+  background:transparent;
+  color:#24432f;
+  font-size:30px;
+  cursor:pointer;
+}
+.mv-checkout-heading { text-align:center; margin:0 auto 30px; }
+.mv-checkout-heading h2,.mv-checkout-confirmation h2 {
+  font:clamp(34px,5vw,52px) 'Playfair Display',serif;
+  margin:10px 0;
+}
+.mv-checkout-heading h2 i,.mv-checkout-confirmation h2 i { color:#a17b43; }
+.mv-checkout-heading > p:last-child { color:#73766d; font-size:13px; }
+.mv-checkout-layout { display:grid; grid-template-columns:1.35fr .85fr; gap:32px; }
+.mv-checkout-form h3,.mv-checkout-summary h3 { font:24px 'Playfair Display',serif; margin:0 0 20px; }
+.mv-checkout-form label { display:block; margin-bottom:15px; color:#586454; font-size:11px; }
+.mv-checkout-form input,.mv-checkout-form textarea {
+  display:block;
+  width:100%;
+  margin-top:7px;
+  padding:12px;
+  border:1px solid #d8d1c3;
+  border-radius:0;
+  background:#fffdf8;
+  color:#24432f;
+  font:14px inherit;
+  box-sizing:border-box;
+}
+.mv-checkout-form textarea { resize:vertical; }
+.mv-checkout-two { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.mv-checkout-review {
+  width:100%;
+  padding:16px;
+  border:0;
+  background:#24432f;
+  color:white;
+  letter-spacing:1px;
+  cursor:pointer;
+}
+.mv-checkout-review:disabled { opacity:.45; cursor:not-allowed; }
+.mv-checkout-privacy { color:#888; font-size:10px; line-height:1.6; }
+.mv-checkout-summary { padding:24px; background:#eee8db; align-self:start; }
+.mv-checkout-line { display:flex; justify-content:space-between; gap:12px; padding:14px 0; border-bottom:1px solid #d9d0bf; font-size:12px; }
+.mv-checkout-line small { display:block; margin-top:5px; color:#777; }
+.mv-checkout-total { display:flex; justify-content:space-between; padding-top:20px; font-size:17px; }
+.mv-checkout-summary > p { color:#777; font-size:10px; line-height:1.6; margin-top:18px; }
+.mv-checkout-empty { color:#777; font-size:12px; }
+.mv-checkout-confirmation { max-width:650px; margin:20px auto; }
+.mv-checkout-confirm-text { color:#777; line-height:1.7; }
+.mv-checkout-confirm-details { margin:24px 0; padding:20px; background:#eee8db; }
+.mv-checkout-confirm-details p { font-size:13px; line-height:1.5; overflow-wrap:anywhere; }
+.mv-checkout-back { padding:14px 20px; border:0; background:#24432f; color:white; cursor:pointer; }
+body.mv-checkout-open { overflow:hidden; }
+@media(max-width:700px) {
+  .mv-checkout-panel { padding:28px 18px; }
+  .mv-checkout-layout { grid-template-columns:1fr; }
+  .mv-checkout-two { grid-template-columns:1fr; gap:0; }
+}
+
+/* =========================================
+   MANNVASAM — CINEMATIC WEBSITE EXPERIENCE
+   ========================================= */
+
+.mv-cinema-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: min(820px, 92vh);
+  background: linear-gradient(
+    180deg,
+    #65c9ed 0%,
+    #b5e8e8 35%,
+    #f5dca3 65%,
+    #729b4e 100%
+  );
+}
+
+.mv-cinema-scenery {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translate3d(
+    var(--mv-pointer-x, 0px),
+    var(--mv-pointer-y, 0px),
+    0
+  );
+  transition: transform .35s ease-out;
+}
+
+.mv-cinema-sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #42b5e7 0%,
+    #a5e2ed 43%,
+    #f7dca7 78%,
+    #86ad54 100%
+  );
+  animation: mvSkyShift 18s ease-in-out infinite alternate;
+}
+
+.mv-cinema-sun {
+  position: absolute;
+  width: clamp(100px, 17vw, 210px);
+  aspect-ratio: 1;
+  top: 9%;
+  right: 13%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff9d5 0%, #ffdc80 55%, rgba(255,190,75,.05) 75%);
+  box-shadow: 0 0 65px 25px rgba(255,220,130,.38);
+  animation: mvSunPulse 5s ease-in-out infinite alternate;
+}
+
+.mv-cinema-cloud {
+  position: absolute;
+  width: 170px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.78);
+  filter: blur(2px);
+  animation: mvCloudTravel 35s linear infinite;
+}
+
+.mv-cinema-cloud::before,
+.mv-cinema-cloud::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.mv-cinema-cloud::before {
+  left: 30px;
+  width: 75px;
+  height: 75px;
+}
+
+.mv-cinema-cloud::after {
+  left: 85px;
+  width: 60px;
+  height: 60px;
+}
+
+.cloud-one { top: 18%; left: -220px; }
+.cloud-two { top: 34%; left: -350px; animation-duration: 48s; animation-delay: -15s; transform: scale(.7); }
+.cloud-three { top: 12%; left: -450px; animation-duration: 55s; animation-delay: -28s; transform: scale(.55); }
+
+.mv-cinema-mountain {
+  position: absolute;
+  bottom: 20%;
+  width: 115%;
+  left: -7%;
+  height: 43%;
+  border-radius: 50% 50% 0 0 / 40% 40% 0 0;
+}
+
+.mountain-back {
+  background: linear-gradient(145deg, #789c68, #386b49);
+  clip-path: polygon(0 75%, 18% 20%, 33% 62%, 54% 5%, 76% 65%, 90% 28%, 100% 72%, 100% 100%, 0 100%);
+  animation: mvMountainBack 13s ease-in-out infinite alternate;
+}
+
+.mountain-front {
+  bottom: 11%;
+  height: 35%;
+  background: linear-gradient(155deg, #4c8549, #174a32);
+  clip-path: polygon(0 65%, 20% 35%, 38% 70%, 59% 20%, 79% 67%, 100% 30%, 100% 100%, 0 100%);
+  animation: mvMountainFront 9s ease-in-out infinite alternate;
+}
+
+.mv-cinema-field {
+  position: absolute;
+  left: -10%;
+  width: 120%;
+  bottom: -5%;
+  height: 34%;
+  border-radius: 50% 50% 0 0;
+}
+
+.field-back {
+  background: repeating-linear-gradient(
+    175deg,
+    #789e42 0 9px,
+    #9ebc55 10px 16px,
+    #527b36 17px 23px
+  );
+  transform: rotate(-3deg);
+  animation: mvFieldWind 5s ease-in-out infinite alternate;
+}
+
+.field-front {
+  bottom: -17%;
+  height: 35%;
+  background: repeating-linear-gradient(
+    168deg,
+    #245d32 0 8px,
+    #4c873e 9px 15px,
+    #2d6b37 16px 22px
+  );
+  animation: mvFieldWind 7s ease-in-out infinite alternate-reverse;
+}
+
+.mv-cinema-particles {
+  position: absolute;
+  inset: 0;
+  opacity: .6;
+  background-image:
+    radial-gradient(circle, #fff5c9 1px, transparent 2px),
+    radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 2px);
+  background-size: 83px 110px, 137px 160px;
+  animation: mvParticleDrift 22s linear infinite;
+}
+
+/* Keep the hero text and controls above the scenery */
+.mv-cinema-hero > :not(.mv-cinema-scenery) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Cinematic scroll reveals */
+.mv-cinematic-reveal {
+  opacity: 0;
+  transform: translateY(45px) scale(.985);
+  filter: blur(5px);
+  transition:
+    opacity .9s ease,
+    transform .9s cubic-bezier(.2,.75,.2,1),
+    filter .9s ease;
+  transition-delay: var(--mv-reveal-delay, 0ms);
+}
+
+.mv-cinematic-reveal.mv-cinematic-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* Journey steps */
+.journey-step {
+  transition:
+    transform .55s cubic-bezier(.2,.8,.2,1),
+    box-shadow .55s ease;
+  transition-delay: var(--mv-step-delay, 0ms);
+}
+
+.journey-step:hover {
+  transform: translateY(-12px);
+}
+
+/* Floating product photography */
+.mv-floating-product {
+  animation: mvProductFloat 6s ease-in-out infinite;
+  animation-delay: var(--mv-float-delay, 0s);
+  transform-origin: center bottom;
+  will-change: transform;
+}
+
+.mv-product-experience .mv-product-packet {
+  transition: transform .65s cubic-bezier(.2,.8,.2,1);
+}
+
+.mv-product-experience:hover .mv-product-packet {
+  transform: translateY(-10px) rotateY(-5deg);
+}
+
+/* Story sections receive a cinematic light sweep */
+main section {
+  position: relative;
+}
+
+main section:nth-of-type(odd):not(.mv-cinema-hero) {
+  --mv-story-glow: rgba(190,151,78,.10);
+}
+
+main section:nth-of-type(odd):not(.mv-cinema-hero)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    transparent 35%,
+    var(--mv-story-glow) 50%,
+    transparent 65%
+  );
+  background-size: 220% 100%;
+  animation: mvStoryLight 13s linear infinite;
+}
+
+main section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animations */
+@keyframes mvSkyShift {
+  from { filter: saturate(1); }
+  to { filter: saturate(1.2) brightness(1.05); }
+}
+
+@keyframes mvSunPulse {
+  from { transform: scale(.94); filter: brightness(.98); }
+  to { transform: scale(1.08); filter: brightness(1.16); }
+}
+
+@keyframes mvCloudTravel {
+  from { translate: 0 0; }
+  to { translate: calc(100vw + 600px) 0; }
+}
+
+@keyframes mvMountainBack {
+  from { transform: translateX(-1.5%) scale(1); }
+  to { transform: translateX(1.5%) scale(1.035); }
+}
+
+@keyframes mvMountainFront {
+  from { transform: translateX(1%) scale(1); }
+  to { transform: translateX(-1%) scale(1.04); }
+}
+
+@keyframes mvFieldWind {
+  from { translate: -1% 0; }
+  to { translate: 1% -5px; }
+}
+
+@keyframes mvParticleDrift {
+  from { background-position: 0 0, 60px 30px; }
+  to { background-position: 0 -500px, 60px -700px; }
+}
+
+@keyframes mvProductFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -12px; }
+}
+
+@keyframes mvStoryLight {
+  from { background-position: 100% 0; }
+  to { background-position: -120% 0; }
+}
+
+/* Mobile */
+@media (max-width: 760px) {
+  .mv-cinema-hero {
+    min-height: 690px;
+  }
+
+  .mv-cinema-sun {
+    right: 8%;
+    top: 10%;
+  }
+
+  .mv-cinema-cloud {
+    transform: scale(.65);
+  }
+
+  .mv-cinematic-reveal {
+    transform: translateY(25px);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .mv-cinema-sky,
+  .mv-cinema-sun,
+  .mv-cinema-cloud,
+  .mv-cinema-mountain,
+  .mv-cinema-field,
+  .mv-cinema-particles,
+  .mv-floating-product,
+  main section::after {
+    animation: none !important;
+  }
+
+  .mv-cinematic-reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
+
+/* =====================================
+   ADVANCED MANNVASAM HERO PRODUCT STAGE
+   ===================================== */
+
+.mv-cinema-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.mv-hero-product {
+  --product-rotate-x: 0deg;
+  --product-rotate-y: 0deg;
+
+  position: absolute;
+  z-index: 5;
+  width: clamp(220px, 34vw, 440px);
+  height: min(570px, 76%);
+  right: clamp(3%, 8vw, 12%);
+  top: 50%;
+  transform:
+    translateY(-48%)
+    perspective(1100px)
+    rotateX(var(--product-rotate-x))
+    rotateY(var(--product-rotate-y));
+  display: grid;
+  place-items: center;
+  transform-style: preserve-3d;
+  animation: mvHeroProductEntrance 1.4s cubic-bezier(.16,1,.3,1) both;
+  transition: transform .25s ease-out;
+  pointer-events: auto;
+}
+
+.mv-hero-product-image {
+  position: relative;
+  z-index: 3;
+  display: block;
+  width: 100%;
+  height: 88%;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 35px 28px rgba(15, 38, 20, .32))
+    drop-shadow(0 0 18px rgba(255, 231, 170, .24));
+  animation: mvHeroProductFloat 5s ease-in-out 1.3s infinite;
+  transform: translateZ(45px);
+  transform-origin: center center;
+}
+
+.mv-hero-product-glow {
+  position: absolute;
+  z-index: 1;
+  width: 82%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 238, 176, .75),
+    rgba(230, 184, 94, .24) 45%,
+    transparent 72%
+  );
+  filter: blur(14px);
+  animation: mvProductGlow 4s ease-in-out infinite alternate;
+}
+
+.mv-hero-product-ring {
+  position: absolute;
+  z-index: 2;
+  width: 88%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 248, 216, .65);
+  border-radius: 50%;
+  transform: rotateX(65deg) translateZ(-25px);
+  box-shadow: 0 0 35px rgba(255, 224, 154, .22);
+  animation: mvProductRing 18s linear infinite;
+}
+
+.mv-hero-product-label {
+  position: absolute;
+  z-index: 4;
+  bottom: 1%;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  color: #fff8e6;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-shadow: 0 2px 10px rgba(0,0,0,.4);
+}
+
+.mv-hero-product-label span + span::before {
+  content: "•";
+  margin-right: 8px;
+  color: #e8c17b;
+}
+
+/* Cinematic entrance */
+@keyframes mvHeroProductEntrance {
+  from {
+    opacity: 0;
+    transform: translate(90px, -40%) scale(.72) rotateY(-22deg);
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, -48%) scale(1) rotateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Slow floating motion */
+@keyframes mvHeroProductFloat {
+  0%, 100% { transform: translate3d(0, 0, 45px) rotateZ(-2deg); }
+  50% { transform: translate3d(0, -18px, 65px) rotateZ(2deg); }
+}
+
+@keyframes mvProductGlow {
+  from { opacity: .55; transform: scale(.88); }
+  to { opacity: 1; transform: scale(1.12); }
+}
+
+@keyframes mvProductRing {
+  from { rotate: 0deg; }
+  to { rotate: 360deg; }
+}
+
+/* Keep the hero heading clear of the product */
+@media (min-width: 761px) {
+  .mv-cinema-hero > h1,
+  .mv-cinema-hero .hero-content,
+  .mv-cinema-hero .hero-copy {
+    max-width: 58%;
+  }
+}
+
+@media (max-width: 760px) {
+  .mv-hero-product {
+    width: min(68vw, 290px);
+    height: 42%;
+    right: 50%;
+    top: auto;
+    bottom: 3%;
+    transform: translateX(50%);
+  }
+
+  .mv-hero-product-image {
+    height: 85%;
+  }
+
+  .mv-hero-product-label {
+    font-size: 8px;
+    white-space: nowrap;
+  }
+
+  .mv-cinema-hero {
+    padding-bottom: 260px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mv-hero-product,
+  .mv-hero-product-image,
+  .mv-hero-product-glow,
+  .mv-hero-product-ring {
+    animation: none !important;
+  }
+}
+
+/* SHIVAN SAMBA — PRODUCT FLIGHT ANIMATION */
+
+.mv-cinema-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 760px;
+}
+
+.mv-hero-product {
+  --mv-tilt-x: 0deg;
+  --mv-tilt-y: 0deg;
+  position: absolute;
+  z-index: 8;
+  top: 50%;
+  right: 8%;
+  width: clamp(220px, 29vw, 365px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transform:
+    translate3d(180px, 150px, 0)
+    scale(.42)
+    rotate(-16deg);
+  filter: blur(9px);
+  transition:
+    opacity .8s ease,
+    transform 1.25s cubic-bezier(.16,1,.3,1),
+    filter 1s ease;
+}
+
+.mv-hero-product.mv-product-arrived {
+  opacity: 1;
+  transform:
+    translate3d(0, -50%, 0)
+    scale(1)
+    rotate(0);
+  filter: blur(0);
+}
+
+.mv-hero-product-image {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 570px;
+  object-fit: contain;
+  filter: drop-shadow(18px 28px 22px rgba(15, 35, 20, .34));
+  transform:
+    perspective(1000px)
+    rotateX(var(--mv-tilt-x))
+    rotateY(var(--mv-tilt-y));
+  transition: transform .2s ease-out;
+  animation: mvShivanFloat 5s ease-in-out 1.3s infinite;
+}
+
+.mv-hero-product-aura {
+  position: absolute;
+  top: 15%;
+  width: 95%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 229, 157, .6),
+    rgba(255, 229, 157, .13) 48%,
+    transparent 72%
+  );
+  filter: blur(22px);
+  animation: mvShivanAura 4s ease-in-out infinite alternate;
+}
+
+.mv-hero-product-shadow {
+  position: absolute;
+  bottom: 12%;
+  width: 68%;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(20, 37, 20, .32);
+  filter: blur(16px);
+  animation: mvShivanShadow 5s ease-in-out infinite;
+}
+
+.mv-hero-product-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+  color: #fff7df;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0,0,0,.45);
+  letter-spacing: .16em;
+  font-size: 10px;
+}
+
+.mv-hero-product-caption strong {
+  font-family: Georgia, serif;
+  font-size: 21px;
+  letter-spacing: .08em;
+}
+
+@keyframes mvShivanFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -13px; }
+}
+
+@keyframes mvShivanAura {
+  from { opacity: .55; scale: .9; }
+  to { opacity: 1; scale: 1.1; }
+}
+
+@keyframes mvShivanShadow {
+  0%, 100% { scale: 1; opacity: .75; }
+  50% { scale: .82; opacity: .4; }
+}
+
+@media (min-width: 761px) {
+  .mv-cinema-hero > h1,
+  .mv-cinema-hero .hero-content,
+  .mv-cinema-hero .hero-copy {
+    max-width: 56%;
+  }
+}
+
+@media (max-width: 760px) {
+  .mv-cinema-hero {
+    min-height: 850px;
+  }
+
+  .mv-hero-product {
+    top: auto;
+    right: 50%;
+    bottom: 3%;
+    width: min(58vw, 265px);
+    transform: translate(50%, 150px) scale(.5) rotate(-12deg);
+  }
+
+  .mv-hero-product.mv-product-arrived {
+    transform: translate(50%, 0) scale(1) rotate(0);
+  }
+
+  .mv-hero-product-image {
+    max-height: 360px;
+  }
+
+  .mv-hero-product-caption strong {
+    font-size: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mv-hero-product,
+  .mv-hero-product-image,
+  .mv-hero-product-aura,
+  .mv-hero-product-shadow {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* SHIVAN SAMBA HERO — FINAL IMAGE POSITION FIX */
+.mv-hero-product {
+  width: clamp(230px, 28vw, 350px) !important;
+  right: 8% !important;
+  top: 48% !important;
+  height: auto !important;
+}
+
+.mv-hero-product-image {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 530px !important;
+  object-fit: contain !important;
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+}
+
+.mv-hero-product-caption {
+  margin-top: 10px !important;
+  position: relative;
+  z-index: 4;
+}
+
+@media (max-width: 760px) {
+  .mv-hero-product {
+    width: min(58vw, 250px) !important;
+    right: 50% !important;
+    top: auto !important;
+    bottom: 3% !important;
+  }
+}
+
+/* PRODUCT TRAVELS FROM HERO INTO THE COLLECTION */
+.mv-product-traveller {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  pointer-events: none;
+  opacity: 0;
+  filter: drop-shadow(12px 18px 15px rgba(15,35,20,.28));
+  transform-origin: center;
+  will-change: left, top, width, height, transform;
+}
+
+/* Collection cards enter with depth */
+.mv-collection-card {
+  opacity: 0;
+  transform: translateY(45px) scale(.96);
+  filter: blur(4px);
+  transition:
+    opacity .8s ease,
+    transform .9s cubic-bezier(.2,.8,.2,1),
+    filter .8s ease;
+  transition-delay: var(--mv-card-delay, 0ms);
+}
+
+.mv-collection-card.mv-card-arrived {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.mv-collection-card:hover {
+  transform: translateY(-9px) scale(1.015);
+}
+
+.mv-collection-card img {
+  transition: transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.mv-collection-card:hover img {
+  transform: scale(1.045);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mv-product-traveller {
+    display: none !important;
+  }
+
+  .mv-collection-card {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
+
+/* ==========================================
+   MANNVASAM — PREMIUM CINEMATIC PRODUCT MOTION
+   ========================================== */
+
+.mv-cinema-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Product starts outside the scene */
+.mv-hero-product {
+  --mv-tilt-x: 0deg;
+  --mv-tilt-y: 0deg;
+
+  position: absolute !important;
+  z-index: 8 !important;
+  top: 50% !important;
+  right: 7% !important;
+  width: clamp(245px, 28vw, 365px) !important;
+  height: auto !important;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transform:
+    translate3d(145%, 18%, 0)
+    perspective(1200px)
+    rotateY(-34deg)
+    rotateZ(8deg)
+    scale(.68);
+  filter: blur(12px);
+
+  transition:
+    transform 1.45s cubic-bezier(.16, 1, .3, 1),
+    opacity .85s ease,
+    filter 1.1s ease;
+  will-change: transform, opacity;
+}
+
+/* Product arrives in its hero position */
+.mv-hero-product.mv-product-arrived {
+  opacity: 1;
+  transform:
+    translate3d(0, -50%, 0)
+    perspective(1200px)
+    rotateX(var(--mv-tilt-x))
+    rotateY(var(--mv-tilt-y))
+    rotateZ(0)
+    scale(1);
+  filter: blur(0);
+}
+
+/* Actual packaging */
+.mv-hero-product-image {
+  position: relative;
+  z-index: 3;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 540px !important;
+  object-fit: contain !important;
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+
+  filter:
+    drop-shadow(16px 24px 18px rgba(15, 35, 20, .26))
+    drop-shadow(0 0 12px rgba(255, 232, 180, .12));
+
+  animation: mvProPouchFloat 5.5s ease-in-out 1.5s infinite;
+  transform-origin: center bottom;
+}
+
+/* Soft golden halo */
+.mv-hero-product-aura {
+  position: absolute;
+  z-index: 1;
+  top: 13%;
+  left: 5%;
+  width: 90%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 235, 180, .62) 0%,
+    rgba(255, 214, 125, .2) 42%,
+    transparent 72%
+  );
+  filter: blur(24px);
+  opacity: 0;
+  transition: opacity 1.2s ease .5s;
+  animation: mvProAura 5s ease-in-out infinite alternate;
+}
+
+.mv-product-arrived .mv-hero-product-aura {
+  opacity: 1;
+}
+
+/* Ground shadow follows the floating pouch */
+.mv-hero-product-shadow {
+  position: absolute;
+  z-index: 2;
+  bottom: 14%;
+  width: 65%;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(16, 37, 20, .42);
+  filter: blur(17px);
+  opacity: 0;
+  transition: opacity .8s ease .5s;
+  animation: mvProShadow 5.5s ease-in-out infinite;
+}
+
+.mv-product-arrived .mv-hero-product-shadow {
+  opacity: .8;
+}
+
+/* Rotating fine golden orbit */
+.mv-hero-product-orbit {
+  position: absolute;
+  z-index: 2;
+  width: 92%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 238, 188, .38);
+  border-radius: 50%;
+  transform: rotateX(68deg);
+  opacity: 0;
+  transition: opacity 1s ease .7s;
+  animation: mvProOrbit 20s linear infinite;
+}
+
+.mv-product-arrived .mv-hero-product-orbit {
+  opacity: 1;
+}
+
+/* Moving glossy reflection over the pack */
+.mv-hero-product::after {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  top: 7%;
+  left: -65%;
+  width: 42%;
+  height: 76%;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent,
+    rgba(255, 255, 255, .32),
+    rgba(255, 236, 187, .12),
+    transparent
+  );
+  transform: skewX(-18deg);
+  opacity: 0;
+}
+
+.mv-product-arrived.mv-hero-product::after {
+  animation: mvProSheen 2.1s ease .9s 1 forwards;
+}
+
+/* Premium product title */
+.mv-hero-product-caption {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-top: 12px;
+  color: #fff7df;
+  text-align: center;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .5);
+  letter-spacing: .18em;
+  font-size: 9px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 1s cubic-bezier(.2,.7,.2,1) .65s, transform 1s cubic-bezier(.2,.7,.2,1) .65s;
+}
+
+.mv-product-arrived .mv-hero-product-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mv-hero-product-caption strong {
+  font-family: Georgia, serif;
+  font-size: clamp(18px, 2vw, 25px);
+  letter-spacing: .08em;
+  color: #fff0c9;
+}
+
+/* Choreography */
+@keyframes mvProPouchFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -13px; }
+}
+
+@keyframes mvProAura {
+  from { scale: .91; opacity: .55; }
+  to { scale: 1.09; opacity: 1; }
+}
+
+@keyframes mvProShadow {
+  0%, 100% { scale: 1; opacity: .72; }
+  50% { scale: .84; opacity: .38; }
+}
+
+@keyframes mvProOrbit {
+  from { rotate: 0deg; }
+  to { rotate: 360deg; }
+}
+
+@keyframes mvProSheen {
+  0% { left: -65%; opacity: 0; }
+  18% { opacity: .55; }
+  65% { opacity: .38; }
+  100% { left: 130%; opacity: 0; }
+}
+
+/* Mobile composition */
+@media (max-width: 760px) {
+  .mv-cinema-hero {
+    min-height: 850px;
+  }
+
+  .mv-hero-product {
+    top: auto !important;
+    right: 50% !important;
+    bottom: 3% !important;
+    width: min(56vw, 255px) !important;
+    transform:
+      translate3d(50%, 130%, 0)
+      rotate(-12deg)
+      scale(.65);
+  }
+
+  .mv-hero-product.mv-product-arrived {
+    transform:
+      translate3d(50%, 0, 0)
+      rotate(0)
+      scale(1);
+  }
+
+  .mv-hero-product-image {
+    max-height: 360px !important;
+  }
+
+  .mv-hero-product-caption strong {
+    font-size: 17px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .mv-hero-product,
+  .mv-hero-product-image,
+  .mv-hero-product-aura,
+  .mv-hero-product-shadow,
+  .mv-hero-product-orbit {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .mv-hero-product {
+    opacity: 1;
+    transform: translateY(-50%);
+    filter: none;
+  }
+
+  .mv-hero-product-caption {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* MANNVASAM — PRECISION FITTED PRODUCT TRANSITION */
+.mv-product-traveller {
+  position: fixed !important;
+  z-index: 10000 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  pointer-events: none !important;
+  opacity: 0;
+  transform-origin: center center;
+  will-change: left, top, width, height, transform, opacity;
+  transition: none !important;
+  filter: drop-shadow(0 12px 13px rgba(20, 34, 18, .2));
+}
+
+.mv-product-traveller img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+@media (max-width: 760px) {
+  .mv-product-traveller {
+    filter: drop-shadow(0 7px 9px rgba(20, 34, 18, .18));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mv-product-traveller {
+    display: none !important;
+  }
+}
+
+
+/* MANNVASAM EXISTING HERO — MOTION POLISH V1 */
+@media (prefers-reduced-motion: no-preference) {
+  .mv-hero-product-image {
+    backface-visibility: hidden;
+    transform-origin: 50% 70%;
+    will-change: transform;
+  }
+
+  .mv-hero-product-aura,
+  .mv-hero-product-shadow,
+  .mv-hero-product-orbit {
+    will-change: transform, opacity;
+  }
+
+  .mv-hero-product-caption {
+    width: min(100%, 340px);
+    max-width: calc(100vw - 32px);
+    margin-inline: auto;
+    padding-inline: 8px;
+    line-height: 1.5;
+    text-wrap: balance;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, .72);
+  }
+
+  .mv-hero-product-caption strong {
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+}
+
+@media (max-width: 760px) {
+  .mv-hero-product-caption {
+    font-size: 8px;
+    letter-spacing: .12em;
+  }
+}
+
+
+
+/* MANNVASAM CINEMATIC HERITAGE REDESIGN V1 */
+
+.hero.mv-cinematic-hero {
+  isolation: isolate;
+  position: relative;
+  min-height: 780px;
+  height: min(920px, 100svh);
+  overflow: hidden;
+  display: block;
+  background: #142d20;
+  color: #fff9e9;
+}
+
+.mv-cinematic-hero .hero-image {
+  position: absolute;
+  inset: 0;
+  opacity: .22;
+  background-position: center;
+  background-size: cover;
+  filter: saturate(.7);
+  transform: scale(1.08);
+  animation: mvHeroBackground 24s ease-in-out infinite alternate;
+}
+
+.mv-cinematic-hero .hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(10,30,20,.96) 0%, rgba(13,39,26,.83) 43%, rgba(13,39,26,.2) 100%),
+    linear-gradient(0deg, rgba(8,25,17,.7), transparent 55%);
+}
+
+.mv-cinematic-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 76% 38%, rgba(226,174,94,.19), transparent 30%),
+    linear-gradient(180deg, #263f32 0%, #496047 43%, #bd9660 72%, #29472d 100%);
+}
+
+.mv-cinema-sun {
+  position: absolute;
+  width: 210px;
+  height: 210px;
+  right: 22%;
+  top: 20%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff2c9 0%, #eac17d 42%, rgba(225,170,91,.08) 72%);
+  box-shadow: 0 0 100px 45px rgba(233,180,103,.16);
+  animation: mvSunPulse 7s ease-in-out infinite alternate;
+}
+
+.mv-cinema-horizon {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: 13%;
+  height: 38%;
+  background: linear-gradient(180deg, rgba(180,145,89,.1), #36563a 60%, #1a3826);
+  clip-path: polygon(0 50%, 15% 28%, 29% 48%, 45% 18%, 62% 46%, 79% 24%, 100% 50%, 100% 100%, 0 100%);
+}
+
+.mv-cinema-field {
+  position: absolute;
+  left: -12%;
+  right: -12%;
+  bottom: -9%;
+  height: 42%;
+  border-radius: 50% 50% 0 0;
+}
+
+.mv-field-back {
+  background: repeating-linear-gradient(172deg, transparent 0 18px, rgba(219,185,111,.14) 19px 21px),
+    linear-gradient(180deg, #587044, #233e29);
+  transform: rotate(-4deg);
+  animation: mvFieldDrift 18s ease-in-out infinite alternate;
+}
+
+.mv-field-front {
+  height: 25%;
+  bottom: -13%;
+  background: repeating-linear-gradient(175deg, transparent 0 13px, rgba(221,190,121,.2) 14px 16px),
+    linear-gradient(180deg, #344e2d, #172f20);
+  transform: rotate(3deg);
+}
+
+.mv-cinema-mist {
+  position: absolute;
+  inset: 48% -10% 20%;
+  background: linear-gradient(180deg, transparent, rgba(242,220,177,.12), transparent);
+  filter: blur(22px);
+  animation: mvMistDrift 12s ease-in-out infinite alternate;
+}
+
+.mv-cinematic-brand {
+  position: absolute;
+  z-index: 4;
+  top: 38px;
+  left: 7%;
+  width: 112px;
+  animation: mvBrandReveal 1.4s both;
+}
+
+.mv-cinematic-brand img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 15px rgba(0,0,0,.25));
+}
+
+.mv-cinematic-hero .hero-content {
+  position: absolute;
+  z-index: 4;
+  left: 9%;
+  top: 50%;
+  width: min(530px, 47%);
+  transform: translateY(-43%);
+  color: #fff9e9;
+  animation: mvCopyReveal 1.3s .25s both;
+}
+
+.mv-cinematic-hero .eyebrow {
+  color: #e5c58c;
+  letter-spacing: .22em;
+  font-size: 10px;
+}
+
+.mv-cinematic-hero h1 {
+  color: #fff9e9;
+  font-size: clamp(48px, 6.4vw, 88px);
+  line-height: .99;
+  letter-spacing: -.055em;
+  margin: 24px 0;
+}
+
+.mv-cinematic-hero h1 i {
+  color: #dfb879;
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+.mv-cinematic-hero .hero-desc {
+  color: rgba(255,249,233,.78);
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+.mv-cinematic-hero .gold-button {
+  margin-top: 24px;
+  background: #d6ae70;
+  color: #172d20;
+  border: 1px solid #e6c68f;
+  letter-spacing: .1em;
+}
+
+.mv-cinematic-product {
+  position: absolute;
+  z-index: 3;
+  width: min(34vw, 410px);
+  height: 76%;
+  right: 10%;
+  top: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: mvProductEntrance 1.8s .3s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.mv-product-glow {
+  position: absolute;
+  width: 85%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(226,180,105,.2);
+  filter: blur(65px);
+  animation: mvProductGlow 5s ease-in-out infinite alternate;
+}
+
+.mv-product-orbit {
+  position: absolute;
+  width: 94%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(234,201,146,.24);
+  border-radius: 50%;
+  transform: rotateX(68deg);
+}
+
+.mv-real-rice-product {
+  position: relative;
+  z-index: 2;
+  display: block;
+  max-height: 90%;
+  max-width: 90%;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 32px 28px rgba(0,0,0,.38));
+  animation: mvProductFloat 6s ease-in-out infinite;
+}
+
+.mv-product-label {
+  position: absolute;
+  bottom: 1%;
+  color: #f1d4a1;
+  font-size: 9px;
+  letter-spacing: .24em;
+  white-space: nowrap;
+}
+
+.mv-cinematic-hero .hero-bottom {
+  position: absolute;
+  z-index: 5;
+  left: 7%;
+  right: 7%;
+  bottom: 32px;
+  color: rgba(255,249,233,.72);
+  font-size: 9px;
+  letter-spacing: .2em;
+}
+
+.mv-cinematic-hero .vertical-note {
+  z-index: 5;
+  color: #e5c58e;
+}
+
+.mv-scroll-indicator {
+  position: absolute;
+  z-index: 5;
+  right: 7%;
+  bottom: 95px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #e5c58e;
+  font-size: 9px;
+  letter-spacing: .18em;
+}
+
+.mv-scroll-line {
+  display: block;
+  height: 1px;
+  width: 42px;
+  background: #e5c58e;
+  transform-origin: left;
+  animation: mvScrollLine 2s ease-in-out infinite;
+}
+
+@keyframes mvHeroBackground {
+  to { transform: scale(1.16) translateY(-1%); }
+}
+@keyframes mvSunPulse {
+  to { transform: scale(1.08); opacity: .8; }
+}
+@keyframes mvFieldDrift {
+  to { transform: rotate(-2deg) translateX(2%); }
+}
+@keyframes mvMistDrift {
+  to { transform: translateX(5%) scaleY(1.2); opacity: .55; }
+}
+@keyframes mvBrandReveal {
+  from { opacity: 0; transform: translateY(-18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes mvCopyReveal {
+  from { opacity: 0; transform: translateY(calc(-43% + 35px)); filter: blur(8px); }
+  to { opacity: 1; transform: translateY(-43%); filter: blur(0); }
+}
+@keyframes mvProductEntrance {
+  from { opacity: 0; transform: translateY(70px) scale(.86); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes mvProductFloat {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-16px) rotate(1deg); }
+}
+@keyframes mvProductGlow {
+  to { transform: scale(1.2); opacity: .65; }
+}
+@keyframes mvScrollLine {
+  0%, 100% { transform: scaleX(.45); }
+  50% { transform: scaleX(1); }
+}
+
+@media (max-width: 800px) {
+  .hero.mv-cinematic-hero {
+    min-height: 850px;
+    height: 100svh;
+    max-height: 1050px;
+  }
+
+  .mv-cinematic-brand {
+    top: 22px;
+    left: 6%;
+    width: 82px;
+  }
+
+  .mv-cinematic-hero .hero-overlay {
+    background: linear-gradient(180deg, rgba(10,30,20,.62), rgba(10,30,20,.9) 70%, #142d20);
+  }
+
+  .mv-cinematic-hero .hero-content {
+    left: 7%;
+    top: auto;
+    bottom: 115px;
+    width: 86%;
+    transform: none;
+  }
+
+  .mv-cinematic-hero h1 {
+    font-size: clamp(43px, 11vw, 66px);
+    margin: 14px 0;
+  }
+
+  .mv-cinematic-hero .hero-desc {
+    font-size: 12px;
+  }
+
+  .mv-cinematic-product {
+    width: 55vw;
+    height: 43%;
+    top: 9%;
+    right: 4%;
+  }
+
+  .mv-real-rice-product {
+    max-height: 88%;
+  }
+
+  .mv-product-label {
+    font-size: 7px;
+  }
+
+  .mv-cinematic-hero .hero-bottom {
+    bottom: 22px;
+    font-size: 8px;
+  }
+
+  .mv-scroll-indicator {
+    display: none;
+  }
+
+  .mv-cinema-sun {
+    width: 145px;
+    height: 145px;
+    right: 15%;
+    top: 15%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mv-cinematic-hero *,
+  .mv-cinematic-hero *::before,
+  .mv-cinematic-hero *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Remove Seeraga Samba packet from cinematic hero */
+.mv-cinematic-product {
+  display: none !important;
+}
+
+
+/* MANNVASAM CINEMATIC SCROLL REVEALS V3 */
+
+.mv-scroll-scene {
+  opacity: 0;
+  transform: translateY(48px);
+  transition:
+    opacity 1.1s cubic-bezier(.2,.7,.2,1),
+    transform 1.1s cubic-bezier(.2,.7,.2,1);
+  will-change: opacity, transform;
+}
+
+.mv-scroll-scene.mv-scene-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mv-scroll-scene > * {
+  transition:
+    opacity .9s ease,
+    transform .9s cubic-bezier(.2,.7,.2,1);
+}
+
+.mv-scroll-scene > *:nth-child(2) {
+  transition-delay: .12s;
+}
+
+.mv-scroll-scene > *:nth-child(3) {
+  transition-delay: .24s;
+}
+
+.mv-scroll-scene > *:nth-child(4) {
+  transition-delay: .36s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mv-scroll-scene,
+  .mv-scroll-scene > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* MANNVASAM HERO IMAGE FIX V4 */
+
+/* Stop hero image zoom and parallax movement */
+.mv-cinematic-hero .hero-image {
+  animation: none !important;
+  transform: none !important;
+  translate: none !important;
+  transition: none !important;
+  will-change: auto !important;
+}
+
+/* Keep the entire image visible */
+.mv-cinematic-hero .hero-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Prevent clipping */
+.mv-cinematic-hero .hero-image {
+  overflow: visible !important;
+}
+
+
+/* MANNVASAM PRODUCT IMAGE RESPONSIVE FIX V5 */
+
+/* Keep the complete product image stable */
+.mv-real-rice-product {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: min(90%, 390px) !important;
+  max-height: 72vh !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  animation: none !important;
+  transform: none !important;
+  translate: none !important;
+  transition: none !important;
+}
+
+/* Laptop and medium screens */
+@media (min-width: 801px) and (max-width: 1200px) {
+  .mv-real-rice-product {
+    max-width: 34vw !important;
+    max-height: 68vh !important;
+  }
+}
+
+/* Tablets and mobile */
+@media (max-width: 800px) {
+  .mv-real-rice-product {
+    max-width: 58vw !important;
+    max-height: 48vh !important;
+    object-fit: contain !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+  .mv-real-rice-product {
+    max-width: 65vw !important;
+    max-height: 42vh !important;
+  }
+}
+
+
+/* MANNVASAM PREMIUM COLLECTION CARDS V1 */
+
+.product {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: #f8f4e9;
+  border: 1px solid rgba(184,138,69,.24);
+  border-radius: 5px;
+  box-shadow: 0 12px 35px rgba(29,48,32,.08);
+  transition:
+    transform .65s cubic-bezier(.2,.7,.2,1),
+    box-shadow .65s ease,
+    border-color .5s ease;
+}
+
+.product:hover {
+  transform: translateY(-10px);
+  border-color: #b88a45;
+  box-shadow: 0 25px 55px rgba(29,48,32,.17);
+}
+
+.product-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: #263d2d;
+}
+
+.product-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 1.2s cubic-bezier(.2,.7,.2,1);
+}
+
+.product:hover .product-image img {
+  transform: scale(1.09);
+}
+
+.product-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(19,35,24,.68),
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
+.product-image span {
+  position: absolute;
+  z-index: 2;
+  left: 22px;
+  bottom: 22px;
+  color: #f3d7a2;
+  font-size: 9px;
+  letter-spacing: .22em;
+}
+
+.product > p {
+  margin: 24px 24px 9px;
+  color: #a77c3c;
+  font-size: 10px;
+  letter-spacing: .2em;
+  font-weight: 700;
+}
+
+.product > h3 {
+  margin: 0 24px 20px;
+  color: #263d2d;
+  font-family: Georgia, serif;
+  font-size: clamp(21px, 2vw, 29px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.product > a {
+  display: inline-block;
+  margin: 0 24px 25px;
+  padding-bottom: 7px;
+  color: #315039;
+  border-bottom: 1px solid #b88a45;
+  font-size: 9px;
+  letter-spacing: .15em;
+  text-decoration: none;
+  transition: color .3s ease;
+}
+
+.product > a:hover {
+  color: #b88a45;
+}
+
+@media (max-width: 800px) {
+  .product-image {
+    aspect-ratio: 4 / 4.5;
+  }
+
+  .product > p {
+    margin: 18px 18px 8px;
+  }
+
+  .product > h3 {
+    margin: 0 18px 16px;
+  }
+
+  .product > a {
+    margin: 0 18px 20px;
+  }
+
+  .product:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product,
+  .product-image img {
+    transition: none !important;
+  }
+
+  .product:hover .product-image img {
+    transform: none !important;
+  }
+}
+
+
+/* MANNVASAM SHIVA SAMBA ONLY - COLLECTION STATUS */
+
+.mv-coming-soon-card {
+  position: relative;
+  cursor: default;
+}
+
+.mv-coming-soon-card .product-image img {
+  filter: grayscale(.8) brightness(.65);
+  transform: none !important;
+}
+
+.mv-coming-soon-card:hover {
+  transform: none !important;
+}
+
+.mv-coming-soon-card .product-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: rgba(25, 45, 31, .28);
+  pointer-events: none;
+}
+
+.mv-coming-soon-badge {
+  position: absolute;
+  z-index: 4;
+  top: 18px;
+  right: 18px;
+  bottom: auto !important;
+  left: auto !important;
+  padding: 10px 14px;
+  color: #f5e6c5 !important;
+  background: #263d2d;
+  border: 1px solid #b88a45;
+  font-size: 9px !important;
+  letter-spacing: .16em !important;
+}
+
+.mv-coming-soon-link {
+  display: inline-block;
+  margin: 0 24px 25px;
+  padding-bottom: 7px;
+  color: #a77c3c;
+  border-bottom: 1px solid #b88a45;
+  font-size: 9px;
+  letter-spacing: .15em;
+}
+
+.mv-coming-soon-card a {
+  pointer-events: none;
+}
+
+
+
+/* MANNVASAM SHIVA SAMBA COLLECTION AVAILABILITY */
+.mv-coming-soon-card {
+  position: relative;
+  opacity: .78;
+  filter: saturate(.55);
+}
+
+.mv-coming-soon-card:hover {
+  transform: none !important;
+}
+
+.mv-coming-soon-card .product-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.mv-coming-soon-card .product-image img {
+  filter: grayscale(25%);
+}
+
+.mv-coming-soon-badge {
+  position: absolute;
+  z-index: 3;
+  top: 16px;
+  left: 16px;
+  padding: 9px 14px;
+  background: #263d2d;
+  color: #fff8e9;
+  border: 1px solid #c29a55;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+}
+
+.mv-coming-soon-link {
+  display: inline-block;
+  color: #8c6b35;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 10px 0;
+  border-bottom: 1px solid #c29a55;
+  cursor: default;
+}
+
+
+/* MANNVASAM REAL SHIVA SAMBA PRODUCT DISPLAY V1 */
+.mv-product-packet.mv-real-product-display {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 420px) !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.mv-real-product-display::before,
+.mv-real-product-display::after {
+  content: none !important;
+  display: none !important;
+}
+
+.mv-real-product-display .mv-product-photo {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 72vh;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  filter: drop-shadow(0 22px 25px rgba(30, 35, 20, .24));
+  transform: none !important;
+}
+
+@media (max-width: 700px) {
+  .mv-product-packet.mv-real-product-display {
+    width: min(78vw, 340px) !important;
+  }
+
+  .mv-real-product-display .mv-product-photo {
+    max-height: 58vh;
+  }
+}
+
+
+/* MANNVASAM COLLECTION COMING SOON V1 */
+.mv-collection-coming-soon {
+  position: relative;
+  cursor: default !important;
+}
+
+.mv-collection-coming-soon img {
+  filter: grayscale(55%) brightness(.78);
+  transition: filter .4s ease;
+}
+
+.mv-collection-coming-soon:hover img {
+  filter: grayscale(35%) brightness(.82);
+}
+
+.mv-collection-coming-soon-badge {
+  position: absolute;
+  z-index: 5;
+  top: 20px;
+  left: 20px;
+  padding: 10px 15px;
+  color: #fff8e9;
+  background: #263d2d;
+  border: 1px solid #c29a55;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+}
+
+.mv-collection-coming-soon[aria-disabled="true"] {
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .mv-collection-coming-soon-badge {
+    top: 12px;
+    left: 12px;
+    padding: 8px 11px;
+    font-size: 9px;
+  }
+}
+
+
+/* MANNVASAM CINEMATIC MOTION UPGRADE V4 */
+
+/* Refined cinematic section entrance */
+.mv-cinematic-reveal {
+  transition:
+    opacity 1.05s cubic-bezier(.2,.7,.2,1),
+    transform 1.15s cubic-bezier(.16,1,.3,1),
+    filter 1.05s ease !important;
+  transition-delay: var(--mv-reveal-delay, 0ms) !important;
+  backface-visibility: hidden;
+}
+
+/* Stagger collection cards */
+.collection-grid .collection-card:nth-child(1) {
+  --mv-reveal-delay: 0ms;
+}
+
+.collection-grid .collection-card:nth-child(2) {
+  --mv-reveal-delay: 140ms;
+}
+
+.collection-grid .collection-card:nth-child(3) {
+  --mv-reveal-delay: 280ms;
+}
+
+.collection-grid .collection-card:nth-child(4) {
+  --mv-reveal-delay: 420ms;
+}
+
+/* Elegant image movement, without changing image dimensions */
+.collection-card img,
+.intro-image img {
+  transition:
+    transform 1.2s cubic-bezier(.2,.7,.2,1),
+    filter .8s ease;
+}
+
+.collection-card:hover img {
+  transform: scale(1.045);
+}
+
+/* Featured product entrance */
+.mv-product-experience .mv-product-copy {
+  transition:
+    opacity 1s ease,
+    transform 1.1s cubic-bezier(.16,1,.3,1);
+}
+
+.mv-product-experience .mv-real-product-display {
+  transition:
+    opacity 1.1s ease,
+    transform 1.2s cubic-bezier(.16,1,.3,1);
+}
+
+.mv-product-experience:not(.mv-cinematic-visible)
+.mv-real-product-display {
+  opacity: .65;
+  transform: translateY(24px);
+}
+
+.mv-product-experience.mv-cinematic-visible
+.mv-real-product-display {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gentle depth on story images */
+.intro-image {
+  overflow: hidden;
+}
+
+.intro-image img {
+  will-change: transform;
+}
+
+@media (max-width: 700px) {
+  .mv-cinematic-reveal {
+    transition-duration: .8s !important;
+  }
+
+  .collection-card:hover img {
+    transform: none;
+  }
+
+  .mv-product-experience .mv-real-product-display {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mv-cinematic-reveal,
+  .collection-card img,
+  .intro-image img,
+  .mv-product-experience .mv-product-copy,
+  .mv-product-experience .mv-real-product-display {
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+
+/* ==========================================
+   MANNVASAM CINEMATIC MOTION UPGRADE V5
+   ========================================== */
+
+/* Smooth cinematic scroll reveals */
+.mv-cinematic-reveal {
+  opacity: 0;
+  transform: translate3d(0, 55px, 0) scale(.985);
+  filter: blur(5px);
+  transition:
+    opacity 1s cubic-bezier(.2,.7,.2,1),
+    transform 1.15s cubic-bezier(.16,1,.3,1),
+    filter 1s ease;
+  transition-delay: var(--mv-reveal-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+.mv-cinematic-reveal.mv-cinematic-visible {
+  opacity: 1;
+  transform: translate3d(0,0,0) scale(1);
+  filter: blur(0);
+}
+
+/* Staggered collection entrance */
+.collections .collection-card:nth-child(1) {
+  --mv-reveal-delay: 0ms;
+}
+.collections .collection-card:nth-child(2) {
+  --mv-reveal-delay: 150ms;
+}
+.collections .collection-card:nth-child(3) {
+  --mv-reveal-delay: 300ms;
+}
+.collections .collection-card:nth-child(4) {
+  --mv-reveal-delay: 450ms;
+}
+
+/* Premium product photo entrance */
+.mv-real-product-display {
+  transition:
+    opacity 1.2s ease,
+    transform 1.3s cubic-bezier(.16,1,.3,1);
+}
+
+.mv-real-product-display .mv-product-photo {
+  transform-origin: center;
+  animation: mvProductEntrance 1.5s cubic-bezier(.16,1,.3,1) both;
+}
+
+@keyframes mvProductEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(65px) scale(.88);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Gentle product floating */
+.mv-floating-product {
+  animation: mvPremiumProductFloat 6s ease-in-out infinite;
+  animation-delay: var(--mv-float-delay, 0s);
+}
+
+@keyframes mvPremiumProductFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Collection image depth */
+.collection-card img {
+  transition:
+    transform 1.1s cubic-bezier(.2,.7,.2,1),
+    filter 1s ease;
+}
+
+.collection-card:hover img {
+  transform: scale(1.055);
+  filter: saturate(1.08);
+}
+
+/* Farm scenery motion */
+.mv-cinema-cloud {
+  animation: mvCloudDrift 34s ease-in-out infinite alternate;
+}
+
+.mv-cinema-sun {
+  animation: mvSunGlow 7s ease-in-out infinite alternate;
+}
+
+@keyframes mvCloudDrift {
+  from { transform: translateX(-2%); }
+  to { transform: translateX(4%); }
+}
+
+@keyframes mvSunGlow {
+  from {
+    filter: brightness(1);
+    opacity: .82;
+  }
+  to {
+    filter: brightness(1.16);
+    opacity: 1;
+  }
+}
+
+/* Premium hover interaction */
+.collection-card,
+.product-card {
+  transition:
+    transform .55s cubic-bezier(.2,.7,.2,1),
+    box-shadow .55s ease;
+}
+
+.collection-card:hover,
+.product-card:hover {
+  transform: translateY(-7px);
+}
+
+/* Mobile optimization */
+@media (max-width: 700px) {
+  .mv-cinematic-reveal {
+    transform: translateY(28px);
+    filter: none;
+    transition-duration: .8s;
+  }
+
+  .mv-floating-product {
+    animation-duration: 7s;
+  }
+
+  .collection-card:hover,
+  .product-card:hover {
+    transform: none;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .mv-cinematic-reveal,
+  .mv-real-product-display,
+  .mv-real-product-display .mv-product-photo,
+  .mv-floating-product,
+  .mv-cinema-cloud,
+  .mv-cinema-sun,
+  .collection-card,
+  .product-card,
+  .collection-card img {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .mv-cinematic-reveal {
+    opacity: 1;
+  }
+}
+
+/* END MANNVASAM CINEMATIC MOTION V5 */
+
+
+/* MANNVASAM CINEMATIC HERO UPGRADE V6 */
+
+/* Cinematic hero entrance */
+.mv-cinematic-hero {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.mv-cinematic-hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+.mv-cinematic-hero .hero-content {
+  animation: mvHeroTextReveal 1.4s cubic-bezier(.16,1,.3,1) both;
+}
+
+@keyframes mvHeroTextReveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 48px, 0);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+/* Product reveal */
+.mv-cinematic-product {
+  animation: mvHeroProductReveal 1.7s .2s cubic-bezier(.16,1,.3,1) both;
+  transform-origin: center bottom;
+}
+
+@keyframes mvHeroProductReveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 65px, 0) scale(.88);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Product glow breathing */
+.mv-product-glow {
+  animation: mvProductGlow 5s ease-in-out infinite alternate;
+}
+
+@keyframes mvProductGlow {
+  from {
+    opacity: .45;
+    transform: scale(.88);
+  }
+  to {
+    opacity: .9;
+    transform: scale(1.12);
+  }
+}
+
+/* Orbit animation */
+.mv-product-orbit {
+  animation: mvProductOrbit 24s linear infinite;
+}
+
+@keyframes mvProductOrbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Product image gentle movement */
+.mv-real-rice-product {
+  animation: mvRiceFloat 6s ease-in-out infinite;
+  transform-origin: center bottom;
+  will-change: transform;
+}
+
+@keyframes mvRiceFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+/* Hero buttons */
+.mv-cinematic-hero .gold-button {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform .45s ease,
+    box-shadow .45s ease;
+}
+
+.mv-cinematic-hero .gold-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255,255,255,.32) 48%,
+    transparent 75%
+  );
+  transform: translateX(-120%);
+  transition: transform .8s ease;
+  pointer-events: none;
+}
+
+.mv-cinematic-hero .gold-button:hover::after {
+  transform: translateX(120%);
+}
+
+.mv-cinematic-hero .gold-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(30,45,24,.2);
+}
+
+/* Scroll indicator */
+.mv-scroll-indicator span {
+  animation: mvScrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes mvScrollPulse {
+  0%, 100% { opacity: .55; }
+  50% { opacity: 1; }
+}
+
+/* Mobile performance */
+@media (max-width: 700px) {
+  .mv-real-rice-product {
+    animation-duration: 7s;
+  }
+
+  .mv-product-orbit {
+    animation-duration: 32s;
+  }
+
+  .mv-cinematic-hero .gold-button:hover {
+    transform: none;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .mv-cinematic-hero .hero-content,
+  .mv-cinematic-product,
+  .mv-product-glow,
+  .mv-product-orbit,
+  .mv-real-rice-product,
+  .mv-scroll-indicator span {
+    animation: none !important;
+    filter: none !important;
+  }
+
+  .mv-cinematic-hero .gold-button,
+  .mv-cinematic-hero .gold-button::after {
+    transition: none !important;
+  }
+}
+
+/* END MANNVASAM CINEMATIC HERO UPGRADE V6 */
+
+/* MANNVASAM PRODUCT PACKET HEIGHT FIX */
+.mv-product-packet.mv-real-product-display {
+  height: clamp(340px, 39vw, 455px) !important;
+}

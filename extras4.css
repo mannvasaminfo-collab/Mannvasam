@@ -1,0 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;700&display=swap");
+.lang { border: 2px solid rgba(255, 255, 255, .5); background: transparent; color: #fff; border-radius: 999px; padding: 6px 16px; font: inherit; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background .2s; }
+.lang:hover { background: rgba(255, 255, 255, .14); }
+.nav nav a.active { color: var(--gold); opacity: 1; }
+.share { margin-top: 18px; }
+html[lang="ta"] body, html[lang="ta"] h1, html[lang="ta"] h2, html[lang="ta"] h3, html[lang="ta"] .mmenu a { font-family: "Noto Sans Tamil", system-ui, sans-serif; }
+html[lang="ta"] h1 { line-height: 1.2; }

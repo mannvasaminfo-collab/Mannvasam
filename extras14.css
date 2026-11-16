@@ -1,0 +1,3 @@
+.mv-shop-card::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(212, 175, 55, .16), transparent 60%); }
+.mv-shop-card:hover::before { opacity: 1; }
+.dust14 { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; opacity: .5; }

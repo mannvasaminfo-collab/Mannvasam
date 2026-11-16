@@ -1,0 +1,6 @@
+body .mv-shop-card.soon .mv-shop-image img { filter: grayscale(.7); opacity: .7; }
+body .mv-shop-card.soon .mv-shop-image::after { content: "COMING SOON"; opacity: 1; translate: -50% 0; background: #b68c50; color: #1a1405; }
+body .mv-shop-card.soon .mv-card-price, body .mv-shop-card.soon .mv-pack-label, body .mv-shop-card.soon .mv-pack-select { opacity: .35; }
+body .mv-shop-card.soon .mv-add-button, body .mv-shop-card.soon .mv-add-button:hover { background: transparent; border: 1px dashed #b68c50; color: #b68c50; cursor: not-allowed; box-shadow: none; }
+body .mv-shop-card.soon .mv-add-button::after { display: none; }
+body .mv-shop-card.soon:hover { transform: none; }
