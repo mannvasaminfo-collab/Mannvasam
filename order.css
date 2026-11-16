@@ -265,3 +265,59 @@ body:has(.checkout-review) { background: #f4efe5; }
  .review-selected,.review-coming { white-space:normal; text-align:right; }
  .review-modal { padding:27px 20px; }
 }
+
+
+/* MANNVASAM — premium delivery details step */
+body:has(.delivery-page) { background:#f4efe5; }
+.delivery-page { width:min(1160px, calc(100% - 48px)); margin:0 auto; padding:38px 0 72px; box-sizing:border-box; }
+.delivery-heading { display:flex; justify-content:space-between; align-items:center; gap:24px; margin:8px 0 28px; }
+.delivery-heading h1 { margin:9px 0 7px; color:#193d28; font:600 clamp(30px,4vw,43px)/1.12 Georgia,serif; letter-spacing:-.7px; }
+.delivery-heading p { margin:0; color:#73766c; font-size:14px; }
+.delivery-promise { display:flex; align-items:center; gap:10px; padding:13px 18px; border:1px solid #dfd7c8; border-radius:50px; background:#fbf8f1; color:#6c7568; font-size:12px; }
+.delivery-promise span { color:#b88a45; font-size:18px; }
+.delivery-grid { display:grid; grid-template-columns:minmax(0,1.55fr) minmax(280px,.85fr); gap:22px; align-items:start; }
+.delivery-card,.delivery-summary { box-sizing:border-box; padding:30px; border-radius:18px; }
+.delivery-section-heading { display:flex; align-items:center; gap:15px; margin-bottom:25px; }
+.delivery-number { display:grid; place-items:center; flex:0 0 38px; height:38px; border-radius:50%; color:#99733d; background:#f3ead9; font:600 14px Georgia,serif; }
+.delivery-section-heading h2,.delivery-summary h2 { margin:0 0 4px; color:#193d28; font:600 22px Georgia,serif; }
+.delivery-section-heading p { margin:0; color:#818176; font-size:12px; }
+.delivery-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px 16px; }
+.delivery-field { display:flex; flex-direction:column; gap:8px; min-width:0; }
+.delivery-field.field-full { grid-column:1 / -1; }
+.delivery-field label { display:block; color:#4b554a; font-size:12px; font-weight:700; letter-spacing:.15px; }
+.delivery-field input,.delivery-field textarea { display:block; width:100%; min-width:0; box-sizing:border-box; padding:13px 14px; border:1px solid #ddd5c7; border-radius:9px; outline:none; background:#fffefa; color:#28352b; font:14px/1.5 Inter,Arial,sans-serif; transition:border-color .18s,box-shadow .18s,background .18s; }
+.delivery-field input { height:47px; }
+.delivery-field textarea { min-height:82px; resize:vertical; }
+.delivery-field input::placeholder,.delivery-field textarea::placeholder { color:#aaa69b; }
+.delivery-field input:focus,.delivery-field textarea:focus { border-color:#9b7a49; background:#fff; box-shadow:0 0 0 3px #b88a451c; }
+.delivery-submit { min-height:54px; margin-top:18px; border-radius:9px; letter-spacing:.6px; box-shadow:0 8px 18px #193d2818; }
+.delivery-submit span { float:right; font-size:18px; }
+.delivery-error { min-height:0; margin:12px 0 0; }
+.delivery-secure { margin:12px 0 0; color:#858478; font-size:11px; text-align:center; }
+.delivery-summary { position:sticky; top:105px; }
+.delivery-summary h2 { margin:8px 0 21px; font-size:25px; }
+.delivery-product { align-items:center; gap:14px; padding-bottom:20px; border-bottom:1px solid #ece4d7; }
+.delivery-product-image { display:grid; place-items:center; width:86px; height:104px; flex:0 0 86px; overflow:hidden; border-radius:10px; background:#f2ecdf; }
+.delivery-product-image img { width:100%; height:100%; object-fit:contain; }
+.delivery-product > div:last-child { display:flex; flex-direction:column; gap:7px; }
+.delivery-product b { color:#26392a; font-size:14px; }
+.delivery-product span,.delivery-product small { color:#7d7b70; font-size:12px; }
+.delivery-total { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:8px; padding-top:19px; border-top:1px solid #e7dece; color:#193d28; font-weight:700; }
+.delivery-total b { font:600 28px Georgia,serif; }
+.delivery-summary-note { display:flex; align-items:center; gap:10px; margin-top:22px; padding:13px; border-radius:9px; background:#f5f0e5; }
+.delivery-summary-note span { color:#55764e; font-weight:800; }
+.delivery-summary-note p { margin:0; color:#777566; font:italic 12px/1.5 Georgia,serif; }
+.delivery-change { margin-top:18px; }
+@media(max-width:760px) {
+ .delivery-page { width:calc(100% - 30px); padding:27px 0 50px; }
+ .delivery-heading { align-items:flex-start; flex-direction:column; }
+ .delivery-promise { align-self:flex-start; }
+ .delivery-grid { grid-template-columns:1fr; }
+ .delivery-summary { position:static; grid-row:1; }
+ .delivery-card,.delivery-summary { padding:22px 18px; }
+}
+@media(max-width:480px) {
+ .delivery-fields { grid-template-columns:1fr; gap:15px; }
+ .delivery-field.field-full { grid-column:auto; }
+ .delivery-promise { border-radius:12px; }
+}
