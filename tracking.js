@@ -79,3 +79,16 @@ form.addEventListener("submit", async (event) => {
     button.textContent = "CHECK ORDER STATUS";
   }
 });
+
+// Prefill tracking details when arriving from the order confirmation page.
+try {
+  const saved = JSON.parse(sessionStorage.getItem('mv-track-prefill') || 'null');
+  if (saved) {
+    const id = document.querySelector('#track-id');
+    const phone = document.querySelector('#track-phone');
+    if (id) id.value = saved.orderId || '';
+    if (phone) phone.value = saved.phone || '';
+    sessionStorage.removeItem('mv-track-prefill');
+    if (saved.orderId && saved.phone) document.querySelector('#track-submit')?.click();
+  }
+} catch {}

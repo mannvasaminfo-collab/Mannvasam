@@ -37,14 +37,14 @@
               <label>Landmark<input name="landmark" placeholder="Nearby landmark (optional)"></label>
             </div>
             <label>Order note<textarea name="note" rows="2" placeholder="Any delivery instructions? (optional)"></textarea></label>
-            <button class="mv-checkout-review" type="submit">REVIEW MY ORDER →</button>
-            <p class="mv-checkout-privacy">This is a local checkout preview. Your details are not sent or saved.</p>
+            <button class="mv-checkout-review" type="submit">PLACE COD ORDER →</button>
+            <p class="mv-checkout-privacy">Your order is saved securely. Payment is collected on delivery.</p>
           </form>
           <aside class="mv-checkout-summary">
             <h3>Your order</h3>
             <div class="mv-checkout-lines"></div>
-            <div class="mv-checkout-total"><span>Subtotal</span><strong>₹0</strong></div>
-            <p>Delivery charges and payment options will be added when the live order system is connected.</p>
+            <div class="mv-checkout-total"><span>Items subtotal</span><strong>₹0</strong></div>\n            <div class="mv-checkout-courier"><span>Courier charge</span><strong>Enter city &amp; state</strong></div>\n            <div class="mv-checkout-grand-total"><span>Total payable</span><strong>₹0</strong></div>
+            <p>Courier: Chennai ₹40 · Tamil Nadu ₹60 · Other states ₹80.</p>
           </aside>
         </div>
         <div class="mv-checkout-confirmation" hidden>
